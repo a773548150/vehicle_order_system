@@ -1,0 +1,13 @@
+#alert-password{
+    float: right;
+}
+
+h2{
+    position: absolute;
+    left: 200px;
+}
+
+#loginOff{
+    margin-right: 20px;
+    float: right;
+}

@@ -1,0 +1,54 @@
+[ 2018-04-18T19:45:45+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000057s ]
+INFO: [ app_init ] --END-- [ RunTime:0.023906s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001538s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001679s ]
+ERR: 无法加载控制器:Index
+
+[ 2018-04-18T20:04:00+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000071s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001389s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002275s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002436s ]
+ERR: 无法加载控制器:Index
+
+[ 2018-04-18T20:04:01+08:00 ] 127.0.0.1 HTTP://www.vehicle.com/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000780s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001557s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001699s ]
+ERR: 无法加载控制器:Index
+
+[ 2018-04-18T20:04:02+08:00 ] 127.0.0.1 /index.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000046s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002098s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.007976s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.008163s ]
+ERR: 无法加载控制器:Index
+
+[ 2018-04-18T21:25:16+08:00 ] 127.0.0.1 /index.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000883s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002063s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002197s ]
+ERR: 无法加载控制器:Index
+
+[ 2018-04-18T22:45:09+08:00 ] 127.0.0.1 /index.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001060s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001263s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001351s ]
+ERR: 无法加载控制器:Index
+

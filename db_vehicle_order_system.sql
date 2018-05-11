@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-05-10 21:24:00
+Date: 2018-05-11 21:58:26
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,14 +23,16 @@ CREATE TABLE `t_log` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL,
   `log` varchar(50) NOT NULL,
-  `create_time` datetime NOT NULL,
-  `delete_time` datetime NOT NULL,
+  `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `delete_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `status` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_log
 -- ----------------------------
+INSERT INTO `t_log` VALUES ('1', 'admin', 'admin：添加了 \"{\'角色名为：扫地\'}\"', '2018-05-11 09:33:42', '2018-05-11 09:52:16', '0');
 
 -- ----------------------------
 -- Table structure for t_manager
@@ -41,16 +43,18 @@ CREATE TABLE `t_manager` (
   `username` varchar(20) NOT NULL,
   `password` varchar(32) NOT NULL,
   `role_id` int(11) NOT NULL,
-  `create_time` datetime NOT NULL,
-  `update_time` datetime NOT NULL,
+  `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `m_r` (`role_id`),
   CONSTRAINT `m_r` FOREIGN KEY (`role_id`) REFERENCES `t_role` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_manager
 -- ----------------------------
+INSERT INTO `t_manager` VALUES ('1', 'admin', '202cb962ac59075b964b07152d234b70', '1', '2018-05-11 19:19:12', '0000-00-00 00:00:00');
+INSERT INTO `t_manager` VALUES ('5', 'xiaoming', '202cb962ac59075b964b07152d234b70', '2', '2018-05-11 09:05:57', '2018-05-11 09:14:37');
 
 -- ----------------------------
 -- Table structure for t_oil
@@ -61,10 +65,10 @@ CREATE TABLE `t_oil` (
   `number` varchar(20) NOT NULL,
   `type` varchar(10) NOT NULL,
   `name` varchar(10) NOT NULL,
-  `delete_time` datetime NOT NULL,
-  `create_time` datetime NOT NULL,
-  `update_time` datetime NOT NULL,
-  `status` tinyint(4) NOT NULL,
+  `delete_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `status` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -81,10 +85,11 @@ CREATE TABLE `t_order` (
   `order_status` tinyint(4) NOT NULL DEFAULT '0',
   `vehicle_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `create_time` datetime NOT NULL,
-  `delete_time` datetime NOT NULL,
-  `update_time` datetime NOT NULL,
-  `status` tinyint(4) NOT NULL,
+  `rank` int(11) NOT NULL COMMENT '''0'' 表示在大门内，非零表示在大门外',
+  `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `delete_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `status` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `o_v` (`vehicle_id`),
   KEY `o_u` (`user_id`),
@@ -103,16 +108,27 @@ DROP TABLE IF EXISTS `t_role`;
 CREATE TABLE `t_role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL,
-  `update_time` datetime NOT NULL,
-  `create_time` datetime NOT NULL,
-  `delete_time` datetime NOT NULL,
-  `status` tinyint(4) NOT NULL,
+  `manage_order` tinyint(4) NOT NULL DEFAULT '1',
+  `manage_user` tinyint(4) NOT NULL DEFAULT '1',
+  `manage_vehicle` tinyint(4) NOT NULL DEFAULT '1',
+  `manage_oil` tinyint(4) NOT NULL DEFAULT '1',
+  `manage_notice` tinyint(4) NOT NULL DEFAULT '1',
+  `manage_role` tinyint(4) NOT NULL DEFAULT '1',
+  `manage_log` tinyint(4) NOT NULL DEFAULT '1',
+  `update_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `delete_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `status` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_role
 -- ----------------------------
+INSERT INTO `t_role` VALUES ('1', '超级管理员', '1', '1', '1', '1', '1', '1', '1', '0000-00-00 00:00:00', '2018-05-11 19:17:23', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_role` VALUES ('2', '门卫', '0', '0', '0', '1', '1', '0', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_role` VALUES ('3', '保安', '0', '0', '0', '0', '0', '1', '0', '0000-00-00 00:00:00', '2018-05-11 09:18:07', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_role` VALUES ('4', '扫地', '1', '0', '1', '1', '1', '0', '0', '0000-00-00 00:00:00', '2018-05-11 09:33:42', '0000-00-00 00:00:00', '1');
 
 -- ----------------------------
 -- Table structure for t_user
@@ -124,10 +140,10 @@ CREATE TABLE `t_user` (
   `number` varchar(20) NOT NULL,
   `mobile_number` int(11) NOT NULL,
   `company` varchar(20) NOT NULL,
-  `create_time` datetime NOT NULL,
-  `update_time` datetime NOT NULL,
-  `delete_time` datetime NOT NULL,
-  `status` tinyint(4) NOT NULL,
+  `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `delete_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `status` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `W_U` (`wechat_id`),
   CONSTRAINT `W_U` FOREIGN KEY (`wechat_id`) REFERENCES `t_wechat` (`id`)
@@ -145,12 +161,14 @@ CREATE TABLE `t_vehicle` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `number` varchar(20) NOT NULL,
   `license_plate` varchar(7) NOT NULL,
-  `delete_time` datetime NOT NULL,
-  `create_time` datetime NOT NULL,
-  `update_time` datetime NOT NULL,
+  `delete_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `status` tinyint(4) NOT NULL,
   `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `v_u` (`user_id`),
+  CONSTRAINT `v_u` FOREIGN KEY (`user_id`) REFERENCES `t_user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -217,7 +235,7 @@ CREATE TABLE `t_wechat` (
   `unionid` varchar(30) NOT NULL,
   `remark` varchar(20) NOT NULL,
   `groupid` int(11) NOT NULL,
-  `create_time` datetime NOT NULL,
+  `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `update_time` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

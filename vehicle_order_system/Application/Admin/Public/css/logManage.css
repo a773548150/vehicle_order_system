@@ -1,0 +1,14 @@
+.top-nav{
+    position: absolute;
+    left: 200px;
+}
+
+.toInline{
+    display: inline-block;
+}
+.excel {
+    margin-left: 100px;
+}
+.outExcel{
+    margin-left: 1050px;
+}

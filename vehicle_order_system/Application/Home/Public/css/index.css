@@ -1,0 +1,16 @@
+.allContent {
+    position: absolute;
+    width: 400px;
+    left: 50%;
+    margin-left: -150px;
+    top: 50px;
+}
+
+.loginTitle {
+    position: relative;
+    width: 44px;
+    left: 50%;
+    margin-left: -22px;
+    margin-bottom: 10px;
+    color: #393D49;
+}

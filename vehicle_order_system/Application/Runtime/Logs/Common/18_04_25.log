@@ -1,0 +1,12 @@
+[ 2018-04-25T00:43:22+08:00 ] 127.0.0.1 /%7B$data[0][head_path]
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000031s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001208s ]
+ERR: 无法加载模块:{$data[0][head_path]
+
+[ 2018-04-25T08:03:30+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000046s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002068s ]
+ERR: 无法加载模块:Favicon
+

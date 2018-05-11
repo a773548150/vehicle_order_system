@@ -1,0 +1,17 @@
+.all{
+    position: absolute;
+    margin-top: 50px;
+}
+
+.toInline{
+    display: inline-block;
+}
+
+.profilePhoto{
+    margin-top: 30px;
+}
+
+.layui-img{
+    width: 100px;
+    height: 100px;
+}

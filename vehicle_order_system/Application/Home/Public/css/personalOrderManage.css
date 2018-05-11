@@ -1,0 +1,43 @@
+/*#unTaking{*/
+    /*background-color:#FF5722;*/
+    /*color: #fff;*/
+/*}*/
+
+.tableAll{
+    margin-top: 20px;
+}
+.unTakingAll{
+    background-color: #2F4056;
+    margin-top: 10px;
+}
+
+.unTakingAll h2{
+    color: #fff;
+}
+
+
+.unFinishAll{
+    background-color: #1E9FFF;
+    margin-top: 50px;
+}
+
+.unFinishAll h2{
+    color: #fff;
+}
+
+.finishAll{
+    background-color: #FF5722;
+    margin-top: 50px;
+}
+
+.finishAll h2{
+    color: #fff;
+}
+
+.toInline{
+    display: inline-block;
+}
+
+#timeForm{
+    margin-top: 50px;
+}

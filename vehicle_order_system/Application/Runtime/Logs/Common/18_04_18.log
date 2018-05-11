@@ -1,0 +1,54 @@
+[ 2018-04-18T10:14:56+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+ERR: 无法加载模块:Favicon
+
+[ 2018-04-18T19:45:46+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000757s ]
+ERR: 无法加载模块:Favicon
+
+[ 2018-04-18T20:35:27+08:00 ] 127.0.0.1 /Order/searchOrder?orderNumber=42
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000865s ]
+ERR: 无法加载模块:Order
+
+[ 2018-04-18T21:50:53+08:00 ] 127.0.0.1 /demo/table/user/?page=1&limit=10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000045s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001126s ]
+ERR: 无法加载模块:Demo
+
+[ 2018-04-18T21:50:53+08:00 ] 127.0.0.1 /demo/table/user/?page=1&limit=10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000046s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001219s ]
+ERR: 无法加载模块:Demo
+
+[ 2018-04-18T21:54:21+08:00 ] 127.0.0.1 /demo/table/user/?page=1&limit=10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000040s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001069s ]
+ERR: 无法加载模块:Demo
+
+[ 2018-04-18T21:54:21+08:00 ] 127.0.0.1 /demo/table/user/?page=1&limit=10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001709s ]
+ERR: 无法加载模块:Demo
+
+[ 2018-04-18T21:54:29+08:00 ] 127.0.0.1 /demo/table/user/?page=1&limit=10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000040s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001265s ]
+ERR: 无法加载模块:Demo
+
+[ 2018-04-18T21:54:29+08:00 ] 127.0.0.1 /demo/table/user/?page=1&limit=10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000047s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001151s ]
+ERR: 无法加载模块:Demo
+
