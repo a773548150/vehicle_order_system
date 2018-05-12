@@ -75,6 +75,7 @@ $(window).ready(function() {
                         data: data,
                         success: function (data, status) {
                             alert("删除成功");
+                            window.location = "/Admin/Index/toRole";
                             console.log(data);
                         },
                         fail: function (err, status) {

@@ -13,7 +13,7 @@ class LogModel extends BaseModel {
     public function insert($insertData) {
         $L = M("log");
         $username= $_SESSION['username'];
-        $data["log"] = $username."：添加了 "."\"$insertData\"";
+        $data["log"] = "$insertData";
         $data["create_time"] = date("Y-m-d h:i:s");
         $data["username"] = $username;
         $res = $L->data($data)->add();
@@ -22,37 +22,20 @@ class LogModel extends BaseModel {
 
     public function update($updateData) {
         $L = M("log");
-        $M = M("manager");
-
-        $username["username"] = $_SESSION['username'];
-        $manager_id = $M->where($username)->getField("id");
-
-        $data["manager_id"] = $manager_id;
-        $data["table_id"] = $updateData["table_id"];
-        $data["table_name"] = $updateData["table_name"];
-        $data["type"] = "2";
-        $data["alert_time"] = date("Y-m-d h:i:s");
-        $data["key"] = $updateData["key"];
-        $data["value"] = $updateData["value"];
-        $data["current_value"] = $updateData["current_value"];
-
+        $username= $_SESSION['username'];
+        $data["log"] = "$updateData";
+        $data["create_time"] = date("Y-m-d h:i:s");
+        $data["username"] = $username;
         $res = $L->data($data)->add();
         return $res;
     }
 
     public function delete($deleteData) {
         $L = M("log");
-        $M = M("manager");
-
-        $username["username"] = $_SESSION['username'];
-        $manager_id = $M->where($username)->getField("id");
-
-        $data["manager_id"] = $manager_id;
-        $data["table_id"] = $deleteData["table_id"];
-        $data["table_name"] = $deleteData["table_name"];
-        $data["type"] = "3";
-        $data["alert_time"] = date("Y-m-d h:i:s");
-
+        $username= $_SESSION['username'];
+        $data["log"] = "$deleteData";
+        $data["create_time"] = date("Y-m-d h:i:s");
+        $data["username"] = $username;
         $res = $L->data($data)->add();
         return $res;
     }

@@ -1,0 +1,236 @@
+@charset "utf-8";
+
+*{
+	margin:0;
+	padding: 0;
+	font-family:"MIcrosoft YaHei" ;
+    -webkit-tap-highlight-color:transparent;
+}
+body{
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	position: relative;
+	background: url(../images/bg.png)no-repeat;
+	height: 100%;
+
+
+}
+ul,li{
+	-webkit-padding-start: 0px;
+	list-style-type: none;
+}
+a{
+	text-decoration:none;outline:none;
+   -moz-outline-style:none;
+}
+input{
+	-webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+	-moz-tap-highlight-color:rgba(0, 0, 0, 0);
+	-ms-tap-highlight-color:rgba(0, 0, 0, 0);
+	-o-tap-highlight-color:rgba(0, 0, 0, 0);
+	tap-highlight-color:rgba(0, 0, 0, 0);
+	outline:none;
+}
+#main{
+	padding-top: 1rem;
+}
+.con{
+	width: 95%;
+	margin: 0 auto;
+	margin-bottom: .35rem;
+	background-color: #fff;
+	box-shadow: 1px 2px 1px #ccc7c7;
+	font-size: .4rem;
+	color: #333;
+	border-radius: .2rem;
+}
+.line{
+	overflow: hidden;
+	border-bottom: 1px solid #e5e5e5;
+	height: 1.2rem;
+    line-height: 1.2rem;
+    width: 95%;
+    margin: 0 auto;
+    position: relative;
+}
+.con .weui-cell__bd:after{
+	border-color: #999999;
+}
+.line .null{
+	width: 1rem;
+	height: 1.2rem;
+	float: left;
+}
+.null .yuan{
+	background-color: rgb(235,129,36);
+	border-radius: 50%;
+	float: left;
+	width: .5rem;
+    height: .5rem;
+    margin-top: .35rem;
+}
+.line .Txt{
+	width: 2.2rem;
+	float: left;
+}
+.line input{
+	width: 5rem;
+	float: left;
+	height: 1.2rem;
+    line-height: 1.2rem;
+}
+.line .lineC-left{
+	overflow: hidden;
+}
+.lineC-left input{
+	width: 3rem;
+}
+.line select{
+	float:left;
+	width: 2.5rem;
+	height: 1.2rem;
+    line-height: 1.2rem;
+    position:relative;
+}
+.selLine{
+	position:relative;
+	    float: left;
+    width: 2.5rem;
+}
+.line .weui-cell__bd:after{
+	right:10px;
+}
+#footer{
+	position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+	display: flex;
+	background-color: #fff;
+	border-top: 1px solid #e5e5e5;
+	height: 1.5rem;
+	font-size: .4rem;
+}
+#footer a{
+	flex: 1;
+	text-align: center;
+	color: #333;
+}
+#footer a img{
+	width: .6rem;
+	height: .6rem;
+	margin-top: .15rem;
+}
+#footer a.on{
+	color: #EB8124;
+}
+
+
+.pz{
+	width: 1rem;
+	float: left;
+	position: relative;
+	color: #EB8124
+}
+.pz:after{
+	content: " ";
+    display: inline-block;
+    height: 8px;
+    width: 8px;
+    border-width: 1px 1px 0 0;
+    border-color: #EB8124;
+    border-style: solid;
+    -webkit-transform: matrix(.71,.71,-.71,.71,0,0);
+    transform: matrix(.71,.71,-.71,.71,0,0);
+    position: relative;
+    top: -2px;
+    position: absolute;
+    top: 50%;
+    right: .2rem;
+    margin-top: -7px;
+    transform: rotate(135deg);
+}
+.pzCon{
+	background-color: rgba(153, 153, 153, 0.21);
+	color: #333;
+	font-size: .4rem;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+.pzCon-txt{
+	background-color: #CECFD3;
+	padding-top: .3rem;
+	padding-bottom: .3rem;
+	position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.pzCon-txt span{
+	background-color: #fff;
+	margin: .25rem .15rem;
+	border-radius: .15rem;
+	box-shadow:0 1px 0 #333333;
+	display: inline-block;
+	width: .65rem;
+	height: .8rem;
+	text-align: center;
+	line-height: .8rem;
+}
+
+.pzCon-txt .okBtn{
+	width: 1.5rem;
+	float: right;
+
+}
+.pzCon-txt p{
+	background-color: #fff;
+	margin: .25rem .15rem;
+	border-radius: .15rem;
+	box-shadow:0 1px 0 #333333;
+	display: inline-block;
+	width: .65rem;
+	height: .8rem;
+	text-align: center;
+	line-height: .8rem;
+}
+
+.subBtn{
+	width: 60%;
+	margin: 0 auto;
+	background-color: #EB8124;
+	color: #fff;
+	text-align: center;
+	font-size: .4rem;
+	border-radius: .6rem;
+	height: 1.2rem;
+	line-height: 1.2rem;
+}
+
+.icon-ok {
+    display: inline-block;
+    width: .6rem;
+    height: .25rem;
+    border-bottom: 2px solid #fff;
+    border-left: 2px solid #fff;
+    position: absolute;
+    top: .5rem;
+    left: .45rem;
+    -webkit-transform: rotate(-45deg);
+}
+.boTxt{
+	color: #999999;
+	font-size: .4rem;
+	text-align: center;
+	line-height: 2
+}
+.gou{
+	position: relative;
+	width: 1.5rem;
+	height: 1.5rem;
+	border-radius: 50%;
+	background-color: #5BC406;
+	margin: 0 auto;
+}

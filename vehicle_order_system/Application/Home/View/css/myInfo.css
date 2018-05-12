@@ -1,0 +1,145 @@
+@charset "utf-8";
+
+*{
+	margin:0;
+	padding: 0;
+	font-family:"MIcrosoft YaHei" ;
+    -webkit-tap-highlight-color:transparent;
+}
+body{
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	position: relative;
+	background: url(../images/bg.png)no-repeat;
+	height: 100%;
+
+
+}
+ul,li{
+	-webkit-padding-start: 0px;
+	list-style-type: none;
+}
+a{
+	text-decoration:none;outline:none;
+   -moz-outline-style:none;
+}
+input{
+	-webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+	-moz-tap-highlight-color:rgba(0, 0, 0, 0);
+	-ms-tap-highlight-color:rgba(0, 0, 0, 0);
+	-o-tap-highlight-color:rgba(0, 0, 0, 0);
+	tap-highlight-color:rgba(0, 0, 0, 0);
+	outline:none;
+}
+
+.con{
+	background-color: #fff;
+	width: 95%;
+	margin: 0 auto;
+	font-size: .4rem;
+	color: #333;
+	margin-top: .5rem;
+	margin-bottom: .5rem;
+}
+.con .line{
+	width: 95%;
+	margin: 0 auto;
+	height: 1.2rem;
+	line-height: 1.2rem;
+	border-bottom: 1px solid #e5e5e5;
+	overflow: hidden;
+}
+.line span{
+	width: 2.2rem;
+	float: left;
+}
+.line input{
+	width: 6.5rem;
+	float: left;
+	height: 1.2rem;
+	line-height: 1.2rem;
+}
+
+.subBtn{
+	width: 60%;
+	margin: 0 auto;
+	background-color: #EB8124;
+	color: #fff;
+	text-align: center;
+	font-size: .4rem;
+	border-radius: .6rem;
+	height: 1.2rem;
+	line-height: 1.2rem;
+}
+
+.pzCon{
+	background-color: rgba(153, 153, 153, 0.21);
+	color: #333;
+	font-size: .4rem;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+.pzCon-txt{
+	background-color: #CECFD3;
+	padding-top: .3rem;
+	padding-bottom: .3rem;
+	position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.pzCon-txt span{
+	background-color: #fff;
+	margin: .25rem .15rem;
+	border-radius: .15rem;
+	box-shadow:0 1px 0 #333333;
+	display: inline-block;
+	width: .65rem;
+	height: .8rem;
+	text-align: center;
+	line-height: .8rem;
+}
+
+.pzCon-txt .okBtn{
+	width: 1.5rem;
+	float: right;
+
+}
+.pzCon-txt p{
+	background-color: #fff;
+	margin: .25rem .15rem;
+	border-radius: .15rem;
+	box-shadow:0 1px 0 #333333;
+	display: inline-block;
+	width: .65rem;
+	height: .8rem;
+	text-align: center;
+	line-height: .8rem;
+}
+
+.line-left .pz{
+	width: 1rem;
+	float: left;
+	position: relative;
+	color: #EB8124
+}
+.pz:after{
+	content: " ";
+    display: inline-block;
+    height: 8px;
+    width: 8px;
+    border-width: 1px 1px 0 0;
+    border-color: #EB8124;
+    border-style: solid;
+    -webkit-transform: matrix(.71,.71,-.71,.71,0,0);
+    transform: matrix(.71,.71,-.71,.71,0,0);
+    position: relative;
+    top: -2px;
+    position: absolute;
+    top: 50%;
+    right: .2rem;
+    margin-top: -7px;
+    transform: rotate(135deg);
+}

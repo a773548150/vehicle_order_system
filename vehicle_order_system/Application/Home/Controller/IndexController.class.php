@@ -2,135 +2,165 @@
 namespace Home\Controller;
 class IndexController extends BaseController {
     public function index() {
-        if($this->isLogin()){
-            $this->display("/index");
-        } else {
-            $this->display("/login");
-        }
+//        $wechat = C('WECHAT_SDK');
+//        $redirect_uri = urlencode('http://yijiangbangtest.wsandos.com/linxiaocong/home/index/getUserInfo');
+//        $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid={$wechat['appid']}&redirect_uri=$redirect_uri&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
+//        header("Location:".$url);
+
+        $nonce = $_GET['nonce'];
+        $token = "linxiaocong";
+        $timestamp = $_GET['timestamp'];
+        $echostr = $_GET['echostr'];
+        $signature = $_GET['signature'];
+        $array = array($nonce, $timestamp, $token);
+        sort($array);
+        $str = sha1(implode($array));
+        if($str == $signature && $echostr){
+            echo $echostr;
+            exit;
+       }
+//       else {
+//            $this->responseMsg();
+//        }
+
+        $this->display("/index");
+
     }
     //跳转到登录页面
     public function toLogin() {
         $this->display("/login");
     }
 
-    //登录
-    public function login() {
-        session_start();
-        $m = D("Driver");
-        $rs = $m->login();
-        $username = I('post.mobile_number');
-        if ($rs) {
-            $_SESSION['userLogined'] = true;
-            $_SESSION['username1'] = $username;
-            $this->ajaxReturn("/".$rs);
+    public function getUserInfo() {
+        $wechat = C('WECHAT_SDK');
+        $code = $_GET["code"];
+//var_dump($code);die;
+
+//第一步:取全局access_token
+        $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={$wechat['appid']}&secret={$wechat['secret']}";
+//https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxddbec552bd3c87d4&secret=a29f03616a31ebd7b23d28e8c9e056ed
+        $token = $this->getJson($url);
+//var_dump($token);die;
+//第二步:取得openid
+        $oauth2Url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid={$wechat['appid']}&secret={$wechat['secret']}&code=$code&grant_type=authorization_code";
+        $oauth2 = $this->getJson($oauth2Url);
+
+
+
+//第三步:根据全局access_token和openid查询用户信息
+        $access_token = $token["access_token"];
+        $openid = $oauth2['openid'];
+        $get_user_info_url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=$access_token&openid=$openid&lang=zh_CN";
+        $userinfo = $this->getJson($get_user_info_url);
+
+//打印用户信息
+        echo "<pre>";
+        print_r($userinfo);
+        echo "</pre>";
+
+        $m = M("user");
+        $select = $m->where(array("openid"=>$userinfo["openid"]))->getField("id");
+//        var_dump($select);die;
+        if($select) {
+            echo "已存在";
         } else {
-            $_SESSION['userLogined'] = false;
-            $this->ajaxReturn("登录失败");
+            $result = $m->data($userinfo)->add();
+            if($result){
+                echo "插入数据成功";
+            }
         }
     }
 
-    //判断是否登录
-    public function isLogin() {
-        if (isset($_SESSION['userLogined']) && $_SESSION['userLogined']) {
-            return true;
-        } else {
-            $this->toLogin();
-            return false;
+    public function getJson($url) {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $output = curl_exec($ch);
+        curl_close($ch);
+        return json_decode($output, true);
+    }
+
+    public function responseMsg()
+    {
+        //get post data, May be due to the different environments
+        $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
+
+        $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
+        //extract post data
+        if (!empty($postStr)){
+            $fromUsername = $postObj->FromUserName;
+            $toUsername = $postObj->ToUserName;
+            $keyword = trim($postObj->Content);
+            $time = time();
+            $textTpl = "<xml>  
+                        <ToUserName><![CDATA[%s]]></ToUserName>  
+                        <FromUserName><![CDATA[%s]]></FromUserName>  
+                        <CreateTime>%s</CreateTime>  
+                        <MsgType><![CDATA[%s]]></MsgType>  
+                        <Content><![CDATA[%s]]></Content>  
+                        <FuncFlag>0</FuncFlag>  
+                        </xml>";
+            if(!empty( $keyword ))
+            {
+                $msgType = "text";
+                $contentStr = "openid: ".$fromUsername;
+                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                echo $resultStr;
+            }else{
+                echo "Input something...";
+            }
+        }else {
+            echo "";
+            exit;
+        }
+
+        if(strtolower($postObj->MsgType) == 'event') {
+            if(strtolower($postObj->Event == 'subscribe')) {
+                $toUser = $postObj->FromUserName;
+                $fromUser = $postObj->ToUserName;
+                $time = time();
+                $msgType = 'text';
+                $content = '欢迎关注我们的微信公众账号'.$postObj->FromUserName;
+                $template = "<xml>  
+                        <ToUserName><![CDATA[%s]]></ToUserName>  
+                        <FromUserName><![CDATA[%s]]></FromUserName>  
+                        <CreateTime>%s</CreateTime>  
+                        <MsgType><![CDATA[%s]]></MsgType>  
+                        <Content><![CDATA[%s]]></Content>  
+                        <FuncFlag>0</FuncFlag>  
+                        </xml>";
+                $info = sprintf($template, $toUser, $fromUser, $time, $msgType, $content);
+                echo $info;
+            }
         }
     }
 
-    //退出登录
-    public function loginOff() {
-        session_destroy();
-        $this->ajaxReturn("成功退出");
+    public function toAbout() {
+        $this->display("/about");
     }
 
-    //跳转到公共订单页面
-    public function toPublicOrder() {
-        if ($this->isLogin()) {
-            $select = A("Order");
-            $select->selectUnTaking();
-            $select->selectUnFinish();
-            $select->selectFinish();
-            $this->display("/publicOrder");
-        }
+    public function toContact() {
+        $this->display("/contact");
     }
 
-    //跳转到修改密码页面
-    public function toAlertPassword() {
-        if ($this->isLogin()) {
-            $this->display("/alertPassword");
-        }
+    public function toEidtmy() {
+        $this->display("/eidtmy");
     }
 
-    //修改密码
-    public function alertPassword() {
-        $m = D("Driver");
-        $rs = $m->alertPassword();
-        echo $rs;
+    public function toIndex() {
+        $this->display("/index");
     }
 
-    //跳转到订单详情页面
-    public function toOrderDetail() {
-        if ($this->isLogin()) {
-            $select = A("Order");
-            $select->showOrderDetail();
-            $this->display("/orderDetail");
-        }
+    public function toMy() {
+        $this->display("/my");
     }
 
-    //跳转到个人订单页面
-    public function toPersonalOrder() {
-        if ($this->isLogin()) {
-            $select = A("Order");
-            $select->selectPersonalUnFinish();
-            $this->display("/personalOrder");
-        }
+    public function toOrder() {
+        $this->display("/order");
     }
-
-    //跳转到接订单页面
-    public function toPersonalUnTakingOrder() {
-        if ($this->isLogin()) {
-            $select = A("Order");
-            $select->selectUnTaking();
-            $this->display("/personalUnTakingOrder");
-        }
-    }
-
-    //跳转到个人订单详情页面，从个人订单已接订单进入
-    public function toPersonalOrderDetail() {
-        if ($this->isLogin()) {
-            $select = A("Order");
-            $select->showPersonalOrderDetail();
-            $this->display("/personalOrderDetail");
-        }
-    }
-
-    //跳转到个人订单管理页面
-    public function toPersonalOrderManage() {
-        if ($this->isLogin()) {
-            $select = A("Order");
-            $select->selectPersonalUnFinish();
-            $select->selectPersonalFinish();
-            $this->display("/personalOrderManage");
-        }
-    }
-
-    //跳转到完成订单详情页面，从订单管理进入
-    public function toFinishOrderDetail() {
-        if ($this->isLogin()) {
-            $select = A("Order");
-            $select->showFinishOrderDetail();
-            $this->display("/finishOrderDetail");
-        }
-    }
-
-    //跳转到个人管理页面
-    public function toPersonalMessage() {
-        if ($this->isLogin()) {
-            $select = A("Driver");
-            $select->showDriverMessage();
-            $this->display("/personalMessage");
-        }
+    public function toYyjl() {
+        $this->display("/yyjl");
     }
 }

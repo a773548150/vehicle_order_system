@@ -62,13 +62,14 @@ $(window).ready(function() {
         //第一个实例
         table.render({
             elem: '#log'
-            ,height: 515
+            ,height: 600
             ,limit: 11
             ,url: '/Admin/Log/searchLog' //数据接口
             ,page: true //开启分页
             ,cols: [[ //表头
                 {field: 'username', title: '操作者', width:190, sort: true, fixed: 'left'}
                 ,{field: 'log', title: '修改内容', width:400, edit: "text"}
+                ,{field: 'create_time', title: '修改时间', width:200, edit: "text"}
                 ,{fixed: 'right', width:150, align:'center', toolbar: '#barDemo'}
             ]]
         });

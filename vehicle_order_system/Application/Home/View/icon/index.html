@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<title>首页</title>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/index.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/public.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/swiper.min.css">
+	<script type="text/javascript" src="__PUBLIC__/Home/js/flexible.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Home/js/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Home/js/swiper.min.js"></script>
+</head>
+
+<body>
+	<div class="head">
+		<p>微商城</p>
+	</div>
+	<div class="main" id="app">
+		<div class="search">
+			<input type="" name="" placeholder=" 搜索商品" id="inputSearch" v-model="kw">
+			<a href="#" class="btn-box">
+				<span class="icon-search"></span>
+			</a>
+		</div>
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+
+				<div class="swiper-slide" v-for="ad in ads">
+					<a :href="parseHref(ad)">
+						<!-- <img :src="'{:C("QINIU_URL_PREFIX")}' + ad.ad_image_id"> -->
+						<img src="__PUBLIC__/Home/images/banner1.png">
+					</a>
+				</div>
+
+			</div>
+			<div class="swiper-pagination"></div>
+		</div>
+		<div class="nav">
+			<a href="">
+   		 		<img src="__PUBLIC__/Home/icon/i1.png" alt="">
+   		 		<p>特价</p>
+   		 	</a>
+			<a href="">
+   		 		<img src="__PUBLIC__/Home/icon/i2.png" alt="">
+   		 		<p>新品</p>
+   		 	</a>
+			<a href="">
+   		 		<img src="__PUBLIC__/Home/icon/i3.png" alt="">
+   		 		<p>女装</p>
+   		 	</a>
+			<a href="">
+   		 		<img src="__PUBLIC__/Home/icon/i4.png" alt="">
+   		 		<p>童装</p>
+   		 	</a>
+		</div>
+		<!--好货抢先-->
+		<div class="goodPro">
+			<div class="title">
+				<p>好货抢先</p>
+				<a href="">更多>></a>
+			</div>
+			<div class="goodProCon">
+				<a href="" class="productInfo">
+	   		 			<img src="__PUBLIC__/Home/images/product1.png" alt="">
+	   		 			<p class="proTitle">半透明橘红色淑女时尚上衣青春...</p>
+	   		 			<p>￥236</p>
+	   		 		</a>
+
+				<a href="" class="productInfo">
+	   		 			<img src="__PUBLIC__/Home/images/product2.png" alt="">
+	   		 			<p class="proTitle">初秋橘红色淑女气质蝙蝠袖上...</p>
+	   		 			<p>￥459</p>
+	   		 		</a>
+
+				<a href="" class="productInfo">
+	   		 			<img src="__PUBLIC__/Home/images/product1.png" alt="">
+	   		 			<p class="proTitle">半透明橘红色淑女时尚上衣青春...</p>
+	   		 			<p>￥386</p>
+	   		 		</a>
+
+				<a href="" class="productInfo">
+	   		 			<img src="__PUBLIC__/Home/images/product2.png" alt="">
+	   		 			<p class="proTitle">半透明橘红色淑女时尚上衣青春...</p>
+	   		 			<p>￥236</p>
+	   		 		</a>
+				<a href="" class="productInfo">
+	   		 			<img src="__PUBLIC__/Home/images/product1.png" alt="">
+	   		 			<p class="proTitle">半透明橘红色淑女时尚上衣青春...</p>
+	   		 			<p>￥236</p>
+	   		 		</a>
+				<a href="" class="productInfo">
+	   		 			<img src="__PUBLIC__/Home/images/product2.png" alt="">
+	   		 			<p class="proTitle">半透明橘红色淑女时尚上衣青春...</p>
+	   		 			<p>￥236</p>
+	   		 		</a>
+				<a href="" class="productInfo">
+	   		 			<img src="__PUBLIC__/Home/images/product1.png" alt="">
+	   		 			<p class="proTitle">半透明橘红色淑女时尚上衣青春...</p>
+	   		 			<p>￥236</p>
+	   		 		</a>
+			</div>
+			<!--广告-->
+		</div>
+		<div class="adv">
+			<a href=""><img src="__PUBLIC__/Home/images/banner3.png" alt="" class="advImg"><span class="icon-triangle-up"></span></a>
+		</div>
+		<div class="goodPro">
+			<div class="goodProCon">
+				<a href="" class="productInfo">
+		 			<img src="__PUBLIC__/Home/images/product1.png" alt="">
+		 			<p class="proTitle">半透明橘红色淑女时尚上衣青春...</p>
+		 			<p>￥1045</p>
+		 		</a>
+
+
+				<a href="" class="productInfo">
+		 			<img src="__PUBLIC__/Home/images/product2.png" alt="">
+		 			<p class="proTitle">初秋橘红色淑女气质蝙蝠袖上...</p>
+		 			<p>￥875</p>
+		 		</a>
+
+				<a href="" class="productInfo">
+		 			<img src="__PUBLIC__/Home/images/product1.png" alt="">
+		 			<p class="proTitle">半透明橘红色淑女时尚上衣青春...</p>
+		 			<p>￥386</p>
+		 		</a>
+
+				<a href="" class="productInfo">
+		 			<img src="__PUBLIC__/Home/images/product2.png" alt="">
+		 			<p class="proTitle">半透明橘红色淑女时尚上衣青春...</p>
+		 			<p>￥236</p>
+		 		</a>
+				<a href="" class="productInfo">
+		 			<img src="__PUBLIC__/Home/images/product1.png" alt="">
+		 			<p class="proTitle">半透明橘红色淑女时尚上衣青春...</p>
+		 			<p>￥236</p>
+		 		</a>
+				<a href="" class="productInfo">
+		 			<img src="__PUBLIC__/Home/images/product2.png" alt="">
+		 			<p class="proTitle">半透明橘红色淑女时尚上衣青春...</p>
+		 			<p>￥236</p>
+		 		</a>
+				<a href="" class="productInfo">
+		 			<img src="__PUBLIC__/Home/images/product1.png" alt="">
+		 			<p class="proTitle">半透明橘红色淑女时尚上衣青春...</p>
+		 			<p>￥236</p>
+		 		</a>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<a href="#" class="on">
+			<img src="__PUBLIC__/Home/icon/home2.png" alt="">
+			<p>首页</p>
+		</a>
+		<a href="column.html">
+			<img src="__PUBLIC__/Home/icon/fenlei.png" alt="">
+			<p>分类</p>
+		</a>
+		<a href="">
+			<img src="__PUBLIC__/Home/icon/gouwuche.png" alt="">
+			<p>购物车</p>
+		</a>
+		<a href="myCenter.html">
+			<img src="__PUBLIC__/Home/icon/wode.png" alt="">
+			<p>我的</p>
+		</a>
+	</div>
+</body>
+<script type="text/javascript">
+	$(function () {
+		//窗体高度
+		var window_height = $(window).height();
+		//head高度
+		var head_height = $(".head").outerHeight(true);
+		//footer高度
+		var footer_height = $(".footer").outerHeight(true);
+		//progress高度
+		var progress_height = window_height - footer_height - head_height;
+
+		$(".main").css("height", progress_height);
+	})
+
+</script>
+
+<link rel="stylesheet" href="__PUBLIC__/Home/css/addition.css">
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.js"></script>
+<script src="__PUBLIC__/Home/js/axios.js"></script>
+
+<script>
+	var
+		vm = new Vue({
+			el: '#app',
+
+			mounted: function () {
+				new Swiper('.swiper-container', {
+					pagination: '.swiper-pagination',
+					loop: true,
+					grabCursor: true,
+					paginationClickable: true,
+					autoplay: 3000
+				});
+			},
+
+			data: {
+				ads: [],
+				kw: ''
+			},
+
+			created: function () {
+				this.fetchAd();
+			},
+
+			methods: {
+				fetchAd: function () {
+					var
+						self = this;
+
+					axios.get('__URL__/fetchAd').then(function (response) {
+						self.ads = response;
+					}).catch(function () {
+						alert('获取数据失败');
+					});
+				},
+				search: function () { },
+				parseHref: function (ad) {
+					if (ad.ad_comm_id) {
+						return ''
+					} else {
+						return ad.link;
+					}
+				}
+			}
+		});
+
+</script>
+
+</html>

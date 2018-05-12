@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-05-11 21:58:26
+Date: 2018-05-12 22:18:18
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,12 +27,27 @@ CREATE TABLE `t_log` (
   `delete_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `status` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_log
 -- ----------------------------
 INSERT INTO `t_log` VALUES ('1', 'admin', 'admin：添加了 \"{\'角色名为：扫地\'}\"', '2018-05-11 09:33:42', '2018-05-11 09:52:16', '0');
+INSERT INTO `t_log` VALUES ('3', 'admin', 'admin：“xiaoming”的角色名修改为：', '2018-05-12 04:36:39', '2018-05-12 04:41:53', '0');
+INSERT INTO `t_log` VALUES ('4', 'admin', 'admin：“xiaoming”的角色名修改为：xiaoming', '2018-05-12 04:42:04', '2018-05-12 04:42:32', '0');
+INSERT INTO `t_log` VALUES ('5', 'admin', 'admin：“xiaoming”的角色名修改为：扫地', '2018-05-12 04:42:43', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_log` VALUES ('6', 'admin', '添加了角色名为：老师', '2018-05-12 04:59:32', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_log` VALUES ('7', 'admin', '“”的角色名修改为：老师', '2018-05-12 04:59:57', '2018-05-12 05:06:06', '0');
+INSERT INTO `t_log` VALUES ('8', 'admin', '“”的角色名修改为：老师', '2018-05-12 05:01:39', '2018-05-12 05:06:03', '0');
+INSERT INTO `t_log` VALUES ('9', 'admin', '“”的角色名修改为：老师', '2018-05-12 05:04:27', '2018-05-12 05:05:59', '0');
+INSERT INTO `t_log` VALUES ('10', 'admin', '修改角色名：“老师”的权限', '2018-05-12 05:05:40', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_log` VALUES ('11', 'admin', '删除了角色名为：老师', '2018-05-12 05:06:18', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_log` VALUES ('12', 'admin', '添加了用户名为：xiaohong', '2018-05-12 05:09:22', '2018-05-12 05:15:28', '0');
+INSERT INTO `t_log` VALUES ('13', 'admin', '删除了角色名为：', '2018-05-12 05:11:35', '2018-05-12 05:12:21', '0');
+INSERT INTO `t_log` VALUES ('14', 'admin', '添加了用户名为：xiaohong', '2018-05-12 05:12:37', '2018-05-12 05:14:47', '0');
+INSERT INTO `t_log` VALUES ('15', 'admin', '删除了角色名为：', '2018-05-12 05:13:16', '2018-05-12 05:14:44', '0');
+INSERT INTO `t_log` VALUES ('16', 'admin', '添加了用户名为：xiaohong', '2018-05-12 05:15:02', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_log` VALUES ('17', 'admin', '删除了角色名为：xiaohong', '2018-05-12 05:15:16', '0000-00-00 00:00:00', '1');
 
 -- ----------------------------
 -- Table structure for t_manager
@@ -54,7 +69,7 @@ CREATE TABLE `t_manager` (
 -- Records of t_manager
 -- ----------------------------
 INSERT INTO `t_manager` VALUES ('1', 'admin', '202cb962ac59075b964b07152d234b70', '1', '2018-05-11 19:19:12', '0000-00-00 00:00:00');
-INSERT INTO `t_manager` VALUES ('5', 'xiaoming', '202cb962ac59075b964b07152d234b70', '2', '2018-05-11 09:05:57', '2018-05-11 09:14:37');
+INSERT INTO `t_manager` VALUES ('5', 'xiaoming', '202cb962ac59075b964b07152d234b70', '4', '2018-05-11 09:05:57', '2018-05-12 04:42:43');
 
 -- ----------------------------
 -- Table structure for t_oil
@@ -119,8 +134,9 @@ CREATE TABLE `t_role` (
   `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `delete_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `status` tinyint(4) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `n_q` (`name`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_role
@@ -129,6 +145,7 @@ INSERT INTO `t_role` VALUES ('1', '超级管理员', '1', '1', '1', '1', '1', '1
 INSERT INTO `t_role` VALUES ('2', '门卫', '0', '0', '0', '1', '1', '0', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
 INSERT INTO `t_role` VALUES ('3', '保安', '0', '0', '0', '0', '0', '1', '0', '0000-00-00 00:00:00', '2018-05-11 09:18:07', '0000-00-00 00:00:00', '1');
 INSERT INTO `t_role` VALUES ('4', '扫地', '1', '0', '1', '1', '1', '0', '0', '0000-00-00 00:00:00', '2018-05-11 09:33:42', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_role` VALUES ('5', '老师', '1', '1', '1', '1', '1', '1', '1', '2018-05-12 05:05:40', '2018-05-12 04:59:32', '2018-05-12 05:06:18', '0');
 
 -- ----------------------------
 -- Table structure for t_user

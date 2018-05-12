@@ -1,0 +1,238 @@
+@charset "utf-8";
+
+*{
+	margin:0;
+	padding: 0;
+	font-family:"MIcrosoft YaHei" ;
+    -webkit-tap-highlight-color:transparent;
+}
+body{
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	position: relative;
+	background: url(../images/bg.png)no-repeat;
+	height: 100%;
+
+
+}
+ul,li{
+	-webkit-padding-start: 0px;
+	list-style-type: none;
+}
+a{
+	text-decoration:none;outline:none;
+   -moz-outline-style:none;
+}
+input{
+	-webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+	-moz-tap-highlight-color:rgba(0, 0, 0, 0);
+	-ms-tap-highlight-color:rgba(0, 0, 0, 0);
+	-o-tap-highlight-color:rgba(0, 0, 0, 0);
+	tap-highlight-color:rgba(0, 0, 0, 0);
+	outline:none;
+}
+.icon-search {
+    display: inline-block;
+    width: .45rem;
+    height:.45rem;
+    border-radius: 50%;
+    border: 1px solid #EB8124;
+    position: relative;
+    margin-top: .15rem;
+    float: left;
+}
+.icon-search:after {
+    content: '';
+    display: inline-block;
+    width: .3rem;
+    height: 1px;
+    background: #EB8124;
+    border-radius: 0 2px 2px 0;
+    position: absolute;
+    top: .4rem;
+    left: .4rem;
+    -webkit-transform-origin: left bottom;
+    -webkit-transform: rotate(45deg);
+}
+#sel{
+	float: right;
+	width: 2.5rem;
+    height: .8rem;
+    margin-right: .1rem;
+    line-height: .8rem;
+    margin-top: .1rem;
+    background-color: transparent;
+    border: 0;
+    -webkit-appearance: none;
+
+}
+.box {
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background: rgb(252,246,237);
+    color: rgb(204,171,119);
+    font-size: .4rem
+}
+
+.wrap {
+    white-space: nowrap;
+    height: 35px;
+    overflow: hidden;
+}
+
+/*.wrap span {
+    color: #ff4343;
+    font-weight: bold;
+    font-size: 16px;
+}*/
+
+.start, .end {
+    display: inline-block;
+    padding-left: .2rem;
+}
+
+.topImg{
+	width: 100%;
+}
+
+.search{
+	width: 90%;
+	margin: 0 auto;
+	padding: .2rem;
+	background-color: #fff;
+	margin-top: .2rem;
+	position: relative;
+	overflow: hidden;
+}
+.search:after {
+	content: " ";
+    display: inline-block;
+    height: 8px;
+    width: 8px;
+    border-width: 1px 1px 0 0;
+    border-color: #333;
+    border-style: solid;
+    -webkit-transform: matrix(.71,.71,-.71,.71,0,0);
+    /* transform: matrix(.71,.71,-.71,.71,0,0); */
+    position: relative;
+    top: -2px;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    margin-top: -6px;
+    transform: rotate(135deg);
+}
+.searchCon{
+	overflow: hidden;
+	background-color: rgb(245,245,245);
+}
+.searchCon-left{
+	width: 6rem;
+	float: left;
+}
+.searchCon-right{
+	width: 2.9rem;
+	height: 1rem;
+	line-height: 1rem;
+	float: right;
+	background-color: rgb(245,245,245);
+	font-size: .4rem;
+}
+.searchCon input{
+	float: left;
+	width: 5rem;
+	height: 1rem;
+	line-height: 1rem;
+	margin-left: .2rem;
+}
+.list{
+	width: 95%;
+	margin: 0 auto;
+	font-size: .4rem;
+	color: #333;
+	overflow-y:scroll;
+}
+.line{
+	background-color: #fff;
+	padding: .2rem;
+	overflow: hidden;
+	margin-top: .3rem;
+	height: 1rem;
+    border-radius: .15rem;
+    line-height: 1rem;
+    box-shadow: 1px 2px 1px #ccc7c7;
+    margin-bottom: .2rem;
+    color: #333;
+}
+.line .num{
+	float: left;
+	width: .6rem;
+	height: .6rem;
+	text-align: center;
+	border-radius: 50%;
+	border:1px solid #e5e5e5;
+	margin-top: .2rem;
+    line-height: 1.5;
+}
+.line .chepai{
+	float: left;
+	margin-left: .5rem;
+}
+.line .statu{
+	float: right;
+}
+.line .ing{
+	color: rgb(91,196,6);
+}
+.line .cq{
+	color: rgb(250,205,23);
+}
+.line .numIng{
+	background-color: rgb(91,196,6);
+	color: #fff;
+	border:1px solid rgb(91,196,6);
+}
+.line .numCq{
+	background-color:rgb(250,205,23);
+	color: #fff;
+	border:1px solid rgb(250,205,23);
+}
+#footer{
+	position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+	display: flex;
+	background-color: #fff;
+	border-top: 1px solid #e5e5e5;
+	height: 1.5rem;
+	font-size: .4rem;
+}
+#footer a{
+	flex: 1;
+	text-align: center;
+	color: #333;
+}
+#footer a img{
+	width: .6rem;
+	height: .6rem;
+	margin-top: .15rem;
+}
+#footer a.on{
+	color: #EB8124;
+}
+
+
+.Technical{
+	display: block;
+	color: #999999;
+	text-align: center;
+	width: 100%;
+	margin-top: .25rem;
+}
+.Technical a{
+	color: #EB8124;
+}

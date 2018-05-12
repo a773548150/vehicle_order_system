@@ -11,12 +11,14 @@ namespace Admin\Model;
 class RoleModel extends BaseModel {
     public function role() {
         $m = M("role");
-        $result = $m->getField("name", true);
+        $data["status"] = 1;
+        $result = $m->where($data)->getField("name", true);
         return $result;
     }
     public function user() {
         $m = M("manager");
         $data['create_time'] = array('neq', 0);
+        $data["status"] = 1;
         $result = $m->where($data)->getField("username", true);
         return $result;
     }
@@ -35,7 +37,7 @@ class RoleModel extends BaseModel {
         $data['create_time'] = date("Y-m-d h:i:s");
         $result = $m->data($data)->add();
 
-        $L->insert("角色名为：".$data['name']);
+        $L->insert("添加了角色名为：".$data['name']);
 
         return $result;
     }
@@ -51,33 +53,51 @@ class RoleModel extends BaseModel {
 
     public function deleteRole() {
         $m = M("Role");
+        $L = A("Log");
         $data["id"] = I("post.id");
         $data2["status"] = 0;
-        $data['delete_time'] = date("Y-m-d h:i:s");
+        $data2['delete_time'] = date("Y-m-d h:i:s");
         $result = $m->where($data)->save($data2);
+        $name = $this->getRoleName($data["id"]);
+        $L->insert("删除了角色名为：".$name);
         echo $result;
+    }
+
+    public function getRoleName($data){
+        $m = M("Role");
+        $name = $m->where(array("id" => $data))->getField("name");
+        return $name;
+    }
+
+    public function getUserName($data){
+        $m = M("manager");
+        $name = $m->where(array("id" => $data))->getField("username");
+        return $name;
     }
 
     public function editRole() {
         $m = M("Role");
-        $field = I('post.field');
-        $value = I('post.value');
+        $L = A("Log");
         $lim["id"] = I('post.id');
-        $data[$field] = $value;
+        $data = I('post.value');
         $data['update_time'] = date("Y-m-d h:i:s");
-        $res = $m->where($lim)->save($value);
+        $res = $m->where($lim)->save($data);
+        $name = $this->getRoleName($lim["id"]);
+        $L->update("修改角色名：“".$data['name']."”的权限");
         return $res;
     }
 
     public function addUser() {
         $m = M("manager");
         $r = M("role");
+        $L = A("Log");
         $role_id = $r->where(array("name" => I('post.roleName')))->getField("id");
         $data['username'] = trim(I('post.username'));
         $data['password'] = md5(trim(I('post.password')));
         $data['create_time'] = date("Y-m-d h:i:s");
         $data['role_id'] = $role_id;
         $result = $m->data($data)->add();
+        $L->insert("添加了用户名为：".$data['username']);
         return $result;
     }
 
@@ -87,6 +107,7 @@ class RoleModel extends BaseModel {
         $page = I('get.page');
         $limit = I('get.limit');
         $data['create_time'] = array('neq', 0);
+        $data["status"] = 1;
         $result = $m->where($data)->order('id desc')->page($page, $limit)->select();
 
         foreach ($result as $key => $value) {
@@ -101,6 +122,9 @@ class RoleModel extends BaseModel {
 
     public function deleteUser() {
         $m = M("Manager");
+        $L = A("Log");
+        $name = $this->getUserName(I('post.id'));
+        $L->insert("删除了角色名为：".$name);
         $m->delete(I('post.id'));
         echo "1";
     }
@@ -127,11 +151,14 @@ class RoleModel extends BaseModel {
     public function addPermissions() {
         $m = M("manager");
         $R = M("role");
+
+        $L = A("Log");
         $data['username'] = trim(I('post.username'));
         $roleName = trim(I('post.roleName'));
         $data2['role_id'] = $R->where(array("name" => $roleName))->getField("id");
         $data2['update_time'] = date("Y-m-d h:i:s");
         $result = $m->where($data)->save($data2);
+        $L->update("“".$data['username']."”的角色名修改为：".$roleName);
         return $result;
     }
 

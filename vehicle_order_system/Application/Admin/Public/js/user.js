@@ -84,7 +84,7 @@ $(window).ready(function() {
                     layer.close(index);
                     //向服务端发送删除指令
                     $.ajax({
-                        url: "/Admin/Vehicle/deleteVehicle",
+                        url: "/Admin/Role/deleteUser",
                         type: 'post',
                         dataType: 'json',
                         data: data,
