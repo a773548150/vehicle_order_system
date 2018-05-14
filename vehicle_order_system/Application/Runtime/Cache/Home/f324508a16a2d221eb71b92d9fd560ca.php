@@ -85,15 +85,15 @@
 					</div>
 			</div> -->
 			<div id="footer">
-				<a href="/home/index/toIndex" class="on">
+				<a href="<?php echo U('toIndex');?>" class="on">
 					<img src="/Application/Home/View/images/paiduichaxun2.png" alt="">
 					<p>排队查询</p>
 				</a>
-				<a href="/home/index/toOrder">
+				<a href="<?php echo U('toOrder');?>">
 					<img src="/Application/Home/View/images/yuyue.png" alt="">
 					<p>预约装车</p>
 				</a>
-				<a href="/home/index/toMy">
+				<a href="<?php echo U('toMy');?>">
 					<img src="/Application/Home/View/images/gerenzhongxin.png" alt="">
 					<p>个人中心</p>
 				</a>

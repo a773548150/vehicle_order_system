@@ -1,0 +1,1593 @@
+[ 2018-05-14T12:54:50+08:00 ] 127.0.0.1 /index.php/Admin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000047s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001422s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003438s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003608s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000676s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000880s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.033799s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.033950s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001855s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002148s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004492s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004662s ]
+
+[ 2018-05-14T12:56:52+08:00 ] 127.0.0.1 /Admin/Index/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000875s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001450s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001545s ]
+NOTIC: [8] A session had already been started - ignoring session_start() F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Admin\Controller\IndexController.class.php 第 23 行.
+ERR: 1146:Table 'student.t_manager' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `t_manager`
+ERR: 1146:Table 'student.t_manager' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `t_manager`
+
+[ 2018-05-14T13:01:50+08:00 ] 127.0.0.1 /Admin/Index/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000047s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001397s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002591s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002753s ]
+NOTIC: [8] A session had already been started - ignoring session_start() F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Admin\Controller\IndexController.class.php 第 23 行.
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0551s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0013s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `t_manager` WHERE `username` = 'admin' AND `password` = '202cb962ac59075b964b07152d234b70' LIMIT 1   [ RunTime:0.0013s ]
+
+[ 2018-05-14T13:01:52+08:00 ] 127.0.0.1 /Admin/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000045s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001125s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001568s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001737s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0058s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0020s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0009s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000124s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000262s ]
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ef29ec0c66890ab486b558007289e3f0.php 第 17 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ef29ec0c66890ab486b558007289e3f0.php 第 25 行.
+NOTIC: [8] Undefined index: manage_driver F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ef29ec0c66890ab486b558007289e3f0.php 第 25 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ef29ec0c66890ab486b558007289e3f0.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ef29ec0c66890ab486b558007289e3f0.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ef29ec0c66890ab486b558007289e3f0.php 第 44 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.059551s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.059722s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002992s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003347s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004307s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004646s ]
+
+[ 2018-05-14T13:02:02+08:00 ] 127.0.0.1 /Admin/Index/toLogManage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001277s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.006858s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007667s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0046s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0035s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0023s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000104s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000211s ]
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\70f922a24817fb4f2dd535528468b000.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\70f922a24817fb4f2dd535528468b000.php 第 22 行.
+NOTIC: [8] Undefined index: manage_driver F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\70f922a24817fb4f2dd535528468b000.php 第 22 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\70f922a24817fb4f2dd535528468b000.php 第 28 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\70f922a24817fb4f2dd535528468b000.php 第 34 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\70f922a24817fb4f2dd535528468b000.php 第 41 行.
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\70f922a24817fb4f2dd535528468b000.php 第 96 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.076808s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.076991s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003037s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003163s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002274s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002406s ]
+
+[ 2018-05-14T13:02:04+08:00 ] 127.0.0.1 /Admin/Log/searchLog?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000040s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001110s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002216s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002382s ]
+NOTIC: [2048] Declaration of Admin\Model\LogModel::delete() should be compatible with Think\Model::delete($options = Array) F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Admin\Model\LogModel.class.php 第 11 行.
+SQL: SHOW COLUMNS FROM `t_log` [ RunTime:0.0057s ]
+SQL: SHOW COLUMNS FROM `t_log` [ RunTime:0.0014s ]
+SQL: SELECT * FROM `t_log` WHERE `status` = 1 ORDER BY id desc LIMIT 0,11   [ RunTime:0.0009s ]
+
+[ 2018-05-14T13:02:10+08:00 ] 127.0.0.1 /Admin/Index/toRole
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000059s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001896s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002063s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002231s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0043s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0013s ]
+SQL: SELECT `name` FROM `t_role` WHERE `status` = 1  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0060s ]
+SQL: SELECT `username` FROM `t_manager` WHERE `create_time` <> 0  [ RunTime:0.0005s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000149s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000340s ]
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\d9c36a76c424abdfe0c2f96fb02d2ff3.php 第 16 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\d9c36a76c424abdfe0c2f96fb02d2ff3.php 第 23 行.
+NOTIC: [8] Undefined index: manage_driver F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\d9c36a76c424abdfe0c2f96fb02d2ff3.php 第 23 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\d9c36a76c424abdfe0c2f96fb02d2ff3.php 第 29 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\d9c36a76c424abdfe0c2f96fb02d2ff3.php 第 35 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\d9c36a76c424abdfe0c2f96fb02d2ff3.php 第 42 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.028786s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.028928s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001714s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001847s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003348s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003484s ]
+
+[ 2018-05-14T13:02:12+08:00 ] 127.0.0.1 /Admin/Role/searchRole?page=1&limit=8
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000046s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001258s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002330s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002568s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0056s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `t_role` WHERE `status` = 1 ORDER BY id desc LIMIT 0,8   [ RunTime:0.0008s ]
+
+[ 2018-05-14T13:12:42+08:00 ] 127.0.0.1 /Admin/Index/toRole
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000088s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003078s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002190s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002380s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0061s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0015s ]
+SQL: SELECT `name` FROM `t_role` WHERE `status` = 1  [ RunTime:0.0017s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0067s ]
+SQL: SELECT `username` FROM `t_manager` WHERE `create_time` <> 0  [ RunTime:0.0009s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000161s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000351s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\d9c36a76c424abdfe0c2f96fb02d2ff3.php 第 16 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\d9c36a76c424abdfe0c2f96fb02d2ff3.php 第 24 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\d9c36a76c424abdfe0c2f96fb02d2ff3.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\d9c36a76c424abdfe0c2f96fb02d2ff3.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\d9c36a76c424abdfe0c2f96fb02d2ff3.php 第 43 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\d9c36a76c424abdfe0c2f96fb02d2ff3.php 第 50 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.048684s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.048929s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001982s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002118s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002143s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002270s ]
+
+[ 2018-05-14T13:12:45+08:00 ] 127.0.0.1 /Admin/Role/searchRole?page=1&limit=8
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000054s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002254s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002242s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002396s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0062s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `t_role` WHERE `status` = 1 ORDER BY id desc LIMIT 0,8   [ RunTime:0.0010s ]
+
+[ 2018-05-14T13:13:00+08:00 ] 127.0.0.1 /Admin/Index/toRole
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000045s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001650s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002261s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002422s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0156s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0018s ]
+SQL: SELECT `name` FROM `t_role` WHERE `status` = 1  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0053s ]
+SQL: SELECT `username` FROM `t_manager` WHERE `create_time` <> 0  [ RunTime:0.0005s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000159s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000316s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\d9c36a76c424abdfe0c2f96fb02d2ff3.php 第 16 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\d9c36a76c424abdfe0c2f96fb02d2ff3.php 第 24 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\d9c36a76c424abdfe0c2f96fb02d2ff3.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\d9c36a76c424abdfe0c2f96fb02d2ff3.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\d9c36a76c424abdfe0c2f96fb02d2ff3.php 第 43 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\d9c36a76c424abdfe0c2f96fb02d2ff3.php 第 50 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.028193s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.028347s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001340s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001458s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002791s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002937s ]
+
+[ 2018-05-14T13:13:03+08:00 ] 127.0.0.1 /Admin/Role/searchRole?page=1&limit=8
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000045s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001274s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002068s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003247s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0053s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0027s ]
+SQL: SELECT * FROM `t_role` WHERE `status` = 1 ORDER BY id desc LIMIT 0,8   [ RunTime:0.0008s ]
+
+[ 2018-05-14T13:13:06+08:00 ] 127.0.0.1 /Admin/Index/toDriverManager
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000046s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001316s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002067s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002373s ]
+ERR: 非法操作:toDriverManager
+
+[ 2018-05-14T13:14:34+08:00 ] 127.0.0.1 /Admin/Role/searchRole?page=1&limit=8
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000052s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003161s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002004s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002602s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0058s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0015s ]
+SQL: SELECT * FROM `t_role` WHERE `status` = 1 ORDER BY id desc LIMIT 0,8   [ RunTime:0.0008s ]
+
+[ 2018-05-14T13:14:37+08:00 ] 127.0.0.1 /Admin/Index/toRole
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001093s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001904s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002080s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0016s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0016s ]
+SQL: SELECT `name` FROM `t_role` WHERE `status` = 1  [ RunTime:0.0016s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0024s ]
+SQL: SELECT `username` FROM `t_manager` WHERE `create_time` <> 0  [ RunTime:0.0005s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0009s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000557s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000856s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\d9c36a76c424abdfe0c2f96fb02d2ff3.php 第 16 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\d9c36a76c424abdfe0c2f96fb02d2ff3.php 第 24 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\d9c36a76c424abdfe0c2f96fb02d2ff3.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\d9c36a76c424abdfe0c2f96fb02d2ff3.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\d9c36a76c424abdfe0c2f96fb02d2ff3.php 第 43 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\d9c36a76c424abdfe0c2f96fb02d2ff3.php 第 50 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.035836s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.036461s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001476s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001597s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002590s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002716s ]
+
+[ 2018-05-14T13:14:40+08:00 ] 127.0.0.1 /Admin/Role/searchRole?page=1&limit=8
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000047s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001491s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002673s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002834s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0067s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0015s ]
+SQL: SELECT * FROM `t_role` WHERE `status` = 1 ORDER BY id desc LIMIT 0,8   [ RunTime:0.0008s ]
+
+[ 2018-05-14T13:14:41+08:00 ] 127.0.0.1 /Admin/Index/toDriverManage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000037s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001422s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001431s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001572s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0123s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0014s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0014s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000177s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000325s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 23 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 43 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 50 行.
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 127 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.038291s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.038585s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001679s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001859s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003229s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003369s ]
+
+[ 2018-05-14T13:14:43+08:00 ] 127.0.0.1 /Admin/Order/searchOrder?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001083s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001773s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001946s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0054s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `t_order` WHERE `status` = 1 ORDER BY id desc LIMIT 0,11   [ RunTime:0.0008s ]
+ERR: 1146:Table 'db_vehicle_order_system.t_goods' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `t_goods`
+ERR: 1146:Table 'db_vehicle_order_system.t_goods' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `t_goods`
+
+[ 2018-05-14T13:32:44+08:00 ] 127.0.0.1 /Admin/Index/toDriverManage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000045s ]
+INFO: [ app_init ] --END-- [ RunTime:0.009388s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001951s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002103s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0025s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000119s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000229s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 23 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 43 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 50 行.
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 127 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.027713s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.027919s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001322s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001431s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001821s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001924s ]
+
+[ 2018-05-14T13:32:46+08:00 ] 127.0.0.1 /Admin/driver/searchDriver?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000039s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001195s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001991s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002125s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0054s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0016s ]
+SQL: SHOW COLUMNS FROM `t_wechat` [ RunTime:0.0057s ]
+SQL: SELECT * FROM `t_driver` WHERE `status` = 1 ORDER BY id desc LIMIT 0,11   [ RunTime:0.0007s ]
+SQL: SELECT * FROM `t_wechat` WHERE `id` = 1  [ RunTime:0.0007s ]
+
+[ 2018-05-14T13:35:34+08:00 ] 127.0.0.1 /Admin/Index/toDriverManage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001458s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003219s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003452s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0015s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0016s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0012s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000187s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000333s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 23 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 43 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 50 行.
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 127 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.036877s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.037027s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001831s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001956s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002117s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002241s ]
+
+[ 2018-05-14T13:35:36+08:00 ] 127.0.0.1 /Admin/driver/searchDriver?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000048s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001434s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002103s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002283s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0013s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0014s ]
+SQL: SHOW COLUMNS FROM `t_wechat` [ RunTime:0.0017s ]
+SQL: SELECT * FROM `t_driver` WHERE `status` = 1 ORDER BY id desc LIMIT 0,11   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `t_wechat` WHERE `id` = 1  [ RunTime:0.0007s ]
+
+[ 2018-05-14T13:36:22+08:00 ] 127.0.0.1 /Admin/Index/toDriverManage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000071s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001545s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001948s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002191s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0015s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0057s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0014s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000193s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000461s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 23 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 43 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 50 行.
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 127 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.033220s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.033778s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001299s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001426s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001537s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001640s ]
+
+[ 2018-05-14T13:36:24+08:00 ] 127.0.0.1 /Admin/driver/searchDriver?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000110s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001563s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002584s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002751s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0086s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0013s ]
+SQL: SHOW COLUMNS FROM `t_wechat` [ RunTime:0.0058s ]
+SQL: SELECT * FROM `t_driver` WHERE `status` = 1 ORDER BY id desc LIMIT 0,11   [ RunTime:0.0007s ]
+SQL: SELECT * FROM `t_wechat` WHERE `id` = 1  [ RunTime:0.0009s ]
+
+[ 2018-05-14T13:39:25+08:00 ] 127.0.0.1 /Admin/Index/toDriverManage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000036s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001119s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003466s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003637s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0064s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0013s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000162s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000314s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 23 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 43 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 50 行.
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 127 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.036088s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.036210s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003289s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003415s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002953s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003181s ]
+
+[ 2018-05-14T13:39:27+08:00 ] 127.0.0.1 /Admin/driver/searchDriver?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000045s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001121s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001665s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001824s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0051s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0014s ]
+SQL: SHOW COLUMNS FROM `t_wechat` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `t_driver` WHERE `status` = 1 ORDER BY id desc LIMIT 0,11   [ RunTime:0.0007s ]
+SQL: SELECT * FROM `t_wechat` WHERE `id` = 1  [ RunTime:0.0007s ]
+
+[ 2018-05-14T13:39:50+08:00 ] 127.0.0.1 /Admin/Index/toDriverManage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000038s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001362s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002416s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002581s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0055s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0018s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000196s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000383s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 23 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 43 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 50 行.
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 127 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.049778s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.049918s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001967s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002084s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001924s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002056s ]
+
+[ 2018-05-14T13:39:52+08:00 ] 127.0.0.1 /Admin/driver/searchDriver?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000045s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001193s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001760s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001922s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0058s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0014s ]
+SQL: SHOW COLUMNS FROM `t_wechat` [ RunTime:0.0059s ]
+SQL: SELECT * FROM `t_driver` WHERE `status` = 1 ORDER BY id desc LIMIT 0,11   [ RunTime:0.0007s ]
+SQL: SELECT * FROM `t_wechat` WHERE `id` = 1  [ RunTime:0.0006s ]
+
+[ 2018-05-14T13:43:47+08:00 ] 127.0.0.1 /Admin/Index/toDriverManage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000051s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001408s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.005556s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005721s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0058s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0049s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0014s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000206s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000378s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 23 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 43 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 50 行.
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 127 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.036083s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.036222s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002404s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002549s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002193s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002329s ]
+
+[ 2018-05-14T13:43:49+08:00 ] 127.0.0.1 /Admin/driver/searchDriver?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000038s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000981s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001602s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001754s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0016s ]
+SQL: SHOW COLUMNS FROM `t_wechat` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `t_driver` WHERE `name` LIKE '%%' AND `status` = 1 ORDER BY id desc LIMIT 0,11   [ RunTime:0.0012s ]
+SQL: SELECT * FROM `t_wechat` WHERE `id` = 1  [ RunTime:0.0015s ]
+
+[ 2018-05-14T13:44:01+08:00 ] 127.0.0.1 /Admin/Index/toDriverManage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001202s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.005153s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005324s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0016s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0016s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000224s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000409s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 23 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 43 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 50 行.
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 127 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.041907s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.042055s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001506s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002135s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002662s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002797s ]
+
+[ 2018-05-14T13:44:03+08:00 ] 127.0.0.1 /Admin/driver/searchDriver?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000047s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002692s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002275s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002442s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0014s ]
+SQL: SHOW COLUMNS FROM `t_wechat` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `t_driver` WHERE `name` LIKE '%%' AND `status` = 1 ORDER BY id desc LIMIT 0,11   [ RunTime:0.0007s ]
+SQL: SELECT * FROM `t_wechat` WHERE `id` = 1  [ RunTime:0.0006s ]
+
+[ 2018-05-14T13:47:37+08:00 ] 127.0.0.1 /Admin/Index/toDriverManage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000045s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001487s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002413s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002764s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0016s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0019s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0060s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000176s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000314s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 23 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 43 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 50 行.
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 127 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.038547s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.038734s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001533s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002074s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002638s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002765s ]
+
+[ 2018-05-14T13:47:40+08:00 ] 127.0.0.1 /Admin/driver/searchDriver?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000046s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001325s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002487s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002868s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0055s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0013s ]
+SQL: SHOW COLUMNS FROM `t_wechat` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `t_driver` WHERE `name` LIKE '%%' AND `status` = 1 ORDER BY id desc LIMIT 0,11   [ RunTime:0.0007s ]
+SQL: SELECT * FROM `t_wechat` WHERE `id` = 1  [ RunTime:0.0006s ]
+
+[ 2018-05-14T13:48:01+08:00 ] 127.0.0.1 /Admin/Index/toDriverManage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000045s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001123s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001865s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002032s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0016s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0022s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0016s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0019s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0011s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000649s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001371s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 23 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 43 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 50 行.
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 127 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.057222s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.057385s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002278s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002454s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002372s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002498s ]
+
+[ 2018-05-14T13:48:38+08:00 ] 127.0.0.1 /Admin/Index/toDriverManage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000057s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001650s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002110s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002296s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0016s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0012s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000184s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000371s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 23 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 43 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 50 行.
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 127 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.034049s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.034323s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001400s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001521s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002057s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002187s ]
+
+[ 2018-05-14T13:48:40+08:00 ] 127.0.0.1 /Admin/driver/searchDriver?page=1&limit=10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000045s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001107s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001851s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002149s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0058s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0014s ]
+SQL: SHOW COLUMNS FROM `t_wechat` [ RunTime:0.0052s ]
+SQL: SELECT * FROM `t_driver` WHERE `name` LIKE '%%' AND `status` = 1 ORDER BY id desc LIMIT 0,10   [ RunTime:0.0007s ]
+SQL: SELECT * FROM `t_wechat` WHERE `id` = 1  [ RunTime:0.0009s ]
+
+[ 2018-05-14T13:49:02+08:00 ] 127.0.0.1 /Admin/Index/toDriverManage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001716s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001679s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001861s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0015s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0023s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0014s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0011s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000192s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000345s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 23 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 43 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 50 行.
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 127 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.038150s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.038309s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001367s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001485s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001986s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002114s ]
+
+[ 2018-05-14T13:49:04+08:00 ] 127.0.0.1 /Admin/driver/searchDriver?page=1&limit=10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000066s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001988s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001890s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002063s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0052s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0013s ]
+SQL: SHOW COLUMNS FROM `t_wechat` [ RunTime:0.0053s ]
+SQL: SELECT * FROM `t_driver` WHERE `name` LIKE '%%' AND `status` = 1 ORDER BY id desc LIMIT 0,10   [ RunTime:0.0007s ]
+SQL: SELECT * FROM `t_wechat` WHERE `id` = 1  [ RunTime:0.0005s ]
+
+[ 2018-05-14T13:49:22+08:00 ] 127.0.0.1 /Admin/Index/toDriverManage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000070s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001945s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001456s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001616s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0117s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0013s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0073s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0007s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000190s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000324s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 23 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 43 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 50 行.
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 127 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.058227s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.058376s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001326s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001439s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001855s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001970s ]
+
+[ 2018-05-14T13:49:24+08:00 ] 127.0.0.1 /Admin/driver/searchDriver?page=1&limit=10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001164s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002460s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002750s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0051s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0013s ]
+SQL: SHOW COLUMNS FROM `t_wechat` [ RunTime:0.0053s ]
+SQL: SELECT * FROM `t_driver` WHERE `name` LIKE '%%' AND `status` = 1 ORDER BY id desc LIMIT 0,10   [ RunTime:0.0007s ]
+SQL: SELECT * FROM `t_wechat` WHERE `id` = 1  [ RunTime:0.0007s ]
+
+[ 2018-05-14T13:49:36+08:00 ] 127.0.0.1 /Admin/Index/toDriverManage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000051s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005576s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.009809s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.009980s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0056s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0013s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0014s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0019s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0008s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000192s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000358s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 23 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 43 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 50 行.
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 127 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.040521s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.040669s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003544s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003697s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002130s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002285s ]
+
+[ 2018-05-14T13:49:38+08:00 ] 127.0.0.1 /Admin/driver/searchDriver?page=1&limit=10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000041s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003010s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002119s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002283s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0018s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `t_wechat` [ RunTime:0.0046s ]
+SQL: SELECT * FROM `t_driver` WHERE `name` LIKE '%%' AND `status` = 1 ORDER BY id desc LIMIT 0,10   [ RunTime:0.0007s ]
+SQL: SELECT * FROM `t_wechat` WHERE `id` = 1  [ RunTime:0.0011s ]
+
+[ 2018-05-14T13:49:42+08:00 ] 127.0.0.1 /Admin/Index/toDriverManage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001782s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001652s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001807s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0053s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0018s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0007s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000188s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000352s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 23 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 43 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 50 行.
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 127 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.043151s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.043315s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001311s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001411s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001705s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001808s ]
+
+[ 2018-05-14T13:49:45+08:00 ] 127.0.0.1 /Admin/driver/searchDriver?page=1&limit=10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000039s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001166s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.005602s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005788s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0047s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0013s ]
+SQL: SHOW COLUMNS FROM `t_wechat` [ RunTime:0.0051s ]
+SQL: SELECT * FROM `t_driver` WHERE `name` LIKE '%%' AND `status` = 1 ORDER BY id desc LIMIT 0,10   [ RunTime:0.0007s ]
+SQL: SELECT * FROM `t_wechat` WHERE `id` = 1  [ RunTime:0.0012s ]
+
+[ 2018-05-14T13:50:30+08:00 ] 127.0.0.1 /Admin/Index/toDriverManage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001235s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001326s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001432s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0043s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0038s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0009s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000182s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000328s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 23 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 43 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 50 行.
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 127 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.034237s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.034360s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001373s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001493s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003076s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003274s ]
+
+[ 2018-05-14T13:50:32+08:00 ] 127.0.0.1 /Admin/driver/searchDriver?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000051s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001209s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001697s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001860s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0071s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0017s ]
+SQL: SHOW COLUMNS FROM `t_wechat` [ RunTime:0.0063s ]
+SQL: SELECT * FROM `t_driver` WHERE `name` LIKE '%%' AND `status` = 1 ORDER BY id desc LIMIT 0,11   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `t_wechat` WHERE `id` = 1  [ RunTime:0.0007s ]
+
+[ 2018-05-14T13:52:32+08:00 ] 127.0.0.1 /Admin/Index/toDriverManage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000037s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001093s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002503s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002684s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0018s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0052s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0021s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0009s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000191s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000359s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 23 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 43 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 50 行.
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 127 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.045048s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.045204s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001467s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001585s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002339s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002479s ]
+
+[ 2018-05-14T13:52:34+08:00 ] 127.0.0.1 /Admin/driver/searchDriver?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001454s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001732s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001950s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0085s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0013s ]
+SQL: SHOW COLUMNS FROM `t_wechat` [ RunTime:0.0055s ]
+SQL: SELECT * FROM `t_driver` WHERE `name` LIKE '%%' AND `status` = 1 ORDER BY id desc LIMIT 0,11   [ RunTime:0.0009s ]
+SQL: SELECT * FROM `t_wechat` WHERE `id` = 1  [ RunTime:0.0023s ]
+
+[ 2018-05-14T13:52:42+08:00 ] 127.0.0.1 /Admin/Index/toDriverManage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000144s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001295s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004157s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005213s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0017s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0082s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0014s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000124s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000220s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 23 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 43 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 50 行.
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 127 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.037874s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.038021s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001419s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001575s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002160s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002289s ]
+
+[ 2018-05-14T13:52:44+08:00 ] 127.0.0.1 /Admin/driver/searchDriver?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000048s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001382s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.008132s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.010646s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0067s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0014s ]
+SQL: SHOW COLUMNS FROM `t_wechat` [ RunTime:0.0042s ]
+SQL: SELECT * FROM `t_driver` WHERE `name` LIKE '%%' AND `status` = 1 ORDER BY id desc LIMIT 0,11   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `t_wechat` WHERE `id` = 1  [ RunTime:0.0006s ]
+
+[ 2018-05-14T13:54:00+08:00 ] 127.0.0.1 /Admin/Index/toDriverManage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000056s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001421s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002498s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002686s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0072s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0014s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0020s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000198s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000411s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 23 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 43 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 50 行.
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 127 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.040463s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.040598s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001327s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001437s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002041s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002160s ]
+
+[ 2018-05-14T13:54:03+08:00 ] 127.0.0.1 /Admin/driver/searchDriver?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000060s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001613s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001684s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001862s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0013s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0013s ]
+SQL: SHOW COLUMNS FROM `t_wechat` [ RunTime:0.0015s ]
+SQL: SELECT * FROM `t_driver` WHERE `name` LIKE '%%' AND `status` = 1 ORDER BY id desc LIMIT 0,11   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `t_wechat` WHERE `id` = 1  [ RunTime:0.0019s ]
+
+[ 2018-05-14T13:54:05+08:00 ] 127.0.0.1 /Admin/Index/toDriverManage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000045s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001307s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001778s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001936s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0014s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0034s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000125s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000242s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 23 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 43 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 50 行.
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 127 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.034376s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.034534s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002487s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002615s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001604s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001704s ]
+
+[ 2018-05-14T13:54:07+08:00 ] 127.0.0.1 /Admin/driver/searchDriver?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000040s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001395s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.031286s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.031473s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0018s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0013s ]
+SQL: SHOW COLUMNS FROM `t_wechat` [ RunTime:0.0015s ]
+SQL: SELECT * FROM `t_driver` WHERE `name` LIKE '%%' AND `status` = 1 ORDER BY id desc LIMIT 0,11   [ RunTime:0.0007s ]
+SQL: SELECT * FROM `t_wechat` WHERE `id` = 1  [ RunTime:0.0006s ]
+
+[ 2018-05-14T13:55:25+08:00 ] 127.0.0.1 /Admin/Index/toDriverManage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001208s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002702s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002874s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0022s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0031s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000124s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000221s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 23 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 43 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 50 行.
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 127 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.034317s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.034442s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001722s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001831s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001475s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001589s ]
+
+[ 2018-05-14T13:55:27+08:00 ] 127.0.0.1 /Admin/driver/searchDriver?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000046s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001278s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001704s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001870s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0023s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0015s ]
+SQL: SHOW COLUMNS FROM `t_wechat` [ RunTime:0.0021s ]
+SQL: SELECT * FROM `t_driver` WHERE `name` LIKE '%%' AND `status` = 1 ORDER BY id desc LIMIT 0,11   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `t_wechat` WHERE `id` = 1  [ RunTime:0.0007s ]
+
+[ 2018-05-14T13:58:28+08:00 ] 127.0.0.1 /Admin/Index/toDriverManage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000050s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002415s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003231s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003389s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0019s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0008s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000204s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000366s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 23 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 43 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 50 行.
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 127 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.038144s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.038316s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001504s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001628s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002246s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002914s ]
+
+[ 2018-05-14T13:58:31+08:00 ] 127.0.0.1 /Admin/driver/searchDriver?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000040s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001637s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004765s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004942s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0013s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0013s ]
+SQL: SHOW COLUMNS FROM `t_wechat` [ RunTime:0.0013s ]
+SQL: SELECT * FROM `t_driver` WHERE `name` LIKE '%%' AND `status` = 1 ORDER BY id desc LIMIT 0,11   [ RunTime:0.0006s ]
+SQL: SELECT * FROM `t_wechat` WHERE `id` = 1  [ RunTime:0.0008s ]
+
+[ 2018-05-14T13:59:47+08:00 ] 127.0.0.1 /Admin/Index/toDriverManage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000065s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001146s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002628s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002828s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0017s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0021s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000193s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000344s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 23 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 43 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 50 行.
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 127 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.034346s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.034485s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001411s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001530s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002230s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002355s ]
+
+[ 2018-05-14T13:59:49+08:00 ] 127.0.0.1 /Admin/driver/searchDriver?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000047s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001214s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001688s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001851s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0014s ]
+SQL: SHOW COLUMNS FROM `t_wechat` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `t_driver` WHERE `name` LIKE '%%' AND `status` = 1 ORDER BY id desc LIMIT 0,11   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `t_wechat` WHERE `id` = 1  [ RunTime:0.0007s ]
+
+[ 2018-05-14T14:06:01+08:00 ] 127.0.0.1 /Admin/Index/toDriverManage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000069s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002205s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.009449s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.009656s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0024s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0013s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0014s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000132s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000229s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 23 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 43 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 50 行.
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 127 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.035096s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.035251s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002384s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002496s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001440s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001516s ]
+
+[ 2018-05-14T14:06:03+08:00 ] 127.0.0.1 /Admin/driver/searchDriver?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001346s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.011968s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.012139s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0013s ]
+SQL: SHOW COLUMNS FROM `t_wechat` [ RunTime:0.0015s ]
+SQL: SELECT * FROM `t_driver` WHERE `name` LIKE '%%' AND `status` = 1 ORDER BY id desc LIMIT 0,11   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `t_wechat` WHERE `id` = 1  [ RunTime:0.0008s ]
+
+[ 2018-05-14T14:07:02+08:00 ] 127.0.0.1 /Admin/Index/toDriverManage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000052s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001705s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001535s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001739s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0014s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0039s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0014s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000287s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000434s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 23 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 43 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 50 行.
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 127 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.041135s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.041289s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003649s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003812s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003098s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003334s ]
+
+[ 2018-05-14T14:07:04+08:00 ] 127.0.0.1 /Admin/driver/searchDriver?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000049s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001252s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002987s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003328s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0017s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0015s ]
+SQL: SHOW COLUMNS FROM `t_wechat` [ RunTime:0.0018s ]
+SQL: SELECT * FROM `t_driver` WHERE `name` LIKE '%%' AND `status` = 1 ORDER BY id desc LIMIT 0,11   [ RunTime:0.0007s ]
+SQL: SELECT * FROM `t_wechat` WHERE `id` = 1  [ RunTime:0.0006s ]
+
+[ 2018-05-14T14:07:29+08:00 ] 127.0.0.1 /Admin/Index/toDriverManage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000045s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002058s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001665s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001842s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0015s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000243s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000425s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 23 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 43 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 50 行.
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 127 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.032238s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032338s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000893s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000963s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001374s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001446s ]
+
+[ 2018-05-14T14:07:31+08:00 ] 127.0.0.1 /Admin/driver/searchDriver?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000045s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001174s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002431s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002586s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0015s ]
+SQL: SHOW COLUMNS FROM `t_wechat` [ RunTime:0.0011s ]
+SQL: SELECT * FROM `t_driver` WHERE `name` LIKE '%%' AND `status` = 1 ORDER BY id desc LIMIT 0,11   [ RunTime:0.0005s ]
+SQL: SELECT * FROM `t_wechat` WHERE `id` = 1  [ RunTime:0.0006s ]
+
+[ 2018-05-14T14:08:17+08:00 ] 127.0.0.1 /Admin/Index/toDriverManage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000051s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001627s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.005707s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005902s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0014s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0026s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0019s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000196s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000357s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 23 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 43 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 50 行.
+NOTIC: [8] Undefined variable: orderMessage F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ab96bdfb6fdb6c0ade16599a10606765.php 第 127 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.039191s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.039365s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001414s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001603s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002675s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002865s ]
+
+[ 2018-05-14T14:08:19+08:00 ] 127.0.0.1 /Admin/driver/searchDriver?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000046s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001799s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003365s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003528s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0015s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0014s ]
+SQL: SHOW COLUMNS FROM `t_wechat` [ RunTime:0.0015s ]
+SQL: SELECT * FROM `t_driver` WHERE `name` LIKE '%%' AND `status` = 1 ORDER BY id desc LIMIT 0,11   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `t_wechat` WHERE `id` = 1  [ RunTime:0.0007s ]
+
+[ 2018-05-14T14:08:26+08:00 ] 127.0.0.1 /Admin/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001328s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002279s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002478s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0015s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0028s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0015s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000134s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000296s ]
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ef29ec0c66890ab486b558007289e3f0.php 第 17 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ef29ec0c66890ab486b558007289e3f0.php 第 25 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ef29ec0c66890ab486b558007289e3f0.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ef29ec0c66890ab486b558007289e3f0.php 第 37 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\ef29ec0c66890ab486b558007289e3f0.php 第 44 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.029623s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.029775s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001347s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001477s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002503s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002666s ]
+
+[ 2018-05-14T14:08:29+08:00 ] 127.0.0.1 /Admin/Index/toDriver
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000061s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002087s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001602s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001761s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0014s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0019s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000142s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000364s ]
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\11c2baae900b1ec04522f3d980fc23c8.php 第 16 行.
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\11c2baae900b1ec04522f3d980fc23c8.php 第 23 行.
+NOTIC: [8] Use of undefined constant manage_vehicle - assumed 'manage_vehicle' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\11c2baae900b1ec04522f3d980fc23c8.php 第 29 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\11c2baae900b1ec04522f3d980fc23c8.php 第 35 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' F:\phpStudy\PHPTutorial\WWW\vehicle_order_system\vehicle_order_system\Application\Runtime\Cache\Admin\11c2baae900b1ec04522f3d980fc23c8.php 第 42 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.030721s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.030897s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.005937s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.006078s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002877s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005250s ]
+
+[ 2018-05-14T14:08:32+08:00 ] 127.0.0.1 /Admin/Driver/searchDriver?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000121s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001307s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001997s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002185s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0051s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0018s ]
+SQL: SHOW COLUMNS FROM `t_wechat` [ RunTime:0.0016s ]
+SQL: SELECT * FROM `t_driver` WHERE `name` LIKE '%%' AND `status` = 1 ORDER BY id desc LIMIT 0,11   [ RunTime:0.0007s ]
+SQL: SELECT * FROM `t_wechat` WHERE `id` = 1  [ RunTime:0.0007s ]
+

@@ -39,10 +39,10 @@
                 <dd><a href="/Admin/Index/toUser">后台用户管理</a></dd>
             </dl>
         </li><?php endif; ?>
-    <?php if(in_array(($permissions[0][manage_diary]), explode(',',"1"))): ?><li class="layui-nav-item">
+    <?php if(in_array(($permissions[0][manage_log]), explode(',',"1"))): ?><li class="layui-nav-item">
             <a href="javascript:;">操作日记</a>
             <dl class="layui-nav-child">
-
+                <dd><a href="/Admin/Index/toLogManage">日记管理</a></dd>
             </dl>
         </li><?php endif; ?>
 </ul>

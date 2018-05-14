@@ -13,6 +13,14 @@
     <li class="layui-nav-item">
         <a href="/Admin/Index/index">主页</a>
     </li>
+    <?php if(in_array(($permissions[0][manage_driver]), explode(',',"1"))): ?><li class="layui-nav-item" >
+            <a href="javascript:;">司机管理</a>
+            <dl class="layui-nav-child">
+                <dd><a href="/Admin/Index/toDriverManage">司机信息管理</a></dd>
+                <dd><a href="/Admin/Index/toOrder">车辆管理</a></dd>
+            </dl>
+        </li><?php endif; ?>
+
     <?php if(in_array(($permissions[0][manage_order]), explode(',',"1"))): ?><li class="layui-nav-item" >
             <a href="javascript:;">订单管理</a>
             <dl class="layui-nav-child">

@@ -23,11 +23,22 @@ class DriverModel extends BaseModel {
 
     public function searchDriver() {
         $m = M("driver");
+        $W = M("wechat");
         $data['name'] = array('LIKE', "%".I('get.name')."%");
         $data['status'] = 1;
         $page = I('get.page');
         $limit = I('get.limit');
         $result = $m->where($data)->order('id desc')->page($page, $limit)->select();
+        foreach ($result as $key => $value) {
+            foreach ($value as $key2 => $value2) {
+                if ($key2 == "wechat_id" && $key2 != null) {
+                    $wechat = $W->where(array("id" => $value2))->select();
+                    foreach($wechat[0] as $key3 => $value3) {
+                        $result[$key][$key3] = $value3;
+                    }
+                }
+            }
+        }
         return $result;
     }
 

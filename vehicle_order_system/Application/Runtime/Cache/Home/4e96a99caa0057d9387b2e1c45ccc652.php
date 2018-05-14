@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="zh">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 	<title>我的信息</title>
-	<script type="text/javascript" src="__ROOT__/Application/Home/View/js/flexible.js"></script>
-	<link rel="stylesheet" type="text/css" href="__ROOT__/Application/Home/View/css/myInfo.css">
+	<script type="text/javascript" src="/Application/Home/View/js/flexible.js"></script>
+	<link rel="stylesheet" type="text/css" href="/Application/Home/View/css/myInfo.css">
 
 
-	<link rel="stylesheet" type="text/css" href="__ROOT__/Application/Home/View/css/jquery-weui.min.css">
-    <link rel="stylesheet" type="text/css" href="__ROOT__/Application/Home/View/css/weui.min.css">
+	<link rel="stylesheet" type="text/css" href="/Application/Home/View/css/jquery-weui.min.css">
+    <link rel="stylesheet" type="text/css" href="/Application/Home/View/css/weui.min.css">
 
 </head>
 <body>
@@ -36,8 +36,8 @@
 		<div class="subBtn">确定修改</div>
 	</div>
 </body>
-	<script type="text/javascript" src="__ROOT__/Application/Home/View/js/vue.min.js"></script>
-	<script src="__ROOT__/Application/Home/View/js/jquery.min weui.js"></script>
-    <script src="__ROOT__/Application/Home/View/js/jquery-weui.min.js"></script>
+	<script type="text/javascript" src="/Application/Home/View/js/vue.min.js"></script>
+	<script src="/Application/Home/View/js/jquery.min weui.js"></script>
+    <script src="/Application/Home/View/js/jquery-weui.min.js"></script>
 
 </html>

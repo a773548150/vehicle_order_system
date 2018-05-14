@@ -1,19 +1,44 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
-Source Server Version : 50553
+Source Server         : hiaocong
+Source Server Version : 50721
 Source Host           : localhost:3306
 Source Database       : db_vehicle_order_system
 
 Target Server Type    : MYSQL
-Target Server Version : 50553
+Target Server Version : 50721
 File Encoding         : 65001
 
-Date: 2018-05-12 22:18:18
+Date: 2018-05-14 19:08:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for t_driver
+-- ----------------------------
+DROP TABLE IF EXISTS `t_driver`;
+CREATE TABLE `t_driver` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `wechat_id` int(11) NOT NULL,
+  `number` varchar(20) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `mobile_number` varchar(13) NOT NULL,
+  `company` varchar(20) NOT NULL,
+  `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `delete_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `status` tinyint(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `W_U` (`wechat_id`),
+  CONSTRAINT `W_U` FOREIGN KEY (`wechat_id`) REFERENCES `t_wechat` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_driver
+-- ----------------------------
+INSERT INTO `t_driver` VALUES ('1', '1', '13415', '林晓聪', '13794578316', '202', '2018-05-14 13:28:49', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
 
 -- ----------------------------
 -- Table structure for t_log
@@ -108,7 +133,7 @@ CREATE TABLE `t_order` (
   PRIMARY KEY (`id`),
   KEY `o_v` (`vehicle_id`),
   KEY `o_u` (`user_id`),
-  CONSTRAINT `o_u` FOREIGN KEY (`user_id`) REFERENCES `t_user` (`id`),
+  CONSTRAINT `o_u` FOREIGN KEY (`user_id`) REFERENCES `t_driver` (`id`),
   CONSTRAINT `o_v` FOREIGN KEY (`vehicle_id`) REFERENCES `t_vehicle` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -124,7 +149,7 @@ CREATE TABLE `t_role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL,
   `manage_order` tinyint(4) NOT NULL DEFAULT '1',
-  `manage_user` tinyint(4) NOT NULL DEFAULT '1',
+  `manage_driver` tinyint(4) NOT NULL DEFAULT '1',
   `manage_vehicle` tinyint(4) NOT NULL DEFAULT '1',
   `manage_oil` tinyint(4) NOT NULL DEFAULT '1',
   `manage_notice` tinyint(4) NOT NULL DEFAULT '1',
@@ -148,29 +173,6 @@ INSERT INTO `t_role` VALUES ('4', '扫地', '1', '0', '1', '1', '1', '0', '0', '
 INSERT INTO `t_role` VALUES ('5', '老师', '1', '1', '1', '1', '1', '1', '1', '2018-05-12 05:05:40', '2018-05-12 04:59:32', '2018-05-12 05:06:18', '0');
 
 -- ----------------------------
--- Table structure for t_user
--- ----------------------------
-DROP TABLE IF EXISTS `t_user`;
-CREATE TABLE `t_user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `wechat_id` int(11) NOT NULL,
-  `number` varchar(20) NOT NULL,
-  `mobile_number` int(11) NOT NULL,
-  `company` varchar(20) NOT NULL,
-  `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `update_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `delete_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `status` tinyint(4) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`),
-  KEY `W_U` (`wechat_id`),
-  CONSTRAINT `W_U` FOREIGN KEY (`wechat_id`) REFERENCES `t_wechat` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of t_user
--- ----------------------------
-
--- ----------------------------
 -- Table structure for t_vehicle
 -- ----------------------------
 DROP TABLE IF EXISTS `t_vehicle`;
@@ -185,7 +187,7 @@ CREATE TABLE `t_vehicle` (
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `v_u` (`user_id`),
-  CONSTRAINT `v_u` FOREIGN KEY (`user_id`) REFERENCES `t_user` (`id`)
+  CONSTRAINT `v_u` FOREIGN KEY (`user_id`) REFERENCES `t_driver` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -226,7 +228,7 @@ CREATE TABLE `t_vehicle_user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `v_q` (`vehicle_id`) USING BTREE,
   KEY `vu_u` (`user_id`),
-  CONSTRAINT `vu_u` FOREIGN KEY (`user_id`) REFERENCES `t_user` (`id`),
+  CONSTRAINT `vu_u` FOREIGN KEY (`user_id`) REFERENCES `t_driver` (`id`),
   CONSTRAINT `vu_v` FOREIGN KEY (`vehicle_id`) REFERENCES `t_vehicle` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -247,16 +249,20 @@ CREATE TABLE `t_wechat` (
   `language` varchar(5) NOT NULL,
   `city` varchar(20) NOT NULL,
   `province` varchar(20) NOT NULL,
+  `country` varchar(30) NOT NULL,
   `headimgurl` text NOT NULL,
-  `subscribe_time` datetime NOT NULL,
-  `unionid` varchar(30) NOT NULL,
+  `subscribe_time` varchar(20) NOT NULL,
   `remark` varchar(20) NOT NULL,
   `groupid` int(11) NOT NULL,
+  `subscribe_scene` varchar(20) NOT NULL,
+  `qr_scene` int(11) NOT NULL,
+  `qr_scene_str` varchar(30) NOT NULL,
   `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `update_time` datetime NOT NULL,
+  `update_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_wechat
 -- ----------------------------
+INSERT INTO `t_wechat` VALUES ('1', '1', 'oyur_1GhybMGLZZ5xc1-LxSO39T8', 'HiAoC', '1', 'zh_CN', '揭阳', '广东', '中国', 'http://thirdwx.qlogo.cn/mmopen/6Zzu4IicyEE7ar2kVTlu6ZgPpINE6aslAgWTNIibCMPvDib3LgRFxnnC07kR2aaL9hiau0caichC0zhFweQBDj60objmmuAt7O2DK/132', '1525483135', '0', '0', 'ADD_SCENE_QR_CODE', '0', '', '2018-05-14 13:23:58', '0000-00-00 00:00:00');

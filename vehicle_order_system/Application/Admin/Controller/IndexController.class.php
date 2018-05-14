@@ -146,4 +146,13 @@ class IndexController extends BaseController {
             $this->display("/logManage");
         }
     }
+
+    //跳转到日记管理页面
+    public function toDriverManage() {
+        if($this->isLogin()) {
+            $permissions = A("Role");
+            $permissions->findPermissions();
+            $this->display("/driverManage");
+        }
+    }
 }

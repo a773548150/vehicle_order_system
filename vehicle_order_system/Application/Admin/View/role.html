@@ -13,6 +13,16 @@
     <li class="layui-nav-item">
         <a href="/Admin/Index/index">主页</a>
     </li>
+    <in name="permissions[0][manage_driver]" value="1">
+        <li class="layui-nav-item" >
+            <a href="javascript:;">司机管理</a>
+            <dl class="layui-nav-child">
+                <dd><a href="/Admin/Index/toDriverManage">司机信息管理</a></dd>
+                <dd><a href="/Admin/Index/toOrder">车辆管理</a></dd>
+            </dl>
+        </li>
+    </in>
+
     <in name="permissions[0][manage_order]" value="1">
         <li class="layui-nav-item" >
             <a href="javascript:;">订单管理</a>
