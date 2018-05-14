@@ -46,30 +46,13 @@ class OrderModel extends BaseModel {
     }
 
     public function findForeign($result){
-        $G = M("goods");
-        $V = M("vehicle");
         $D = M("driver");
-        //通过商品id外键查找到商品名字
-        foreach ($result as $key => $value) {
-            foreach ($value as $key2 => $value2){
-                if ($key2 == "goods_id" && $key2 != null) {
-                    $result[$key]["goods_name"] = $G->where(array("id"=>$value2))->getField("name");
-                }
-            }
-        }
-        //通过车辆id外键查找到车牌号
-        foreach ($result as $key => $value) {
-            foreach ($value as $key2 => $value2){
-                if ($key2 == "vehicle_id" && $key2 != null) {
-                    $result[$key]["out_number"] = $V->where(array("id"=>$value2))->getField("license_plate");
-                }
-            }
-        }
+
         //通过司机id外键查找到司机编号
         foreach ($result as $key => $value) {
             foreach ($value as $key2 => $value2){
                 if ($key2 == "driver_id" && $key2 != null) {
-                    $result[$key]["order_driver_number"] = $D->where(array("id"=>$value2))->getField("number");
+                    $result[$key]["driver_number"] = $D->where(array("id"=>$value2))->getField("number");
                 }
             }
         }
@@ -83,19 +66,19 @@ class OrderModel extends BaseModel {
         $startTime = I("get.startTime");
         $endTime = I("get.endTime");
         if ($startTime && $endTime) {
-            $data["start_time"] = array(array('egt', $startTime), array('elt', $endTime));
+            $data["create_time"] = array(array('egt', $startTime), array('elt', $endTime));
         }
-        $data['mission_status'] = I('get.missionStatus');
+        $data['order_status'] = I('get.missionStatus');
         $data['number'] = array('LIKE', "%".I('get.orderNumber')."%");
         $data['status'] = 1;
         $page = I('get.page');
         $limit = I('get.limit');
-        if ($data['mission_status'] === "0" || $data['mission_status'] === "1" || $data['mission_status'] === "2") {
+        if ($data['order_status'] === "0" || $data['order_status'] === "1" || $data['order_status'] === "2") {
             $result = $m->where($data)->order('id desc')->page($page, $limit)->select();
             $result = $this->findForeign($result);
             return $result;
-        } else if($data['mission_status'] === "3"){
-            unset($data['mission_status']);
+        } else if($data['order_status'] === "3"){
+            unset($data['order_status']);
             $result = $m->where($data)->order('id desc')->page($page, $limit)->select();
             $result = $this->findForeign($result);
             return $result;

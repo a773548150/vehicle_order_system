@@ -68,28 +68,41 @@
 </ul>
 
 <div class="allContent">
-    <form class="layui-form" action="" method="post">
+
+    <form class="layui-form" action="">
+
         <div class="layui-form-item toInline">
-            <label class="layui-form-label">用户名</label>
-            <div class="layui-input-block">
-                <input type="text" name="username" id="username" required lay-verify="required" autocomplete="off" class="layui-input" >
+            <label class="layui-form-label">编号</label>
+            <div class="layui-input-inline">
+                <input type="text" name="number"  placeholder="请输入油编号" autocomplete="off" class="layui-input">
             </div>
         </div>
 
-        <div class="layui-form-item toInline">
-            <label class="layui-form-label">密码</label>
-            <div class="layui-input-block">
-                <input type="text" name="password" id="password" required lay-verify="required" autocomplete="off" class="layui-input" >
+        <div class="layui-form-item  toInline">
+            <div class="layui-input-inline">
+                <button class="layui-btn" lay-submit lay-filter="formSearch" id="search">搜索</button>
             </div>
         </div>
+    </form>
+
+    <form class="layui-form" action="" method="post">
 
         <div class="layui-input-inline">
-            <label class="layui-form-label">角色</label>
+            <label class="layui-form-label">油类型</label>
             <div class="layui-input-block">
-                <select name="role" lay-verify="required" id="addRoleNameSelect">
-                    <option value="">点击选择角色</option>
-                    <?php if(is_array($roleName)): foreach($roleName as $key=>$vo): ?><option value="<?php echo ($key); ?>"><?php echo ($vo); ?></option><?php endforeach; endif; ?>
+                <select name="oilType" lay-verify="required" id="addRoleNameSelect">
+                    <option value="">点击选择油类型</option>
+                    <option value="0">化工类</option>
+                    <option value="1">油品类</option>
+                    <option value="2">合成类</option>
                 </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item toInline">
+            <label class="layui-form-label">油名</label>
+            <div class="layui-input-block">
+                <input type="text" name="name"  required lay-verify="required" autocomplete="off" class="layui-input" >
             </div>
         </div>
 
@@ -101,34 +114,6 @@
         </div>
     </form>
     <table id="order" lay-filter="test"></table>
-
-    <form class="layui-form" action="" method="post" id="addPermissions">
-        <div class="layui-form-item toInline">
-            <label class="layui-form-label">用户</label>
-
-            <div class="layui-input-inline">
-                <select name="user" lay-verify="required" id="usernameSelect">
-                    <option value="">点击选择用户</option>
-                    <?php if(is_array($userName)): foreach($userName as $key=>$vo): ?><option value="<?php echo ($key); ?>"><?php echo ($vo); ?></option><?php endforeach; endif; ?>
-                </select>
-            </div>
-        </div>
-        <div class="layui-form-item toInline">
-            <label class="layui-form-label">角色</label>
-
-            <div class="layui-input-inline">
-                <select name="role" lay-verify="required" id="roleNameSelect">
-                    <option value="">点击选择角色</option>
-                    <?php if(is_array($roleName)): foreach($roleName as $key=>$vo): ?><option value="<?php echo ($key); ?>"><?php echo ($vo); ?></option><?php endforeach; endif; ?>
-                </select>
-            </div>
-        </div>
-        <div class="layui-form-item toInline">
-            <div class="layui-input-inline">
-                <button class="layui-btn" lay-submit lay-filter="permissions">修改</button>
-            </div>
-        </div>
-    </form>
     
     <script type="text/html" id="barDemo">
         <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
@@ -137,6 +122,6 @@
 
 <script src="/Public/layui/layui.js"></script>
 <script src="/Public/jquery-3.3.1.min.js"></script>
-<script src="/Application/Admin/Public/js/user.js"></script>
+<script src="/Application/Admin/Public/js/oilManage.js"></script>
 </body>
 </html>

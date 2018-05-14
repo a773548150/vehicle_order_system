@@ -88,17 +88,18 @@
             <div class="layui-input-inline">
                 <select name="orderStatus" lay-verify="required" lay-filter="selectStatus" >
                     <option value="3" id="orderStauts">全部</option>
-                    <option value="0" id="orderStauts0">未接</option>
-                    <option value="1" id="orderStauts1">已接</option>
-                    <option value="2" id="orderStauts2">已完成</option>
+                    <option value="0" id="orderStauts0">已接</option>
+                    <option value="1" id="orderStauts1">装车中</option>
+                    <option value="2" id="orderStauts2">厂区内待装</option>
+                    <option value="2" id="orderStauts3">厂外待装</option>
                 </select>
             </div>
         </div>
 
         <div class="layui-form-item toInline">
-            <label class="layui-form-label">订单号</label>
+            <label class="layui-form-label">单号</label>
             <div class="layui-input-inline">
-                <input type="text" name="number"  placeholder="请输入订单号" autocomplete="off" class="layui-input">
+                <input type="text" name="number"  placeholder="请输入单号" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item toInline">
@@ -126,50 +127,6 @@
         </div>
     </form>
 
-    <!--<table id="order" lay-filter="order" class="layui-table">-->
-        <!--<colgroup>-->
-            <!--<col>-->
-            <!--<col>-->
-            <!--<col>-->
-        <!--</colgroup>-->
-        <!--<thead>-->
-            <!--<tr>-->
-                <!--<th>订单号</th>-->
-                <!--<th>出发时间</th>-->
-                <!--<th>出车车牌号</th>-->
-                <!--<th>目的地</th>-->
-                <!--<th>状态</th>-->
-                <!--<th>司机编号</th>-->
-                <!--<th>提货单号</th>-->
-                <!--<th>合同号</th>-->
-                <!--<th>缺货信息</th>-->
-                <!--<th>提货数量</th>-->
-                <!--<th>提货时间</th>-->
-                <!--<th>结算单位</th>-->
-            <!--</tr>-->
-        <!--</thead>-->
-        <!--<tbody>-->
-
-            <!--<foreach name="orderMessage" item="vo" >-->
-                <!--<tr>-->
-                    <!--<td>{$vo.number}</td>-->
-                    <!--<td>{$vo.create_time}</td>-->
-                    <!--<td>{$vo.out_number}</td>-->
-                    <!--<td>{$vo.out_destination}</td>-->
-                    <!--<td>{$vo.mission_status}</td>-->
-                    <!--<td>{$vo.order_driver_number}</td>-->
-                    <!--<td>{$vo.pick_up_order}</td>-->
-                    <!--<td>{$vo.contract_number}</td>-->
-                    <!--<td>{$vo.out_of_stock_message}</td>-->
-                    <!--<td>{$vo.pick_up_quantity}</td>-->
-                    <!--<td>{$vo.pick_up_time}</td>-->
-                    <!--<td>{$vo.closing_unit}</td>-->
-                <!--</tr>-->
-            <!--</foreach>-->
-
-        <!--</tbody>-->
-    <!--</table>-->
-
     <table id="order" lay-filter="test"></table>
     <script type="text/html" id="barDemo">
         <a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>
@@ -179,6 +136,6 @@
 
 <script src="__PUBLIC__/layui/layui.js"></script>
 <script src="__PUBLIC__/jquery-3.3.1.min.js"></script>
-<script src="__ROOT__/Application/Admin/Public/js/orderManager.js"></script>
+<script src="__ROOT__/Application/Admin/Public/js/dataManage.js"></script>
 </body>
 </html>
