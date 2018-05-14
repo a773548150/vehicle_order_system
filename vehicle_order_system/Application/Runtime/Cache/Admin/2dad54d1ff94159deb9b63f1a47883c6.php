@@ -13,17 +13,18 @@
     <li class="layui-nav-item">
         <a href="/Admin/Index/index">主页</a>
     </li>
+
     <?php if(in_array(($permissions[0][manage_driver]), explode(',',"1"))): ?><li class="layui-nav-item" >
             <a href="javascript:;">司机管理</a>
             <dl class="layui-nav-child">
-                <dd><a href="/Admin/Index/toDriverManage" class="layui-this">司机信息管理</a></dd>
+                <dd><a href="/Admin/Index/toDriverManage">司机信息管理</a></dd>
             </dl>
         </li><?php endif; ?>
 
-    <?php if(in_array(($permissions[0][manage_oil]), explode(',',"1"))): ?><li class="layui-nav-item" >
+    <?php if(in_array(($permissions[0][manage_oil]), explode(',',"1"))): ?><li class="layui-nav-item layui-nav-itemed" >
             <a href="javascript:;">油品管理</a>
             <dl class="layui-nav-child">
-                <dd><a href="/Admin/Index/toOilManage">油品类型管理</a></dd>
+                <dd><a href="/Admin/Index/toOilManage" class="layui-this">油品类型管理</a></dd>
             </dl>
         </li><?php endif; ?>
 
@@ -36,7 +37,6 @@
             </dl>
         </li><?php endif; ?>
 
-
     <?php if(in_array(($permissions[0][manage_data]), explode(',',"1"))): ?><li class="layui-nav-item">
             <a href="javascript:;">数据信息</a>
             <dl class="layui-nav-child">
@@ -44,11 +44,18 @@
             </dl>
         </li><?php endif; ?>
 
-    <?php if(in_array(($permissions[0][manage_role]), explode(',',"1"))): ?><li class="layui-nav-item layui-nav-itemed">
+    <?php if(in_array(($permissions[0][manage_notice]), explode(',',"1"))): ?><li class="layui-nav-item">
+            <a href="javascript:;">公告内容信息</a>
+            <dl class="layui-nav-child">
+                <dd><a href="/Admin/Index/toNoticeManage">公告内容管理</a></dd>
+            </dl>
+        </li><?php endif; ?>
+
+    <?php if(in_array(($permissions[0][manage_role]), explode(',',"1"))): ?><li class="layui-nav-item">
             <a href="javascript:;">角色权限</a>
             <dl class="layui-nav-child">
                 <dd><a href="/Admin/Index/toRole">权限管理</a></dd>
-                <dd><a href="/Admin/Index/toUser" class="layui-this">后台用户管理</a></dd>
+                <dd><a href="/Admin/Index/toUser">后台用户管理</a></dd>
             </dl>
         </li><?php endif; ?>
 

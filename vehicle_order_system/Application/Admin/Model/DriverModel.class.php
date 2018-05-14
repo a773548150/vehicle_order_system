@@ -24,7 +24,7 @@ class DriverModel extends BaseModel {
     public function searchDriver() {
         $m = M("driver");
         $W = M("wechat");
-        $data['name'] = array('LIKE', "%".I('get.name')."%");
+        $data['mobile_number'] = array('LIKE', "%".I('get.number')."%");
         $data['status'] = 1;
         $page = I('get.page');
         $limit = I('get.limit');
@@ -52,11 +52,15 @@ class DriverModel extends BaseModel {
 
     public function editDriver() {
         $m = M("driver");
+        $L = A("Log");
         $field = I('post.field');
         $value = I('post.value');
         $lim["id"] = I('post.id');
         $data[$field] = $value;
         $res = $m->where($lim)->save($data);
+        $name = $this->getRoleName($lim["id"]);
+        $L->update("修改角色名：“".$name."”的权限");
         return $res;
     }
+
 }

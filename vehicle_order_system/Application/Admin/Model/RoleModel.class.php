@@ -83,7 +83,7 @@ class RoleModel extends BaseModel {
         $data['update_time'] = date("Y-m-d h:i:s");
         $res = $m->where($lim)->save($data);
         $name = $this->getRoleName($lim["id"]);
-        $L->update("修改角色名：“".$data['name']."”的权限");
+        $L->update("修改角色名：“".$name."”的权限");
         return $res;
     }
 

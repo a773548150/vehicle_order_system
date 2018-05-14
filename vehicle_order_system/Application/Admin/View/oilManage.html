@@ -1,10 +1,10 @@
-<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/Public/layui/css/layui.css">
-    <link rel="stylesheet" type="text/css" href="/Application/Admin/Common/css/index.css">
-    <link rel="stylesheet" type="text/css" href="/Application/Admin/Public/css/user.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="__ROOT__/Application/Admin/Common/css/index.css">
+    <link rel="stylesheet" type="text/css" href="__ROOT__/Application/Admin/Public/css/user.css">
     <title>权限管理页面</title>
 </head>
 <body>
@@ -13,51 +13,72 @@
     <li class="layui-nav-item">
         <a href="/Admin/Index/index">主页</a>
     </li>
-    <?php if(in_array(($permissions[0][manage_driver]), explode(',',"1"))): ?><li class="layui-nav-item" >
+
+    <in name="permissions[0][manage_driver]" value="1">
+        <li class="layui-nav-item" >
             <a href="javascript:;">司机管理</a>
             <dl class="layui-nav-child">
-                <dd><a href="/Admin/Index/toDriverManage" class="layui-this">司机信息管理</a></dd>
+                <dd><a href="/Admin/Index/toDriverManage">司机信息管理</a></dd>
             </dl>
-        </li><?php endif; ?>
+        </li>
+    </in>
 
-    <?php if(in_array(($permissions[0][manage_oil]), explode(',',"1"))): ?><li class="layui-nav-item" >
+    <in name="permissions[0][manage_oil]" value="1">
+        <li class="layui-nav-item layui-nav-itemed" >
             <a href="javascript:;">油品管理</a>
             <dl class="layui-nav-child">
-                <dd><a href="/Admin/Index/toOilManage">油品类型管理</a></dd>
+                <dd><a href="/Admin/Index/toOilManage" class="layui-this">油品类型管理</a></dd>
             </dl>
-        </li><?php endif; ?>
+        </li>
+    </in>
 
 
-    <?php if(in_array(($permissions[0][manage_order]), explode(',',"1"))): ?><li class="layui-nav-item" >
+    <in name="permissions[0][manage_order]" value="1">
+        <li class="layui-nav-item" >
             <a href="javascript:;">车队列表管理</a>
             <dl class="layui-nav-child">
                 <dd><a href="/Admin/Index/toOrder">添加车辆</a></dd>
                 <dd><a href="/Admin/Index/toOrderManage">排队管理</a></dd>
             </dl>
-        </li><?php endif; ?>
+        </li>
+    </in>
 
-
-    <?php if(in_array(($permissions[0][manage_data]), explode(',',"1"))): ?><li class="layui-nav-item">
+    <in name="permissions[0][manage_data]" value="1">
+        <li class="layui-nav-item">
             <a href="javascript:;">数据信息</a>
             <dl class="layui-nav-child">
                 <dd><a href="/Admin/Index/toDataManage">数据管理</a></dd>
             </dl>
-        </li><?php endif; ?>
+        </li>
+    </in>
 
-    <?php if(in_array(($permissions[0][manage_role]), explode(',',"1"))): ?><li class="layui-nav-item layui-nav-itemed">
+    <in name="permissions[0][manage_notice]" value="1">
+        <li class="layui-nav-item">
+            <a href="javascript:;">公告内容信息</a>
+            <dl class="layui-nav-child">
+                <dd><a href="/Admin/Index/toNoticeManage">公告内容管理</a></dd>
+            </dl>
+        </li>
+    </in>
+
+    <in name="permissions[0][manage_role]" value="1">
+        <li class="layui-nav-item">
             <a href="javascript:;">角色权限</a>
             <dl class="layui-nav-child">
                 <dd><a href="/Admin/Index/toRole">权限管理</a></dd>
-                <dd><a href="/Admin/Index/toUser" class="layui-this">后台用户管理</a></dd>
+                <dd><a href="/Admin/Index/toUser">后台用户管理</a></dd>
             </dl>
-        </li><?php endif; ?>
+        </li>
+    </in>
 
-    <?php if(in_array(($permissions[0][manage_log]), explode(',',"1"))): ?><li class="layui-nav-item">
+    <in name="permissions[0][manage_log]" value="1">
+        <li class="layui-nav-item">
             <a href="javascript:;">操作日记</a>
             <dl class="layui-nav-child">
                 <dd><a href="/Admin/Index/toLogManage">日记管理</a></dd>
             </dl>
-        </li><?php endif; ?>
+        </li>
+    </in>
 </ul>
 
 <div class="allContent">
@@ -81,7 +102,9 @@
             <div class="layui-input-block">
                 <select name="role" lay-verify="required" id="addRoleNameSelect">
                     <option value="">点击选择角色</option>
-                    <?php if(is_array($roleName)): foreach($roleName as $key=>$vo): ?><option value="<?php echo ($key); ?>"><?php echo ($vo); ?></option><?php endforeach; endif; ?>
+                    <foreach name="roleName" item="vo">
+                        <option value="{$key}">{$vo}</option>
+                    </foreach>
                 </select>
             </div>
         </div>
@@ -102,7 +125,9 @@
             <div class="layui-input-inline">
                 <select name="user" lay-verify="required" id="usernameSelect">
                     <option value="">点击选择用户</option>
-                    <?php if(is_array($userName)): foreach($userName as $key=>$vo): ?><option value="<?php echo ($key); ?>"><?php echo ($vo); ?></option><?php endforeach; endif; ?>
+                    <foreach name="userName" item="vo">
+                        <option value="{$key}">{$vo}</option>
+                    </foreach>
                 </select>
             </div>
         </div>
@@ -112,7 +137,9 @@
             <div class="layui-input-inline">
                 <select name="role" lay-verify="required" id="roleNameSelect">
                     <option value="">点击选择角色</option>
-                    <?php if(is_array($roleName)): foreach($roleName as $key=>$vo): ?><option value="<?php echo ($key); ?>"><?php echo ($vo); ?></option><?php endforeach; endif; ?>
+                    <foreach name="roleName" item="vo">
+                        <option value="{$key}">{$vo}</option>
+                    </foreach>
                 </select>
             </div>
         </div>
@@ -128,8 +155,8 @@
     </script>
 </div>
 
-<script src="/Public/layui/layui.js"></script>
-<script src="/Public/jquery-3.3.1.min.js"></script>
-<script src="/Application/Admin/Public/js/user.js"></script>
+<script src="__PUBLIC__/layui/layui.js"></script>
+<script src="__PUBLIC__/jquery-3.3.1.min.js"></script>
+<script src="__ROOT__/Application/Admin/Public/js/user.js"></script>
 </body>
 </html>

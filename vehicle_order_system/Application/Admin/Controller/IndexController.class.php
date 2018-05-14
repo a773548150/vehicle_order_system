@@ -72,8 +72,6 @@ class IndexController extends BaseController {
     //跳转到新添订单页面
     public function toOrder() {
         if($this->isLogin()) {
-            $goods = A("Order");
-            $goods->goods();
             $permissions = A("Role");
             $permissions->findPermissions();
             $this->display("/order");
@@ -81,11 +79,11 @@ class IndexController extends BaseController {
     }
 
     //跳转到订单管理页面
-    public function toOrderManager() {
+    public function toOrderManage() {
         if($this->isLogin()) {
             $permissions = A("Role");
             $permissions->findPermissions();
-            $this->display("/orderManager");
+            $this->display("/orderManage");
         }
     }
 
@@ -94,7 +92,7 @@ class IndexController extends BaseController {
         if($this->isLogin()) {
             $permissions = A("Role");
             $permissions->findPermissions();
-            $this->display("/driver");
+            $this->display("/driverManage");
         }
     }
 
@@ -147,12 +145,35 @@ class IndexController extends BaseController {
         }
     }
 
-    //跳转到日记管理页面
     public function toDriverManage() {
         if($this->isLogin()) {
             $permissions = A("Role");
             $permissions->findPermissions();
             $this->display("/driverManage");
+        }
+    }
+
+    public function toOilManage() {
+        if($this->isLogin()) {
+            $permissions = A("Role");
+            $permissions->findPermissions();
+            $this->display("/oilManage");
+        }
+    }
+
+    public function toDataManage() {
+        if($this->isLogin()) {
+            $permissions = A("Role");
+            $permissions->findPermissions();
+            $this->display("/dataManage");
+        }
+    }
+
+    public function toNoticeManage() {
+        if($this->isLogin()) {
+            $permissions = A("Role");
+            $permissions->findPermissions();
+            $this->display("/noticeManage");
         }
     }
 }

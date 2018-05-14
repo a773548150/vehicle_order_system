@@ -8,16 +8,10 @@
 })(jQuery);
 
 $(window).ready(function() {
-
-
     //全局变量
     var editData = "";
-    var selectDatas = {};
-    selectDatas.missionStatus = 3;
-
     var startTime;
     var endTime;
-
     layui.use('element', function () {
         var element = layui.element;
         //一些事件监听
@@ -43,11 +37,7 @@ $(window).ready(function() {
         //监听提交
         form.on('submit(formSearch)', function (data) {
             var datas = data.field;
-            datas.orderStatus = selectDatas.missionStatus;
-            startTime = datas.startTime;
-            endTime = datas.endTime;
-            selectDatas.number = datas.number;
-            var url = "/Admin/Order/searchOrder?missionStatus=" + datas.orderStatus +"&orderNumber=" + datas.number +"&startTime=" + startTime + "&endTime=" + endTime;
+            var url = "/Admin/Driver/searchDriver?number=" + datas.number;
             layui.use('table', function() {
                 var table = layui.table;
                 table.reload('order', {
@@ -98,6 +88,7 @@ $(window).ready(function() {
         table.render({
             elem: '#order'
             ,height: 515
+            ,width: 1146
             ,limit: 11
             ,url: '/Admin/driver/searchDriver' //数据接口
             ,page: true //开启分页
@@ -106,14 +97,19 @@ $(window).ready(function() {
                 ,{field: 'nickname', title: '微信昵称', width:190, sort: true, fixed: 'left'}
                 ,{field: 'name', title: '真实姓名', width:160, edit: "text"}
                 ,{field: 'mobile_number', title: '手机号码', width:120, sort: true, edit: "text"}
-                ,{field: '', title: '车辆车牌', width: 177, edit: "text"}
-                ,{field: 'company', title: '隶属公司名', width: 80, sort: true, edit: "text"}
+                ,{field: 'license_plate', title: '车辆车牌', width: 177, edit: "text"}
+                ,{field: 'company', title: '隶属公司名', width: 150, sort: true, edit: "text"}
                 ,{fixed: 'right', width:150, align:'center', toolbar: '#barDemo'}
             ]]
+            ,done: function(res, curr, count) {
+                // var kk = $("td[data-field='headimgurl']").text();
+                // alert(kk[0]);
+                //$("td[data-field='headimgurl']").html("<img src='#'/>");
+                //$("td[data-field='headimgurl'] img").attr("src", $("td[data-field='headimgurl']").text());
+            }
         });
-
         //绑定删除和编辑按钮
-        table.on('tool(test)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+        table.on('tool(test)', function(obj){//注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
             var data = obj.data; //获得当前行数据
             var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
             var tr = obj.tr; //获得当前行 tr 的DOM对象
@@ -125,7 +121,7 @@ $(window).ready(function() {
                     layer.close(index);
                     //向服务端发送删除指令
                     $.ajax({
-                        url: "/Admin/Order/deleteOrder",
+                        url: "/Admin/Driver/deleteDriver",
                         type: 'post',
                         dataType: 'json',
                         data: data,
@@ -145,12 +141,12 @@ $(window).ready(function() {
                         alert(editData.data.number);
 
                         $.ajax({
-                            url: "/Admin/Order/editOrder",
+                            url: "/Admin/Driver/editDriver",
                             type: 'post',
                             dataType: 'json',
                             data: {
                                 "field" : editData.field,
-                                "value" : editData.value,
+                                "value" : editData.data,
                                 "id"    : editData.data.id
                             },
                             success: function (data, status) {
@@ -163,7 +159,6 @@ $(window).ready(function() {
                         });
                     }
                 }
-
             }
         });
         table.on('edit(test)', function(obj){ //注：edit是固定事件名，test是table原始容器的属性 lay-filter="对应的值"
@@ -172,7 +167,6 @@ $(window).ready(function() {
             console.log(obj.data); //所在行的所有相关数据
             editData = obj;
         });
-
     });
 
     $("#excel").click(function () {

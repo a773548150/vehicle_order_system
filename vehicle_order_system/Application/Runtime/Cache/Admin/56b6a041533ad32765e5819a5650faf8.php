@@ -12,6 +12,7 @@
     <li class="layui-nav-item">
         <a href="/Admin/Index/index">主页</a>
     </li>
+
     <?php if(in_array(($permissions[0][manage_driver]), explode(',',"1"))): ?><li class="layui-nav-item" >
             <a href="javascript:;">司机管理</a>
             <dl class="layui-nav-child">
@@ -27,25 +28,26 @@
         </li><?php endif; ?>
 
 
-    <?php if(in_array(($permissions[0][manage_order]), explode(',',"1"))): ?><li class="layui-nav-item layui-nav-itemed" >
+    <?php if(in_array(($permissions[0][manage_order]), explode(',',"1"))): ?><li class="layui-nav-item" >
             <a href="javascript:;">车队列表管理</a>
             <dl class="layui-nav-child">
                 <dd><a href="/Admin/Index/toOrder">添加车辆</a></dd>
-                <dd><a href="/Admin/Index/toOrderManager" class="layui-this">排队管理</a></dd>
+                <dd><a href="/Admin/Index/toOrderManage">排队管理</a></dd>
             </dl>
         </li><?php endif; ?>
 
-    <?php if(in_array(($permissions[0][manage_driver]), explode(',',"1"))): ?><li class="layui-nav-item">
-            <a href="javascript:;">司机信息</a>
-            <dl class="layui-nav-child">
-                <dd><a href="/Admin/Index/toDriver">司机管理</a></dd>
-            </dl>
-        </li><?php endif; ?>
 
     <?php if(in_array(($permissions[0][manage_data]), explode(',',"1"))): ?><li class="layui-nav-item">
             <a href="javascript:;">数据信息</a>
             <dl class="layui-nav-child">
                 <dd><a href="/Admin/Index/toDataManage">数据管理</a></dd>
+            </dl>
+        </li><?php endif; ?>
+
+    <?php if(in_array(($permissions[0][manage_notice]), explode(',',"1"))): ?><li class="layui-nav-item layui-nav-itemed">
+            <a href="javascript:;">公告内容信息</a>
+            <dl class="layui-nav-child">
+                <dd><a href="/Admin/Index/toNoticeManage" class="layui-this">公告内容管理</a></dd>
             </dl>
         </li><?php endif; ?>
 
@@ -163,6 +165,6 @@
 
 <script src="/Public/layui/layui.js"></script>
 <script src="/Public/jquery-3.3.1.min.js"></script>
-<script src="/Application/Admin/Public/js/orderManage.js"></script>
+<script src="/Application/Admin/Public/js/orderManager.js"></script>
 </body>
 </html>
