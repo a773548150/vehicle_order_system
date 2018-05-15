@@ -62,7 +62,7 @@ $(window).ready(function() {
         //第一个实例
         table.render({
             elem: '#log'
-            ,height: 600
+            ,height: 510
             ,limit: 11
             ,url: '/Admin/Log/searchLog' //数据接口
             ,page: true //开启分页

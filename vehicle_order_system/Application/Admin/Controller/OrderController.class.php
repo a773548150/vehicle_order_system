@@ -80,60 +80,49 @@ class OrderController extends BaseController {
         $xlsName  = "Order";
         $xlsCell  = array(
             array('id','id'),
-            array('number','订单号'),
-            array('udid','订单编号'),
-            array('create_time','出发时间'),
-            array('out_number','出车车牌号'),
-            array('out_destination','目的地'),
-            array('mission_status','状态'),
-            array('order_driver_number','司机编号'),
-            array('pick_up_order','提货单号'),
-            array('contract_number','合同号'),
-            array('out_of_stock_message','缺货信息'),
-            array('goods_name','商品名'),
-            array('pick_up_quantity','提货数量'),
-            array('pick_up_time','提货时间'),
-            array('closing_unit','结算单位')
+            array('number','单号'),
+            array('order_status','状态'),
+            array('rank','排名'),
+            array('driver_number','司机编号'),
+            array('oil_name','油名'),
+            array('create_time','开始时间')
         );
         $xlsModel = M('Order');
         $driver = M("driver");
-        $vehicle = M("vehicle");
-        $goods = M("goods");
+        $oil = M("oil");
 
         if (I("get.startTime") && I("get.endTime")) {
             $startTime = I("get.startTime");
             $endTime = I("get.endTime");
             $data['mission_status'] = I('get.missionStatus');
             $data['number'] = array('LIKE', "%".I('get.orderNumber')."%");
-            $data["start_time"] = array(array('gt', $startTime), array('lt', $endTime));
-            $xlsData  = $xlsModel->where($data)->order('id desc')->Field('id,number,udid,create_time,vehicle_id,out_destination,mission_status,driver_id,pick_up_order,contract_number,out_of_stock_message,goods_id,pick_up_quantity,pick_up_time,closing_unit')->select();
+            $data["create_time"] = array(array('gt', $startTime), array('lt', $endTime));
+            $xlsData  = $xlsModel->where($data)->order('id desc')->Field('id,number,create_time,order_status,rank,driver_id,oil_id')->select();
         } else {
-            $xlsData  = $xlsModel->order('id desc')->Field('id,number,udid,create_time,vehicle_id,out_destination,mission_status,driver_id,pick_up_order,contract_number,out_of_stock_message,goods_id,pick_up_quantity,pick_up_time,closing_unit')->select();
+            $xlsData  = $xlsModel->order('id desc')->Field('id,number,create_time,order_status,rank,driver_id,oil_id')->select();
         }
 
         foreach ($xlsData as $k => $v)
         {
-            $value1 = $v['vehicle_id'];
-            $result1 = $vehicle->where(array("id"=>$value1))->getField("license_plate");
-            $xlsData[$k]['out_number'] = $result1;
-
-            $value2 = $v['goods_id'];
-            $result2 = $goods->where(array("id"=>$value2))->getField("name");
-            $xlsData[$k]['goods_name'] = $result2;
-
             $value3 = $v['driver_id'];
             $result3 = $driver->where(array("id"=>$value3))->getField("number");
-            $xlsData[$k]['order_driver_number'] = $result3;
+            $xlsData[$k]['driver_number'] = $result3;
+
+            $value2 = $v['oil_id'];
+            $result2 = $oil->where(array("id"=>$value2))->getField("name");
+            $xlsData[$k]['oil_name'] = $result2;
         }
 
         foreach ($xlsData as $k => $v)
         {
-            if ($v['mission_status']==0){
-                $xlsData[$k]['mission_status'] = "未接";
-            } else if ($v['mission_status']==1) {
-                $xlsData[$k]['mission_status'] = "已接";
-            } else if ($v['mission_status']==2) {
-                $xlsData[$k]['mission_status'] = "已完成";
+            if ($v['order_status']==0){
+                $xlsData[$k]['order_status'] = "已接";
+            } else if ($v['order_status']==1) {
+                $xlsData[$k]['order_status'] = "装车中";
+            } else if ($v['order_status']==2) {
+                $xlsData[$k]['order_status'] = "厂区内待装";
+            }else if ($v['order_status']==3) {
+                $xlsData[$k]['order_status'] = "厂外待装";
             }
         }
         exportExcel($xlsName,$xlsCell,$xlsData); //调用Common函数，导出excel

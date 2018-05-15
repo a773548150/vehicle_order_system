@@ -47,6 +47,7 @@ class OrderModel extends BaseModel {
 
     public function findForeign($result){
         $D = M("driver");
+        $O = M("oil");
 
         //通过司机id外键查找到司机编号
         foreach ($result as $key => $value) {
@@ -57,6 +58,13 @@ class OrderModel extends BaseModel {
             }
         }
 
+        foreach ($result as $key => $value) {
+            foreach ($value as $key2 => $value2){
+                if ($key2 == "oil_id" && $key2 != null) {
+                    $result[$key]["oil_name"] = $O->where(array("id"=>$value2))->getField("name");
+                }
+            }
+        }
         return $result;
     }
 
@@ -93,36 +101,29 @@ class OrderModel extends BaseModel {
         $m = M("order");
         $L = A("Log");
         $data["id"] = I("post.id");
+        $data2['delete_time'] = date("Y-m-d h:i:s");
         $data2["status"] = 0;
         $result = $m->where($data)->save($data2);
-        if($result){
-            $deleteData = array();
-            $deleteData["table_id"] = $data["id"];
-            $deleteData["table_name"] = "order";
-            $L->delete($deleteData);
-        }
-        echo $result;
+        $L->insert("删除了单号为：".I("post.number")."  的订单");
+        return $result;
     }
 
     public function editOrder() {
         $m = M("order");
+        $O = M("oil");
+        $D = M("driver");
         $L = A("Log");
-        $field = I('post.field');
-        $value = I('post.value');
         $lim["id"] = I('post.id');
-        $data[$field] = $value;
-        $oldValue = $m->where($lim)->getField($field);
+        $oil_id = $O->where(array("name" => I("post.oil_name")))->getField("id");
+        $driver_id = $D->where(array("number" => I("post.driver_number")))->getField("id");
+        $data = I('post.value');
+        $data["oil_id"] = $oil_id;
+        $data["driver_id"] = $driver_id;
+        $data['update_time'] = date("Y-m-d h:i:s");
         $res = $m->where($lim)->save($data);
+        $number = $m->where(array("id" => $lim["id"]))->getField("number");
 
-        if($res){
-            $updateData = array();
-            $updateData["table_id"] = $lim["id"];
-            $updateData["table_name"] = "order";
-            $updateData["key"] = $field;
-            $updateData["value"] = $oldValue;
-            $updateData["current_value"] = $value;
-            $L->update($updateData);
-        }
+        $L->update("修改单号：“".$number."”的信息");
         return $res;
     }
 

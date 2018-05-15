@@ -83,94 +83,50 @@
 
 <div class="allContent">
     <form class="layui-form" action="">
+
         <div class="layui-form-item toInline">
-            <label class="layui-form-label">类型</label>
+            <label class="layui-form-label">标题</label>
             <div class="layui-input-inline">
-                <select name="orderStatus" lay-verify="required" lay-filter="selectStatus" >
-                    <option value="3" id="orderStauts">全部</option>
-                    <option value="0" id="orderStauts0">未接</option>
-                    <option value="1" id="orderStauts1">已接</option>
-                    <option value="2" id="orderStauts2">已完成</option>
-                </select>
+                <input type="text" name="title"  placeholder="请输入标题" autocomplete="off" class="layui-input">
             </div>
         </div>
 
-        <div class="layui-form-item toInline">
-            <label class="layui-form-label">订单号</label>
-            <div class="layui-input-inline">
-                <input type="text" name="number"  placeholder="请输入订单号" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item toInline">
-            <label class="layui-form-label">时间</label>
-            <div class="layui-input-inline">
-                <input type="text" name="startTime" class="layui-input" id="time1">
-            </div>
-            <div class="layui-form-mid layui-word-aux"> ~ </div>
-        </div>
-        <div class="layui-form-item toInline">
-            <div class="layui-input-inline">
-                <input type="text" name="endTime" class="layui-input" id="time2">
-            </div>
-            <!--<button class="layui-btn" id="addGoods">添加</button>-->
-        </div>
         <div class="layui-form-item  toInline">
             <div class="layui-input-inline">
                 <button class="layui-btn" lay-submit lay-filter="formSearch" id="search">搜索</button>
             </div>
         </div>
-        <div class="layui-form-item outExcel">
-            <div class="layui-input-inline">
-                <a href="javascript:;" id="excel" class="layui-btn layui-btn-normal toInline excel">导出excel</a>
+    </form>
+
+    <form class="layui-form" action="" method="post" id="addNotice">
+        <div class="layui-form-item toInline ">
+            <label class="layui-form-label">标题</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" required lay-verify="required" autocomplete="off" class="layui-input" >
+            </div>
+        </div>
+
+        <!--<div class="layui-form-item toInline">-->
+            <!--<label class="layui-form-label">内容</label>-->
+            <!--<div class="layui-input-block">-->
+                <!--<input type="text" name="content" required lay-verify="required" autocomplete="off" class="layui-input" >-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">内容</label>
+            <div class="layui-input-block">
+                <textarea name="content" placeholder="请输入内容" class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item toInline">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="formDemo">新增</button>
+                <!--<button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
             </div>
         </div>
     </form>
-
-    <!--<table id="order" lay-filter="order" class="layui-table">-->
-        <!--<colgroup>-->
-            <!--<col>-->
-            <!--<col>-->
-            <!--<col>-->
-        <!--</colgroup>-->
-        <!--<thead>-->
-            <!--<tr>-->
-                <!--<th>订单号</th>-->
-                <!--<th>出发时间</th>-->
-                <!--<th>出车车牌号</th>-->
-                <!--<th>目的地</th>-->
-                <!--<th>状态</th>-->
-                <!--<th>司机编号</th>-->
-                <!--<th>提货单号</th>-->
-                <!--<th>合同号</th>-->
-                <!--<th>缺货信息</th>-->
-                <!--<th>提货数量</th>-->
-                <!--<th>提货时间</th>-->
-                <!--<th>结算单位</th>-->
-            <!--</tr>-->
-        <!--</thead>-->
-        <!--<tbody>-->
-
-            <!--<foreach name="orderMessage" item="vo" >-->
-                <!--<tr>-->
-                    <!--<td>{$vo.number}</td>-->
-                    <!--<td>{$vo.create_time}</td>-->
-                    <!--<td>{$vo.out_number}</td>-->
-                    <!--<td>{$vo.out_destination}</td>-->
-                    <!--<td>{$vo.mission_status}</td>-->
-                    <!--<td>{$vo.order_driver_number}</td>-->
-                    <!--<td>{$vo.pick_up_order}</td>-->
-                    <!--<td>{$vo.contract_number}</td>-->
-                    <!--<td>{$vo.out_of_stock_message}</td>-->
-                    <!--<td>{$vo.pick_up_quantity}</td>-->
-                    <!--<td>{$vo.pick_up_time}</td>-->
-                    <!--<td>{$vo.closing_unit}</td>-->
-                <!--</tr>-->
-            <!--</foreach>-->
-
-        <!--</tbody>-->
-    <!--</table>-->
-
     <table id="order" lay-filter="test"></table>
+
     <script type="text/html" id="barDemo">
         <a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>
         <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
@@ -179,6 +135,6 @@
 
 <script src="__PUBLIC__/layui/layui.js"></script>
 <script src="__PUBLIC__/jquery-3.3.1.min.js"></script>
-<script src="__ROOT__/Application/Admin/Public/js/orderManager.js"></script>
+<script src="__ROOT__/Application/Admin/Public/js/noticeManage.js"></script>
 </body>
 </html>

@@ -36,6 +36,9 @@ $(window).ready(function() {
         } else if (missionStatus==="2") {
             $("select[name=orderStatus]").val("2");
             form.render('select');
+        } else if (missionStatus==="3") {
+            $("select[name=orderStatus]").val("3");
+            form.render('select');
         }
 
         //监听提交
@@ -95,14 +98,15 @@ $(window).ready(function() {
         //第一个实例
         table.render({
             elem: '#order'
-            ,width: 1000
+            ,width: 1100
             ,height: 515
             ,limit: 11
             ,url: '/Admin/Order/searchOrder' //数据接口
             ,page: true //开启分页
             ,cols: [[ //表头
                 {field: 'number', title: '单号', width:190, sort: true, fixed: 'left'}
-                ,{field: 'driver_number', title: '司机编号', width:190, sort: true, fixed: 'left'}
+                ,{field: 'driver_number', title: '司机编号', width:190, sort: true}
+                ,{field: 'oil_name', title: '油名', width: 120, sort: true}
                 ,{field: 'order_status', title: '状态', width: 80, sort: true, edit: "text"}
                 ,{field: 'rank', title: '排队名次', width:160, edit: "text"}
                 ,{field: 'create_time', title: '开始时间', width:160, edit: "text"}
@@ -140,15 +144,13 @@ $(window).ready(function() {
                 //do something
                 if(editData != ""){
                     if(editData.data.id === data.id) {
-                        alert(editData.data.number);
-
                         $.ajax({
                             url: "/Admin/Order/editOrder",
                             type: 'post',
                             dataType: 'json',
                             data: {
                                 "field" : editData.field,
-                                "value" : editData.value,
+                                "value" : editData.data,
                                 "id"    : editData.data.id
                             },
                             success: function (data, status) {

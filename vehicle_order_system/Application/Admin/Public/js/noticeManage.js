@@ -1,17 +1,6 @@
-//获取url参数
-(function ($) {
-    $.getUrlParam = function (name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null) return unescape(r[2]); return null;
-    }
-})(jQuery);
-
 $(window).ready(function() {
     //全局变量
     var editData = "";
-    var selectDatas = {};
-    selectDatas.missionStatus = 3;
 
     layui.use('element', function () {
         var element = layui.element;
@@ -21,42 +10,12 @@ $(window).ready(function() {
         });
     });
 
-    layui.use('form', function () {
+    layui.use('form', function(){
         var form = layui.form;
-        var  missionStatus = $.getUrlParam('missionStatus');
-        if (missionStatus==="1") {
-            $("select[name=orderStatus]").val("1");
-            form.render('select');
-        } else if (missionStatus==="0") {
-            $("select[name=orderStatus]").val("0");
-            form.render('select');
-        } else if (missionStatus==="2") {
-            $("select[name=orderStatus]").val("2");
-            form.render('select');
-        } else if (missionStatus==="3") {
-            $("select[name=orderStatus]").val("3");
-            form.render('select');
-        }
-
         //监听提交
         form.on('submit(formSearch)', function (data) {
             var datas = data.field;
-            datas.orderStatus = selectDatas.missionStatus;
-            selectDatas.number = datas.number;
-            var url = "/Admin/Order/searchOrder?missionStatus=" + datas.orderStatus +"&orderNumber=" + datas.number;
-            layui.use('table', function() {
-                var table = layui.table;
-                table.reload('order', {
-                    url: url
-                });
-            });
-            return false;
-        });
-
-        form.on('select(selectStatus)', function(data){
-            selectDatas.missionStatus = data.value;
-
-            var url = "/Admin/Order/searchOrder?missionStatus=" + selectDatas.missionStatus;
+            var url = "/Admin/Notice/searchNotice?title=" + datas.title;
             layui.use('table', function() {
                 var table = layui.table;
                 table.reload('order', {
@@ -68,15 +27,14 @@ $(window).ready(function() {
 
         form.on('submit(formDemo)', function(data){
             var datas = data.field;
-            datas.oilType = $("#addRoleNameSelect option:selected").text();
             $.ajax({
-                url: "/Admin/Oil/addOil",
+                url: "/Admin/Notice/addNotice",
                 type: 'post',
                 dataType: 'json',
                 data: datas,
                 success: function (data, status) {
                     alert("添加成功");
-                    window.location = "/Admin/Index/toOilManage";
+                    window.location = "/Admin/Index/toNoticeManage";
                 },
                 fail: function (err, status) {
                     console.log(err)
@@ -84,6 +42,7 @@ $(window).ready(function() {
             });
             return false;
         });
+
     });
 
     layui.use('table', function(){
@@ -91,22 +50,18 @@ $(window).ready(function() {
         //第一个实例
         table.render({
             elem: '#order'
-            ,height: 515
-            ,width: 950
-            ,limit: 11
-            ,url: '/Admin/Order/searchOrder' //数据接口
+            ,width: 745
+            ,height: 354
+            ,limit: 8
+            ,url: '/Admin/Notice/searchNotice' //数据接口
             ,page: true //开启分页
             ,cols: [[ //表头
-                {field: 'number', title: '单号', width:190, sort: true, fixed: 'left'}
-                ,{field: 'driver_number', title: '司机编号', width:190, sort: true, fixed: 'left'}
-                ,{field: 'order_status', title: '状态', width: 80, sort: true, edit: "text"}
-                ,{field: 'rank', title: '排队名次', width:160, edit: "text"}
-                ,{field: 'create_time', title: '开始时间', width:160, edit: "text"}
+                {field: 'title', title: '标题', width:205, sort: true, fixed: 'left', edit: "text"}
+                ,{field: 'content', title: '内容', width:385, sort: true, fixed: 'left',edit: "text"}
                 ,{fixed: 'right', width:150, align:'center', toolbar: '#barDemo'}
             ]]
         });
 
-        //绑定删除和编辑按钮
         table.on('tool(test)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
             var data = obj.data; //获得当前行数据
             var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
@@ -119,7 +74,7 @@ $(window).ready(function() {
                     layer.close(index);
                     //向服务端发送删除指令
                     $.ajax({
-                        url: "/Admin/Order/deleteOrder",
+                        url: "/Admin/Notice/deleteNotice",
                         type: 'post',
                         dataType: 'json',
                         data: data,
@@ -132,20 +87,18 @@ $(window).ready(function() {
                         }
                     });
                 });
-            } else if(layEvent === 'edit'){ //编辑
+            }else if(layEvent === 'edit') { //编辑
                 //do something
-                if(editData != ""){
-                    if(editData.data.id === data.id) {
-                        alert(editData.data.number);
-
+                if (editData != "") {
+                    if (editData.data.id === data.id) {
                         $.ajax({
-                            url: "/Admin/Order/editOrder",
+                            url: "/Admin/Notice/editNotice",
                             type: 'post',
                             dataType: 'json',
                             data: {
-                                "field" : editData.field,
-                                "value" : editData.value,
-                                "id"    : editData.data.id
+                                "field": editData.field,
+                                "value": editData.data,
+                                "id": editData.data.id
                             },
                             success: function (data, status) {
                                 alert("修改成功");
@@ -157,7 +110,6 @@ $(window).ready(function() {
                         });
                     }
                 }
-
             }
         });
         table.on('edit(test)', function(obj){ //注：edit是固定事件名，test是table原始容器的属性 lay-filter="对应的值"
@@ -166,13 +118,6 @@ $(window).ready(function() {
             console.log(obj.data); //所在行的所有相关数据
             editData = obj;
         });
-
     });
 
-    $("#excel").click(function () {
-        var startTime = $("input[name='startTime']").val();
-        var endTime = $("input[name='endTime']").val();
-
-        window.location = "/Admin/Order/expUser?missionStatus=" + selectDatas.missionStatus +"&orderNumber=" + selectDatas.number +"&startTime=" + startTime + "&endTime=" + endTime;
-    });
 });

@@ -43,6 +43,13 @@
             </dl>
         </li><?php endif; ?>
 
+    <?php if(in_array(($permissions[0][manage_notice]), explode(',',"1"))): ?><li class="layui-nav-item">
+            <a href="javascript:;">公告内容信息</a>
+            <dl class="layui-nav-child">
+                <dd><a href="/Admin/Index/toNoticeManage">公告内容管理</a></dd>
+            </dl>
+        </li><?php endif; ?>
+
     <?php if(in_array(($permissions[0][manage_role]), explode(',',"1"))): ?><li class="layui-nav-item">
             <a href="javascript:;">角色权限</a>
             <dl class="layui-nav-child">

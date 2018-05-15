@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50721
 File Encoding         : 65001
 
-Date: 2018-05-15 01:36:41
+Date: 2018-05-15 17:11:09
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -54,7 +54,7 @@ CREATE TABLE `t_log` (
   `delete_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `status` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_log
@@ -80,6 +80,11 @@ INSERT INTO `t_log` VALUES ('19', 'admin', '添加了编号为：201805151236394
 INSERT INTO `t_log` VALUES ('20', 'admin', '删除了编号为：20180515123639457659  油名名为：三甲苯', '2018-05-15 12:40:13', '0000-00-00 00:00:00', '1');
 INSERT INTO `t_log` VALUES ('21', 'admin', '添加了编号为：20180515124125977120  油名为：ss', '2018-05-15 12:41:25', '0000-00-00 00:00:00', '1');
 INSERT INTO `t_log` VALUES ('22', 'admin', '删除了编号为：20180515124125977120  油名名为：ss', '2018-05-15 12:41:32', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_log` VALUES ('23', 'admin', '添加了标题为：213  的公告', '2018-05-15 09:25:41', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_log` VALUES ('24', 'admin', '添加了标题为：\'43\'的公告', '2018-05-15 09:35:18', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_log` VALUES ('25', 'admin', '删除了标题为：43的公告', '2018-05-15 09:36:04', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_log` VALUES ('26', 'admin', '修改公告标题：“213”的信息', '2018-05-15 09:40:45', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_log` VALUES ('27', 'admin', '修改公告标题：“2131”的信息', '2018-05-15 09:40:54', '0000-00-00 00:00:00', '1');
 
 -- ----------------------------
 -- Table structure for t_manager
@@ -102,6 +107,24 @@ CREATE TABLE `t_manager` (
 -- ----------------------------
 INSERT INTO `t_manager` VALUES ('1', 'admin', '202cb962ac59075b964b07152d234b70', '1', '2018-05-11 19:19:12', '0000-00-00 00:00:00');
 INSERT INTO `t_manager` VALUES ('5', 'xiaoming', '202cb962ac59075b964b07152d234b70', '4', '2018-05-11 09:05:57', '2018-05-12 04:42:43');
+
+-- ----------------------------
+-- Table structure for t_notice
+-- ----------------------------
+DROP TABLE IF EXISTS `t_notice`;
+CREATE TABLE `t_notice` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(30) NOT NULL,
+  `content` varchar(255) NOT NULL,
+  `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_notice
+-- ----------------------------
+INSERT INTO `t_notice` VALUES ('1', '2131', 'dsfsdf21661', '2018-05-15 09:25:41', '2018-05-15 09:40:54');
 
 -- ----------------------------
 -- Table structure for t_oil
@@ -134,6 +157,7 @@ CREATE TABLE `t_order` (
   `number` varchar(20) NOT NULL,
   `order_status` tinyint(4) NOT NULL DEFAULT '0',
   `driver_id` int(11) NOT NULL,
+  `oil_id` int(11) DEFAULT NULL,
   `rank` int(11) NOT NULL COMMENT '''0'' 表示在大门内，非零表示在大门外',
   `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `delete_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -141,14 +165,16 @@ CREATE TABLE `t_order` (
   `status` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `o_u` (`driver_id`),
-  CONSTRAINT `o_d` FOREIGN KEY (`driver_id`) REFERENCES `t_driver` (`id`)
+  KEY `o_o` (`oil_id`),
+  CONSTRAINT `o_d` FOREIGN KEY (`driver_id`) REFERENCES `t_driver` (`id`),
+  CONSTRAINT `o_o` FOREIGN KEY (`oil_id`) REFERENCES `t_oil` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_order
 -- ----------------------------
-INSERT INTO `t_order` VALUES ('1', '42354235', '0', '1', '1', '2018-05-15 01:31:16', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
-INSERT INTO `t_order` VALUES ('2', '87564523', '1', '2', '2', '2018-05-15 01:31:19', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('1', '42354235', '0', '1', '1', '1', '2018-05-15 01:31:16', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('2', '87564523', '1', '2', '3', '2', '2018-05-15 01:31:19', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
 
 -- ----------------------------
 -- Table structure for t_role
@@ -180,70 +206,6 @@ INSERT INTO `t_role` VALUES ('2', '门卫', '0', '0', '0', '1', '1', '0', '1', '
 INSERT INTO `t_role` VALUES ('3', '保安', '0', '0', '0', '0', '0', '1', '0', '0000-00-00 00:00:00', '2018-05-11 09:18:07', '0000-00-00 00:00:00', '1');
 INSERT INTO `t_role` VALUES ('4', '扫地', '1', '0', '1', '1', '1', '0', '0', '0000-00-00 00:00:00', '2018-05-11 09:33:42', '0000-00-00 00:00:00', '1');
 INSERT INTO `t_role` VALUES ('5', '老师', '1', '1', '1', '1', '1', '1', '1', '2018-05-12 05:05:40', '2018-05-12 04:59:32', '2018-05-12 05:06:18', '0');
-
--- ----------------------------
--- Table structure for t_vehicle
--- ----------------------------
-DROP TABLE IF EXISTS `t_vehicle`;
-CREATE TABLE `t_vehicle` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `number` varchar(20) NOT NULL,
-  `license_plate` varchar(7) NOT NULL,
-  `delete_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `update_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `status` tinyint(4) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `v_u` (`user_id`),
-  CONSTRAINT `v_u` FOREIGN KEY (`user_id`) REFERENCES `t_driver` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of t_vehicle
--- ----------------------------
-
--- ----------------------------
--- Table structure for t_vehicle_oil
--- ----------------------------
-DROP TABLE IF EXISTS `t_vehicle_oil`;
-CREATE TABLE `t_vehicle_oil` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `vehicle_id` int(11) NOT NULL,
-  `oil_id` int(11) NOT NULL,
-  `create_time` datetime NOT NULL,
-  `update_time` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `vo_v` (`vehicle_id`),
-  KEY `vo_o` (`oil_id`),
-  CONSTRAINT `vo_o` FOREIGN KEY (`oil_id`) REFERENCES `t_oil` (`id`),
-  CONSTRAINT `vo_v` FOREIGN KEY (`vehicle_id`) REFERENCES `t_vehicle` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of t_vehicle_oil
--- ----------------------------
-
--- ----------------------------
--- Table structure for t_vehicle_user
--- ----------------------------
-DROP TABLE IF EXISTS `t_vehicle_user`;
-CREATE TABLE `t_vehicle_user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `vehicle_id` int(11) NOT NULL,
-  `create_time` datetime NOT NULL,
-  `update_time` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `v_q` (`vehicle_id`) USING BTREE,
-  KEY `vu_u` (`user_id`),
-  CONSTRAINT `vu_u` FOREIGN KEY (`user_id`) REFERENCES `t_driver` (`id`),
-  CONSTRAINT `vu_v` FOREIGN KEY (`vehicle_id`) REFERENCES `t_vehicle` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of t_vehicle_user
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for t_wechat
