@@ -68,11 +68,22 @@
 
 <div class="allContent">
     <form class="layui-form" action="" method="post">
+
+        <div class="layui-input-inline">
+            <label class="layui-form-label">车辆车牌号</label>
+            <div class="layui-input-block">
+                <select name="vehicle" lay-verify="required" id="selectVehicle">
+                    <option value="">点击选择车辆</option>
+                    <?php if(is_array($vehicleName)): foreach($vehicleName as $key=>$vo): ?><option value="<?php echo ($key); ?>"><?php echo ($vo['license_plate']); ?></option><?php endforeach; endif; ?>
+                </select>
+            </div>
+        </div>
+
         <div class="layui-input-inline">
             <label class="layui-form-label">状态</label>
             <div class="layui-input-block">
-                <select name="oilType" lay-verify="required" id="addRoleNameSelect">
-                    <option value="">点击选择车状态</option>
+                <select name="oilType" lay-verify="required" id="addStatusSelect" lay-filter="status">
+                    <option value="">点击选择车辆状态</option>
                     <option value="0">已装</option>
                     <option value="1">装车中</option>
                     <option value="2">厂区内待装</option>
@@ -84,7 +95,17 @@
         <div class="layui-form-item toInline">
             <label class="layui-form-label">油名</label>
             <div class="layui-input-block">
-                <input type="text" name="name"  required lay-verify="required" autocomplete="off" class="layui-input" >
+                <select name="oil" lay-verify="required" id="selectOil">
+                    <option value="">点击选择油类</option>
+                    <?php if(is_array($oilName)): foreach($oilName as $key=>$vo): ?><option value="<?php echo ($key); ?>"><?php echo ($vo); ?></option><?php endforeach; endif; ?>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item toInline rank">
+            <label class="layui-form-label">排名</label>
+            <div class="layui-input-block">
+                <input type="text" name="rank" value="0" id="inputRank" required lay-verify="required" autocomplete="off" class="layui-input" >
             </div>
         </div>
 
@@ -110,20 +131,15 @@
         </div>
 
         <div class="layui-form-item toInline">
-            <label class="layui-form-label">订单号</label>
+            <label class="layui-form-label">单号</label>
             <div class="layui-input-inline">
-                <input type="text" name="number"  placeholder="请输入订单号" autocomplete="off" class="layui-input">
+                <input type="text" name="number" placeholder="请输入单号" autocomplete="off" class="layui-input">
             </div>
         </div>
 
         <div class="layui-form-item  toInline">
             <div class="layui-input-inline">
                 <button class="layui-btn" lay-submit lay-filter="formSearch" id="search">搜索</button>
-            </div>
-        </div>
-        <div class="layui-form-item outExcel">
-            <div class="layui-input-inline">
-                <a href="javascript:;" id="excel" class="layui-btn layui-btn-normal toInline excel">导出excel</a>
             </div>
         </div>
     </form>

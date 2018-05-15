@@ -30,7 +30,7 @@
     <?php if(in_array(($permissions[0][manage_order]), explode(',',"1"))): ?><li class="layui-nav-item" >
             <a href="javascript:;">车队列表管理</a>
             <dl class="layui-nav-child">
-                <dd><a href="/Admin/Index/toOrder" class="layui-this">添加车辆</a></dd>
+                <dd><a href="/Admin/Index/toOrder">添加车辆</a></dd>
                 <dd><a href="/Admin/Index/toOrderManage">排队管理</a></dd>
             </dl>
         </li><?php endif; ?>

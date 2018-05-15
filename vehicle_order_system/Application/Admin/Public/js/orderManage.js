@@ -8,6 +8,7 @@
 })(jQuery);
 
 $(window).ready(function() {
+    $(".rank").hide();
     //全局变量
     var editData = "";
     var selectDatas = {};
@@ -38,12 +39,22 @@ $(window).ready(function() {
             form.render('select');
         }
 
+        form.on('select(status)', function(data){
+            //console.log(data.elem); //得到select原始DOM对象
+            console.log(data.value); //得到被选中的值
+            //console.log(data.othis); //得到美化后的DOM对象
+            if (data.value == 3) {
+                $(".rank").show();
+            } else {
+                $(".rank").hide();
+                $("#inputRank").val(0);
+            }
+        });
+
         //监听提交
         form.on('submit(formSearch)', function (data) {
             var datas = data.field;
-            datas.orderStatus = selectDatas.missionStatus;
-            selectDatas.number = datas.number;
-            var url = "/Admin/Order/searchOrder?missionStatus=" + datas.orderStatus +"&orderNumber=" + datas.number;
+            var url = "/Admin/Order/searchOrder?missionStatus=3&orderNumber=" + datas.number;
             layui.use('table', function() {
                 var table = layui.table;
                 table.reload('order', {
@@ -68,15 +79,18 @@ $(window).ready(function() {
 
         form.on('submit(formDemo)', function(data){
             var datas = data.field;
-            datas.oilType = $("#addRoleNameSelect option:selected").text();
+            datas.oil = $("#selectOil option:selected").text();
+            datas.vehicle = $("#selectVehicle option:selected").text();
+            datas.status = $("#addStatusSelect option:selected").val();
+            alert(datas.status);
             $.ajax({
-                url: "/Admin/Oil/addOil",
+                url: "/Admin/Order/makeOrder",
                 type: 'post',
                 dataType: 'json',
                 data: datas,
                 success: function (data, status) {
                     alert("添加成功");
-                    window.location = "/Admin/Index/toOilManage";
+                    window.location = "/Admin/Index/toOrderManage";
                 },
                 fail: function (err, status) {
                     console.log(err)
@@ -84,6 +98,7 @@ $(window).ready(function() {
             });
             return false;
         });
+
     });
 
     layui.use('table', function(){
@@ -92,15 +107,17 @@ $(window).ready(function() {
         table.render({
             elem: '#order'
             ,height: 515
-            ,width: 950
+            ,width: 1400
             ,limit: 11
             ,url: '/Admin/Order/searchOrder' //数据接口
             ,page: true //开启分页
             ,cols: [[ //表头
                 {field: 'number', title: '单号', width:190, sort: true, fixed: 'left'}
                 ,{field: 'driver_number', title: '司机编号', width:190, sort: true, fixed: 'left'}
-                ,{field: 'order_status', title: '状态', width: 80, sort: true, edit: "text"}
-                ,{field: 'rank', title: '排队名次', width:160, edit: "text"}
+                ,{field: 'order_status', title: '状态', width: 160, sort: true, edit: "text"}
+                ,{field: 'rank', title: '排队名次', width:160, sort: true,edit: "text"}
+                ,{field: 'oil_name', title: '油名', width:160, edit: "text"}
+                ,{field: 'license_plate', title: '车辆车牌号', width:160, edit: "text"}
                 ,{field: 'create_time', title: '开始时间', width:160, edit: "text"}
                 ,{fixed: 'right', width:150, align:'center', toolbar: '#barDemo'}
             ]]

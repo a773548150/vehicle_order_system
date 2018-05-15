@@ -18,30 +18,22 @@ class OrderModel extends BaseModel {
 
     public function makeOrder() {
         $m = M("order");
-        $G = M("goods");
-        $C = A("Order");
+        $D = M("driver");
+        $O = M("oil");
         $L = A("Log");
 
-        $data['number'] = $C->orderNumber();
-        $data['udid'] = $C->orderNumber();
-        $data['out_destination'] = trim(I('post.destination'));
-        $goods["name"] = trim(I('post.goodsName'));
         $nowTime = date("Ymdhis");
         $sixRand = rand('100000', '999999');
-        $goods["number"] = $nowTime.$sixRand;
-        $goods['quantity'] = trim(I('post.number'));
-        $goodsId = $G->data($goods)->add();
-        $data['goods_id'] = $goodsId;
-        $data['goods_quantity'] = trim(I('post.number'));
-        $data['start_time'] = trim(I('post.startTime'));
+
+        $data['driver_id'] = $D->where(array("license_plate" => I('post.vehicle')))->getField("id");
+        $data['oil_id'] = $O->where(array("name" => I('post.oil')))->getField("id");
+        $data['rank'] = I('post.rank');
+        $data['number'] = $nowTime.$sixRand;
+        $data['order_status'] = I("post.status");
         $data['create_time'] = date("Y-m-d h:i:s");
         $result = $m->data($data)->add();
-        if($result){
-            $insertData = array();
-            $insertData["table_id"] = $result;
-            $insertData["table_name"] = "order";
-            $L->insert($insertData);
-        }
+
+        $L->insert("添加预约车辆车牌为：".I('post.vehicle'));
         return $result;
     }
 
@@ -54,6 +46,7 @@ class OrderModel extends BaseModel {
             foreach ($value as $key2 => $value2){
                 if ($key2 == "driver_id" && $key2 != null) {
                     $result[$key]["driver_number"] = $D->where(array("id"=>$value2))->getField("number");
+                    $result[$key]["license_plate"] = $D->where(array("id"=>$value2))->getField("license_plate");
                 }
             }
         }
@@ -65,6 +58,23 @@ class OrderModel extends BaseModel {
                 }
             }
         }
+
+        foreach ($result as $key => $value) {
+            foreach ($value as $key2 => $value2){
+                if ($key2 == "order_status" && $key2 != null) {
+                    if($result[$key]["order_status"] == 0) {
+                        $result[$key]["order_status"] = "已装";
+                    } else if($result[$key]["order_status"] == 1) {
+                        $result[$key]["order_status"] = "装车中";
+                    } else if($result[$key]["order_status"] == 2) {
+                        $result[$key]["order_status"] = "厂区内待装";
+                    }else if($result[$key]["order_status"] == 3) {
+                        $result[$key]["order_status"] = "厂外待装";
+                    }
+                }
+            }
+        }
+
         return $result;
     }
 
@@ -97,13 +107,22 @@ class OrderModel extends BaseModel {
         }
     }
 
+    public function searchVehicle() {
+    $m = M("order");
+    $data['license_plate'] = array('LIKE', "%".I('get.license_plate')."%");
+    $data['status'] = 1;
+    $page = I('get.page');
+    $limit = I('get.limit');
+    $result = $m->where(array("status"=>1))->order('id desc')->page($page, $limit)->select();
+    $result = $this->findForeign($result);
+    return $result;
+}
+
     public function deleteOrder() {
         $m = M("order");
         $L = A("Log");
         $data["id"] = I("post.id");
-        $data2['delete_time'] = date("Y-m-d h:i:s");
-        $data2["status"] = 0;
-        $result = $m->where($data)->save($data2);
+        $result = $m->delete($data["id"]);
         $L->insert("删除了单号为：".I("post.number")."  的订单");
         return $result;
     }
@@ -127,4 +146,18 @@ class OrderModel extends BaseModel {
         return $res;
     }
 
+    public function selectAllVehicle() {
+        $D = M();
+        $sql = "SELECT * FROM t_driver d left JOIN t_order o ON d.id=o.driver_id  where order_status is null and  d.`status` = 1";
+        $result = $D->query($sql);
+//        var_dump($result);
+        return $result;
+    }
+
+    public function selectAllOil() {
+        $O = M("oil");
+        $result = $O->where(array("status"=>"1"))->getField("name", true);
+//        var_dump($result);die;
+        return $result;
+    }
 }

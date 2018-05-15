@@ -19,18 +19,6 @@ class OrderController extends BaseController {
 //        $this->assign('goodsName', $res);
 //    }
 
-    //创建随机订单编号
-    public function orderNumber() {
-        $nowTime = date("Ymdhis");
-        $sixRand = rand('100000', '999999');
-        return $nowTime.$sixRand;
-    }
-
-    //创建随机商品编号
-    public function goodsNumber() {
-        $nowTime = date("Ymdhis");
-        return "goods".$nowTime;
-    }
 
     //生成订单
     public function makeOrder() {
@@ -39,6 +27,17 @@ class OrderController extends BaseController {
         echo $res;
     }
 
+    public function selectAllVehicle() {
+        $m = D("Order");
+        $res = $m->selectAllVehicle();
+        $this->assign('vehicleName', $res);
+    }
+
+    public function selectAllOil() {
+        $m = D("Order");
+        $res = $m->selectAllOil();
+        $this->assign('oilName', $res);
+    }
 //    public function searchType() {
 //        $m = D("Order");
 //        $res = $m->searchType();
@@ -54,6 +53,14 @@ class OrderController extends BaseController {
         echo $rs;
 //        $this->assign('orderMessage', $res);
 //        $this->display("/orderManager");
+    }
+
+    public function searchVehicle() {
+        $m = D("Order");
+        $res = $m->searchVehicle();
+
+        $rs = json(0,'数据返回成功',1000,$res);
+        echo $rs;
     }
 
     public function deleteOrder() {

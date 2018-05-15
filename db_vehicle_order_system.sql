@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : hiaocong
-Source Server Version : 50721
+Source Server         : localhost
+Source Server Version : 50553
 Source Host           : localhost:3306
 Source Database       : db_vehicle_order_system
 
 Target Server Type    : MYSQL
-Target Server Version : 50721
+Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-05-15 17:11:09
+Date: 2018-05-15 22:54:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,15 +32,17 @@ CREATE TABLE `t_driver` (
   `delete_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `status` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
+  UNIQUE KEY `L_U` (`license_plate`) USING BTREE,
   KEY `W_U` (`wechat_id`),
   CONSTRAINT `W_U` FOREIGN KEY (`wechat_id`) REFERENCES `t_wechat` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_driver
 -- ----------------------------
 INSERT INTO `t_driver` VALUES ('1', '1', '13415', '林晓聪', '13794578316', '粤A13145', '202', '2018-05-14 13:28:49', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
 INSERT INTO `t_driver` VALUES ('2', '2', '58443', '凯', '13794578346', '粤A13759', '203', '2018-05-14 21:55:21', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_driver` VALUES ('3', '3', '58443', '小乔', '13794578378', '粤A25645', '204', '2018-05-14 21:55:21', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
 
 -- ----------------------------
 -- Table structure for t_log
@@ -54,7 +56,7 @@ CREATE TABLE `t_log` (
   `delete_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `status` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_log
@@ -85,6 +87,12 @@ INSERT INTO `t_log` VALUES ('24', 'admin', '添加了标题为：\'43\'的公告
 INSERT INTO `t_log` VALUES ('25', 'admin', '删除了标题为：43的公告', '2018-05-15 09:36:04', '0000-00-00 00:00:00', '1');
 INSERT INTO `t_log` VALUES ('26', 'admin', '修改公告标题：“213”的信息', '2018-05-15 09:40:45', '0000-00-00 00:00:00', '1');
 INSERT INTO `t_log` VALUES ('27', 'admin', '修改公告标题：“2131”的信息', '2018-05-15 09:40:54', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_log` VALUES ('28', 'admin', '添加预约车辆车牌为：粤A13145', '2018-05-15 09:23:32', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_log` VALUES ('29', 'admin', '删除了单号为：20180515092332467492  的订单', '2018-05-15 09:25:28', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_log` VALUES ('30', 'admin', '添加预约车辆车牌为：粤A13759', '2018-05-15 10:00:42', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_log` VALUES ('31', 'admin', '添加预约车辆车牌为：粤A25645', '2018-05-15 10:12:03', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_log` VALUES ('32', 'admin', '删除了单号为：20180515100042427969  的订单', '2018-05-15 10:14:57', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_log` VALUES ('33', 'admin', '添加预约车辆车牌为：粤A13759', '2018-05-15 10:20:05', '0000-00-00 00:00:00', '1');
 
 -- ----------------------------
 -- Table structure for t_manager
@@ -160,21 +168,20 @@ CREATE TABLE `t_order` (
   `oil_id` int(11) DEFAULT NULL,
   `rank` int(11) NOT NULL COMMENT '''0'' 表示在大门内，非零表示在大门外',
   `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `delete_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `update_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `status` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `o_u` (`driver_id`),
   KEY `o_o` (`oil_id`),
   CONSTRAINT `o_d` FOREIGN KEY (`driver_id`) REFERENCES `t_driver` (`id`),
   CONSTRAINT `o_o` FOREIGN KEY (`oil_id`) REFERENCES `t_oil` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_order
 -- ----------------------------
-INSERT INTO `t_order` VALUES ('1', '42354235', '0', '1', '1', '1', '2018-05-15 01:31:16', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
-INSERT INTO `t_order` VALUES ('2', '87564523', '1', '2', '3', '2', '2018-05-15 01:31:19', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_order` VALUES ('3', '20180515092332467492', '0', '1', '1', '0', '2018-05-15 09:23:32', '0000-00-00 00:00:00');
+INSERT INTO `t_order` VALUES ('5', '20180515101203205825', '2', '3', '1', '0', '2018-05-15 10:12:03', '0000-00-00 00:00:00');
+INSERT INTO `t_order` VALUES ('6', '20180515102005203765', '3', '2', '1', '6', '2018-05-15 10:20:05', '0000-00-00 00:00:00');
 
 -- ----------------------------
 -- Table structure for t_role
@@ -231,10 +238,11 @@ CREATE TABLE `t_wechat` (
   `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `update_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_wechat
 -- ----------------------------
 INSERT INTO `t_wechat` VALUES ('1', '1', 'oyur_1GhybMGLZZ5xc1-LxSO39T8', 'HiAoC', '1', 'zh_CN', '揭阳', '广东', '中国', 'http://thirdwx.qlogo.cn/mmopen/6Zzu4IicyEE7ar2kVTlu6ZgPpINE6aslAgWTNIibCMPvDib3LgRFxnnC07kR2aaL9hiau0caichC0zhFweQBDj60objmmuAt7O2DK/132', '1525483135', '0', '0', 'ADD_SCENE_QR_CODE', '0', '', '2018-05-14 13:23:58', '0000-00-00 00:00:00');
 INSERT INTO `t_wechat` VALUES ('2', '1', 'oyur_1GhybMGLZZ5xc1-LxSO39T8', 'kkk', '1', 'zh_CN', '珠海', '广东', '中国', 'http://thirdwx.qlogo.cn/mmopen/6Zzu4IicyEE5xptsib9Kia11eibwQciblhnUEVlyhu4UNK5BMqs47kYbYYG4dlRa8NRhw3iciaybyO2vUGJnB8CYJM2ya2q1gjldx9ib/132', '1525483135', '0', '0', 'ADD_SCENE_QR_CODE', '0', '', '2018-05-14 13:23:58', '0000-00-00 00:00:00');
+INSERT INTO `t_wechat` VALUES ('3', '1', 'oyur_1GhybMGLZZ5xc1-LxSO39T8', 'ggg', '1', 'zh_CN', '惠州', '广东', '中国', 'http://thirdwx.qlogo.cn/mmopen/6Zzu4IicyEE5xptsib9Kia11eibwQciblhnUEVlyhu4UNK5BMqs47kYbYYG4dlRa8NRhw3iciaybyO2vUGJnB8CYJM2ya2q1gjldx9ib/132', '1525483135', '0', '0', 'ADD_SCENE_QR_CODE', '0', '', '2018-05-14 13:23:58', '0000-00-00 00:00:00');

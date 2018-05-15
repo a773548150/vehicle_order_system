@@ -82,6 +82,9 @@ class IndexController extends BaseController {
     public function toOrderManage() {
         if($this->isLogin()) {
             $permissions = A("Role");
+            $m = A("Order");
+            $m->selectAllVehicle();
+            $m->selectAllOil();
             $permissions->findPermissions();
             $this->display("/orderManage");
         }
