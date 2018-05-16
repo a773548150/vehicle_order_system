@@ -16,4 +16,10 @@ class DriverController extends BaseController {
         $rs = $m->showDriverMessage();
         $this->assign('data', $rs);
     }
+
+    public function addDriver() {
+        $m = D("driver");
+        $rs = $m->addDriver();
+        echo $rs;
+    }
 }

@@ -19,6 +19,12 @@ function json($code,$msg="",$count,$data=array()){
     exit;
 }
 
+//创建json格式
+function json2($data){
+    //输出json
+    echo json_encode($data);
+    exit;
+}
 //导出excel
 function exportExcel($expTitle,$expCellName,$expTableData){
     $xlsTitle = iconv('utf-8', 'gb2312', $expTitle);//文件名称

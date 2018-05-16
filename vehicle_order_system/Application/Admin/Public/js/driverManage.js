@@ -68,7 +68,7 @@ $(window).ready(function() {
         table.render({
             elem: '#order'
             ,height: 515
-            ,width: 905
+            ,width: 750
             ,limit: 11
             ,url: '/Admin/driver/searchDriver' //数据接口
             ,page: true //开启分页
@@ -77,7 +77,6 @@ $(window).ready(function() {
                 ,{field: 'nickname', title: '微信昵称', width:190, sort: true, fixed: 'left'}
                 ,{field: 'name', title: '真实姓名', width:160, edit: "text"}
                 ,{field: 'mobile_number', title: '手机号码', width:120, sort: true, edit: "text"}
-                ,{field: 'license_plate', title: '车辆车牌', width: 177, edit: "text"}
                 ,{field: 'company', title: '隶属公司名', width: 150, sort: true, edit: "text"}
             ]]
             ,done: function(res, curr, count) {

@@ -117,7 +117,6 @@ $(window).ready(function() {
                 ,{field: 'order_status', title: '状态', width: 160, sort: true, edit: "text"}
                 ,{field: 'rank', title: '排队名次', width:160, sort: true,edit: "text"}
                 ,{field: 'oil_name', title: '油名', width:160, edit: "text"}
-                ,{field: 'license_plate', title: '车辆车牌号', width:160, edit: "text"}
                 ,{field: 'create_time', title: '开始时间', width:160, edit: "text"}
                 ,{fixed: 'right', width:150, align:'center', toolbar: '#barDemo'}
             ]]

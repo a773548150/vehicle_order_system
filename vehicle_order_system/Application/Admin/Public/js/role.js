@@ -47,8 +47,7 @@ $(window).ready(function() {
             ,cols: [[ //表头
                 {field: 'name', title: '角色名', width:190, sort: true, fixed: 'left'}
                 ,{field: 'manage_order', title: '订单管理', width:200, edit: "text"}
-                ,{field: 'manage_user', title: '司机管理', width:200, edit: "text"}
-                ,{field: 'manage_vehicle', title: '车辆管理', width:200, edit: "text"}
+                ,{field: 'manage_driver', title: '司机管理', width:200, edit: "text"}
                 ,{field: 'manage_role', title: '角色管理', width:200, edit: "text"}
                 ,{field: 'manage_oil', title: '油类管理', width:200, edit: "text"}
                 ,{field: 'manage_notice', title: '公告内容管理', width:200, edit: "text"}

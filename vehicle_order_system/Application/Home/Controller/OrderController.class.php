@@ -38,6 +38,14 @@ class OrderController extends BaseController {
         echo $rs;
     }
 
+    public function defaultInput() {
+        $m = D("Order");
+        $rs = $m->defaultInput();
+        $rs = json2($rs);
+        echo $rs;
+    }
+
+
     //查询个人进行中订单
     public function selectPersonalUnFinish() {
         $m = D("Order");

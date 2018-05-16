@@ -46,7 +46,6 @@ class OrderModel extends BaseModel {
             foreach ($value as $key2 => $value2){
                 if ($key2 == "driver_id" && $key2 != null) {
                     $result[$key]["driver_number"] = $D->where(array("id"=>$value2))->getField("number");
-                    $result[$key]["license_plate"] = $D->where(array("id"=>$value2))->getField("license_plate");
                 }
             }
         }

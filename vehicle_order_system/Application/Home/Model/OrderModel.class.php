@@ -92,28 +92,49 @@ class OrderModel extends BaseModel {
         return $result;
     }
 
+
+    public function findRank() {
+        $m = M("order");
+        $result = $m->where(array("order_status" => 3))->getField("rank", true);
+        return count($result);
+    }
     public function makeOrder() {
         $m = M("order");
-        $V = M("vehicle");
-        $D = M("driver");
-        $vehicle["license_plate"] = I("post.license_plate");
-        $driver["mobile_number"] = $_SESSION['username1'];
-        $vehicle_id = $V->where($vehicle)->getField("id");
-        $driver_id = $D->where($driver)->getField("id");
-        $number["number"] = I("post.number");
-
-        $data["vehicle_id"] = $vehicle_id;
+        $O = M("oil");
+       // $driver = openid;
+        $driver_id = 1;
+        $license_plate = strtoupper(trim(I("post.license_plate")));
+        $oil_id = $O->where(array("name" => I("post.OilName")))->getField("id");
+        $rank = $this->findRank() + 1;
         $data["driver_id"] = $driver_id;
-        $data["pick_up_order"] = I("post.pick_up_order");
-        $data["pick_up_time"] = I("post.pick_up_time");
-        $data["pick_up_quantity"] = I("post.pick_up_quantity");
-        $data["contract_number"] = I("post.contract_number");
-        $data["out_of_stock_message"] = I("post.out_of_stock_message");
-        $data["closing_unit"] = I("post.closing_unit");
-
-        $result = $m->where($number)->save($data);
-
+        $data["oil_id"] = $oil_id;
+        $data["rank"] = $rank;
+        $data["license_plate"] = "粤A".$license_plate;
+        $nowTime = date("Ymdhis");
+        $sixRand = rand('100000', '999999');
+        $data["number"] = $nowTime.$sixRand;
+        $data["order_status"] = 3;
+        $data['create_time'] = date("Y-m-d h:i:s");
+        $result = $m->data($data)->add();
         return $result;
+    }
+
+    public function defaultInput() {
+//        $m = M("order");
+//        $W = M("wechat");
+//        $D = M("driver");
+
+        $openid = "oyur_1GhybMGLZZ5xc1-LxSO39T8";
+        $default = M();
+        $sql = "select o.license_plate, d.company from t_order o LEFT JOIN t_driver d on o.driver_id = d.id LEFT JOIN t_wechat w on d.wechat_id = w.id where o.`status`=1 and d.`status`=1 and w.openid = \"{$openid}\" order by o.create_time DESC LIMIT 0, 1";
+        $result = $default->query($sql);
+        return $result;
+
+//        $wechat_id = $W->where($data1)->getField("id");
+//        $data2["wechat_id"] = $wechat_id;
+//        $driver_id = $D->where($data2)->getField("id");
+//        $data3["driver_id"] = $driver_id;
+//        $result = $m->where($data3)->getField("license_plate, ");
     }
 
     public function selectPersonalUnFinish() {

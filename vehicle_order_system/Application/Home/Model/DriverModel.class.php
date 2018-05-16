@@ -10,30 +10,6 @@ namespace Home\Model;
 
 class DriverModel extends BaseModel {
 
-    public function login(){
-        $m = M("driver");
-        $data["mobile_number"] = trim(I('post.mobile_number'));
-        $data["password"] = md5(trim(I('post.password')));
-        $result = $m->where($data)->getField("head_path");
-        return $result;
-    }
-
-    public function alertPassword() {
-        $m = M("driver");
-        $data['mobile_number'] = I('post.mobile_number');
-        $data['password'] = md5(I('post.oldPassword'));
-        $result = $m->where($data)->getField('id');
-        if ($result) {
-            $data2['password'] = md5(I('post.newPassword'));
-            $result2 = $m->where(array('id'=>$result))->save($data2);
-            if ($result2 === 1) {
-                return 1;
-            }
-        } else {
-            return 2; //密码错误
-        }
-    }
-
     public function uploadProfilePhoto() {
         $m = M("driver");
         $file = $_FILES;
@@ -50,6 +26,32 @@ class DriverModel extends BaseModel {
         $m = M("driver");
         $data["mobile_number"] = $_SESSION['username1'];
         $result = $m->where($data)->select();
+        return $result;
+    }
+
+    public function addDriver() {
+        $m = M("driver");
+        $W = M("wechat");
+        $openid = "oyur_1GhybMGLZZ5xc1-LxSO39T8";
+        $wechat_id = $W->where(array("openid" => $openid))->getField("id");
+        $ifExist = $m->where(array("wechat_id" => $wechat_id))->select();
+
+        $nowTime = date("Ymdhis");
+        $sixRand = rand('100000', '999999');
+        $data["number"] = $nowTime.$sixRand;
+        $data["wechat_id"] = $wechat_id;
+        $data["name"] = I("post.name");
+        $data["mobile_number"] = I("post.mobile_number");
+        $data["company"] = I("post.company");
+
+        if($ifExist) {
+            $data['update_time'] = date("Y-m-d h:i:s");
+            $result = $m->where(array("wechat_id" => $wechat_id))->save($data);
+        } else {
+            $data['create_time'] = date("Y-m-d h:i:s");
+            $result = $m->data($data)->add();
+        }
+
         return $result;
     }
 }
