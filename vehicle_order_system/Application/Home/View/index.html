@@ -21,7 +21,7 @@
 </style> -->
 <body>
 		<div id="main">
-			<div id="box" class="box" v-show="boxDp">
+			<div id="box" class="box">
 			    <div id="wrap" class="wrap">
 			        <div id="start" class="start">
 			            <span>告示：</span>请把微信姓名改成真实姓名
@@ -34,26 +34,24 @@
 				<div class="search">
 					<div class="searchCon">
 						<!-- <span class="sx" @click="sxBtn">筛选</span> -->
-						<input type="text" placeholder="请输入你想搜索的内容" class="weui-input">
-						<span class="icon-search"></span>
+						<input type="text" placeholder="请输入你想搜索的内容" class="weui-input" v-model="searchData">
+						<span class="icon-search" v-on:click="submit"></span>
 						<div class="refresh">
-							<span class="icon-refresh"></span>
+							<span class="icon-refresh" v-on:click="refresh"></span>
 						</div>
 					</div>
 				</div>
 
 				<div class="search" >
 					<div class="searchCon-right">
-						<select id="sel" >
-							<option>油品类</option>
-							<option>化工类</option>
+						<select id="sel" @change="selectVal">
+							<option v-for="item in selects">{{ item.value }}</option>
 						</select>
 					</div>
 					<div class="searchCon-right">
-						<select id="sel"  v-model="proName"  >
+						<select id="sel"  @change="selectOilName">
 							<option disabled="disabled">请选择类型</option>
-							<option >二甲苯</option>
-							<option >粗甲苯</option>
+							<option v-for="item in oilName">{{ item }}</option>
 						</select>
 					</div>
 				</div>
@@ -61,21 +59,24 @@
 
 			</div>
 			<div class="list" style="height:6.5rem">
-				<div class="line">
-					<span class="num numIng" >1</span>
-						<span class="chepai">粤AE86</span>
-						<span class="statu ing" >正在装</span>
+					<div class="line">
+					<span class="num numIng" v-bind:class="{  numStop: isStop }">1</span>
+						<span class="chepai">{{ loading }}</span>
+						<span class="statu ing" v-bind:class="{  stop: isStop }">正在装</span>
 					</div>
 					<div class="line">
-					<span class="num numCq" >2</span>
-						<span class="chepai">粤BE86</span>
-						<span class="statu cq" >厂区待装</span>
+					<span class="num numCq"  v-bind:class="{  numStop: isStop }">2</span>
+						<span class="chepai">{{ factoryArea }}</span>
+						<span class="statu cq" v-bind:class="{  stop: isStop }">厂区待装</span>
 					</div>
-					<div class="line">
-					<span class="num" >3</span>
-						<span class="chepai">粤CE86</span>
-						<span class="statu" >厂外待装</span>
-				</div>
+
+					<div v-for="item in factoryOut">
+						<div class="line">
+							<span class="num"  v-bind:class="{  numStop: isStop }">{{ item[1] }}</span>
+							<span class="chepai">{{ item[0] }}</span>
+							<span class="statu" v-bind:class="{  stop: isStop }">厂外待装</span>
+						</div>
+					</div>
 			</div>
 
 			<!-- <div class="list" v-else>
@@ -98,10 +99,11 @@
 					<p>个人中心</p>
 				</a>
 			</div>
-</div>
+	</div>
 </body>
-	<script type="text/javascript" src="__ROOT__/Application/Home/View/js/vue.min.js"></script>
+	<script type="text/javascript" src="__ROOT__/Application/Home/View/js/vue.js"></script>
 	<script src="__ROOT__/Application/Home/View/js/jquery.min weui.js"></script>
     <script src="__ROOT__/Application/Home/View/js/jquery-weui.min.js"></script>
+    <script src="__ROOT__/Application/Home/View/js/index.js"></script>
 
 </html>

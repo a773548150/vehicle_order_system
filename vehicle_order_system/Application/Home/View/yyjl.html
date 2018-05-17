@@ -15,62 +15,40 @@
 </head>
 <body>
 	<div id="main">
-		<div class="line">
-			<div class="lineTop">
-				<span class="time">2018-05-11</span>
-				<span class="statu ing">正在装</span>
+		<div v-for="item in message">
+			<div class="line">
+				<div class="lineTop">
+					<span class="time">{{ item.create_time }}</span>
+					<span class="statu" v-bind:class="{ing: item.isIng, cqdz: item.isCq, finish: item.isFinish }">{{ item.order_status }}</span>
 
-			</div>
-			<div class="lineCon">
-				<span class="lineCon-left">油品类型</span>
-				<span class="lineCon-right">油品类</span>
-			</div>
-			<div class="lineCon">
-				<span class="lineCon-left">车牌号码</span>
-				<span class="lineCon-right">粤AE86</span>
-			</div>
-			<div class="lineCon">
-				<span class="lineCon-left">公司名称</span>
-				<span class="lineCon-right">测试公司</span>
-			</div>
-			<div class="lineCon">
-				<span class="lineCon-left">真实姓名</span>
-				<span class="lineCon-right">测试者</span>
-			</div>
-			<div class="lineCon">
-				<span class="lineCon-left">联系电话</span>
-				<span class="lineCon-right">181026601231</span>
-			</div>
-		</div>
-		<div class="line">
-			<div class="lineTop">
-				<span class="time">2018-05-10</span>
-				<span class="statu">厂外待装</span>
-
-			</div>
-			<div class="lineCon">
-				<span class="lineCon-left">油品类型</span>
-				<span class="lineCon-right">油品类</span>
-			</div>
-			<div class="lineCon">
-				<span class="lineCon-left">车牌号码</span>
-				<span class="lineCon-right">粤BE86</span>
-			</div>
-			<div class="lineCon">
-				<span class="lineCon-left">公司名称</span>
-				<span class="lineCon-right">测试公司</span>
-			</div>
-			<div class="lineCon">
-				<span class="lineCon-left">真实姓名</span>
-				<span class="lineCon-right">测试者1</span>
-			</div>
-			<div class="lineCon">
-				<span class="lineCon-left">联系电话</span>
-				<span class="lineCon-right">181026601231</span>
+				</div>
+				<div class="lineCon">
+					<span class="lineCon-left">油品类型</span>
+					<span class="lineCon-right">{{ item.type }}</span>
+				</div>
+				<div class="lineCon">
+					<span class="lineCon-left">车牌号码</span>
+					<span class="lineCon-right">{{ item.license_plate }}</span>
+				</div>
+				<div class="lineCon">
+					<span class="lineCon-left">公司名称</span>
+					<span class="lineCon-right">{{ item.company }}</span>
+				</div>
+				<div class="lineCon">
+					<span class="lineCon-left">真实姓名</span>
+					<span class="lineCon-right">{{ item.name }}</span>
+				</div>
+				<div class="lineCon">
+					<span class="lineCon-left">联系电话</span>
+					<span class="lineCon-right">{{ item.mobile_number }}</span>
+				</div>
 			</div>
 		</div>
 	</div>
 </body>
 <script type="text/javascript" src="__ROOT__/Application/Home/View/js/vue.min.js"></script>
+<script src="__ROOT__/Application/Home/View/js/jquery.min weui.js"></script>
+<script src="__ROOT__/Application/Home/View/js/jquery-weui.min.js"></script>
+<script type="text/javascript" src="__ROOT__/Application/Home/View/js/yyjl.js"></script>
 
 </html>

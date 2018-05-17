@@ -10,94 +10,12 @@ namespace Home\Model;
 
 class OrderModel extends BaseModel {
 
-    public function selectUnTaking() {
-        $m = M("order");
-        $G = M("goods");
-        $data["mission_status"] = 0;
-        $result = $m->where($data)->order('id desc')->getField('number, out_destination, goods_id, goods_quantity, start_time');
-
-        foreach ($result as $key => $value) {
-            foreach ($value as $key2 => $value2){
-                if ($key2 == "goods_id" && $key2 != null) {
-                    $result[$key]["goods_name"] = $G->where(array("id"=>$value2))->getField("name");
-                }
-            }
-        }
-        return $result;
-    }
-
-    public function selectUnFinish() {
-        $m = M("order");
-        $G = M("goods");
-        $V = M("vehicle");
-        $data["mission_status"] = 1;
-        $result = $m->where($data)->order('id desc')->getField('number, out_destination, goods_id, vehicle_id, goods_quantity, start_time');
-
-        foreach ($result as $key => $value) {
-            foreach ($value as $key2 => $value2){
-                if ($key2 == "goods_id" && $key2 != null) {
-                    $result[$key]["goods_name"] = $G->where(array("id"=>$value2))->getField("name");
-                }
-            }
-        }
-        foreach ($result as $key => $value) {
-            foreach ($value as $key2 => $value2){
-                if ($key2 == "vehicle_id" && $key2 != null) {
-                    $result[$key]["license_plate"] = $V->where(array("id"=>$value2))->getField("license_plate");
-                }
-            }
-        }
-        return $result;
-    }
-
-    public function selectFinish() {
-        $m = M("order");
-        $G = M("goods");
-        $V = M("vehicle");
-        $data["mission_status"] = 2;
-        $result = $m->where($data)->order('id desc')->getField('number, out_destination, goods_id, vehicle_id, goods_quantity, start_time');
-
-        foreach ($result as $key => $value) {
-            foreach ($value as $key2 => $value2){
-                if ($key2 == "goods_id" && $key2 != null) {
-                    $result[$key]["goods_name"] = $G->where(array("id"=>$value2))->getField("name");
-                    $result[$key]["real_quantity"] = $G->where(array("id"=>$value2))->getField("real_quantity");
-                }
-            }
-        }
-
-
-        foreach ($result as $key => $value) {
-            foreach ($value as $key2 => $value2){
-                if ($key2 == "vehicle_id" && $key2 != null) {
-                    $result[$key]["license_plate"] = $V->where(array("id"=>$value2))->getField("license_plate");
-                }
-            }
-        }
-        return $result;
-    }
-
-    public function showOrderDetail() {
-        $m = M("order");
-        $G = M("goods");
-        $data["number"] = I("get.id");
-        $result = $m->where($data)->order('id desc')->select();
-        foreach ($result as $key => $value) {
-            foreach ($value as $key2 => $value2){
-                if ($key2 == "goods_id" && $key2 != null) {
-                    $result[$key]["goods_name"] = $G->where(array("id"=>$value2))->getField("name");
-                }
-            }
-        }
-        return $result;
-    }
-
-
     public function findRank() {
         $m = M("order");
         $result = $m->where(array("order_status" => 3))->getField("rank", true);
         return count($result);
     }
+
     public function makeOrder() {
         $m = M("order");
         $O = M("oil");
@@ -137,134 +55,39 @@ class OrderModel extends BaseModel {
 //        $result = $m->where($data3)->getField("license_plate, ");
     }
 
-    public function selectPersonalUnFinish() {
-        $m = M("order");
-        $G = M("goods");
-        $D = M("driver");
-        $V = M("vehicle");
-        $startTime = I("get.startTime");
-        $endTime = I("get.endTime");
-        if($startTime && $endTime) {
-            $data["start_time"] = array(array('egt', $startTime), array('elt', $endTime));
-        }
-
-        $driver["mobile_number"] = $_SESSION['username1'];
-        $driver_id = $D->where($driver)->getField("id");
-        $data["mission_status"] = 1;
-        $data['driver_id'] = $driver_id;
-        $result = $m->where($data)->order('id desc')->getField('number, out_destination, goods_id, vehicle_id, goods_quantity, start_time');
-
-        foreach ($result as $key => $value) {
-            foreach ($value as $key2 => $value2){
-                if ($key2 == "goods_id" && $key2 != null) {
-                    $result[$key]["goods_name"] = $G->where(array("id"=>$value2))->getField("name");
-                }
-            }
-        }
-        foreach ($result as $key => $value) {
-            foreach ($value as $key2 => $value2){
-                if ($key2 == "vehicle_id" && $key2 != null) {
-                    $result[$key]["license_plate"] = $V->where(array("id"=>$value2))->getField("license_plate");
-                }
-            }
-        }
+    public function searchLicense() {
+        $oilName = I("post.oilName");
+        $M = M();
+        $sql = "select t_order.license_plate, t_order.order_status, t_order.rank, t_order.`stop`, t_order.oil_id, t_oil.`name`, company from t_order LEFT JOIN t_oil on t_order.oil_id = t_oil.id LEFT JOIN t_driver on t_driver.id = t_order.driver_id where t_oil.name = \"{$oilName}\" order by rank asc";
+        $result = $M->query($sql);
         return $result;
     }
 
-    public function selectPersonalFinish() {
-        $m = M("order");
-        $G = M("goods");
-        $D = M("driver");
-        $V = M("vehicle");
-        $startTime = I("get.startTime");
-        $endTime = I("get.endTime");
-        if($startTime && $endTime) {
-            $data["start_time"] = array(array('egt', $startTime), array('elt', $endTime));
+    public function searchData() {
+        $searchData = I("post.searchData");
+        $M = M();
+        $sql = "select license_plate, order_status, rank from t_order where license_plate = \"{$searchData}\"";
+        $result = $M->query($sql);
+        if ($result) {
+            return $result;
+        } else {
+            return "0";
         }
+    }
 
-        $driver["mobile_number"] = $_SESSION['username1'];
-        $driver_id = $D->where($driver)->getField("id");
-        $data["mission_status"] = 2;
-        $data['driver_id'] = $driver_id;
-        $result = $m->where($data)->order('id desc')->getField('number, out_destination, goods_id, vehicle_id, goods_quantity, start_time');
-
-        foreach ($result as $key => $value) {
-            foreach ($value as $key2 => $value2){
-                if ($key2 == "goods_id" && $key2 != null) {
-                    $result[$key]["goods_name"] = $G->where(array("id"=>$value2))->getField("name");
-                    $result[$key]["real_quantity"] = $G->where(array("id"=>$value2))->getField("real_quantity");
-                }
-            }
-        }
-
-        foreach ($result as $key => $value) {
-            foreach ($value as $key2 => $value2){
-                if ($key2 == "vehicle_id" && $key2 != null) {
-                    $result[$key]["license_plate"] = $V->where(array("id"=>$value2))->getField("license_plate");
-                }
-            }
-        }
+    public function searchPersonalMessage() {
+        $M = M();
+        $openid = "oyur_1GhybMGLZZ5xc1-LxSO39T8";
+        $sql = "select t_order.license_plate, t_wechat.nickname, t_order.order_status, company, t_driver.`name`, t_driver.mobile_number, t_wechat.headimgurl from t_order LEFT JOIN t_driver on t_driver.id = t_order.driver_id LEFT JOIN t_wechat on t_wechat.id = t_driver.wechat_id where t_wechat.openid = \"{$openid}\"";
+        $result = $M->query($sql);
         return $result;
     }
 
-    public function showPersonalOrderDetail() {
-        $m = M("order");
-        $G = M("goods");
-        $V = M("vehicle");
-        $data["number"] = I("get.id");
-        $result = $m->where($data)->order('id desc')->select();
-        foreach ($result as $key => $value) {
-            foreach ($value as $key2 => $value2){
-                if ($key2 == "goods_id" && $key2 != null) {
-                    $result[$key]["goods_name"] = $G->where(array("id"=>$value2))->getField("name");
-                }
-            }
-        }
-
-        foreach ($result as $key => $value) {
-            foreach ($value as $key2 => $value2){
-                if ($key2 == "vehicle_id" && $key2 != null) {
-                    $result[$key]["license_plate"] = $V->where(array("id"=>$value2))->getField("license_plate");
-                }
-            }
-        }
+    public function searchPersonalOrder() {
+        $M = M();
+        $openid = "oyur_1GhybMGLZZ5xc1-LxSO39T8";
+        $sql = "select t_order.license_plate, t_order.create_time, t_oil.type, t_order.order_status, company, t_driver.`name`, t_driver.mobile_number from t_order LEFT JOIN t_driver on t_driver.id = t_order.driver_id LEFT JOIN t_wechat on t_wechat.id = t_driver.wechat_id LEFT JOIN t_oil on t_oil.id = t_order.oil_id where t_wechat.openid = \"{$openid}\"";
+        $result = $M->query($sql);
         return $result;
     }
-
-    public function makeServiceOrder() {
-        $m = M("order");
-        $G = M("goods");
-        $order["number"] = I("post.number");
-        $data["real_quantity"] = I("post.real_quantity");
-        $goods_id = $m->where($order)->getField("goods_id");
-        $id["id"] = $goods_id;
-        $result = $G->where($id)->save($data);
-        return $result;
-    }
-
-    public function showFinishOrderDetail() {
-        $m = M("order");
-        $G = M("goods");
-        $V = M("vehicle");
-        $data["number"] = I("get.id");
-        $result = $m->where($data)->order('id desc')->select();
-        foreach ($result as $key => $value) {
-            foreach ($value as $key2 => $value2){
-                if ($key2 == "goods_id" && $key2 != null) {
-                    $result[$key]["goods_name"] = $G->where(array("id"=>$value2))->getField("name");
-                    $result[$key]["real_quantity"] = $G->where(array("id"=>$value2))->getField("real_quantity");
-                }
-            }
-        }
-
-        foreach ($result as $key => $value) {
-            foreach ($value as $key2 => $value2){
-                if ($key2 == "vehicle_id" && $key2 != null) {
-                    $result[$key]["license_plate"] = $V->where(array("id"=>$value2))->getField("license_plate");
-                }
-            }
-        }
-        return $result;
-    }
-
 }
