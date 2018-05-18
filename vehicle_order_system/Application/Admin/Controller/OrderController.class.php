@@ -33,6 +33,18 @@ class OrderController extends BaseController {
         $this->assign('vehicleName', $res);
     }
 
+    public function stop() {
+        $m = D("Order");
+        $res = $m->stop();
+        echo $res;
+    }
+
+    public function start() {
+        $m = D("Order");
+        $res = $m->start();
+        echo $res;
+    }
+
     public function selectAllOil() {
         $m = D("Order");
         $res = $m->selectAllOil();

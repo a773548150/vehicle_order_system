@@ -82,7 +82,7 @@
         <div class="layui-input-inline">
             <label class="layui-form-label">状态</label>
             <div class="layui-input-block">
-                <select name="oilType" lay-verify="required" id="addStatusSelect" lay-filter="status">
+                <select lay-verify="required" id="addStatusSelect" lay-filter="status">
                     <option value="">点击选择车辆状态</option>
                     <option value="0">已装</option>
                     <option value="1">装车中</option>
@@ -105,7 +105,7 @@
         <div class="layui-form-item toInline rank">
             <label class="layui-form-label">排名</label>
             <div class="layui-input-block">
-                <input type="text" name="rank" value="0" id="inputRank" required lay-verify="required" autocomplete="off" class="layui-input" >
+                <input type="text" name="rank" value="1" id="inputRank" required lay-verify="required" autocomplete="off" class="layui-input" >
             </div>
         </div>
 
@@ -140,6 +140,18 @@
         <div class="layui-form-item  toInline">
             <div class="layui-input-inline">
                 <button class="layui-btn" lay-submit lay-filter="formSearch" id="search">搜索</button>
+            </div>
+        </div>
+
+        <div class="layui-form-item toInline">
+            <div class="layui-input-inline">
+                <button class="layui-btn layui-btn-danger" id="stopRank">暂停排队</button>
+            </div>
+        </div>
+
+        <div class="layui-form-item toInline">
+            <div class="layui-input-inline">
+                <button class="layui-btn layui-btn-normal" id="startRank">开始排队</button>
             </div>
         </div>
     </form>

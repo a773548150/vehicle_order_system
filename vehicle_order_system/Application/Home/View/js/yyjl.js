@@ -44,7 +44,7 @@ var vm = new Vue({
                     }
 
                     vthis.message.push({
-                        license_plate: data[i]["license_plate"],
+                        license_plate: data[i]["t_order_license_plate"],
                         order_status: data[i]["order_status"],
                         company: data[i]["company"],
                         name: data[i]["name"],

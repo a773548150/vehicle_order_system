@@ -8,6 +8,7 @@
 })(jQuery);
 
 $(window).ready(function() {
+
     $(".rank").hide();
     //全局变量
     var editData = "";
@@ -24,6 +25,7 @@ $(window).ready(function() {
 
     layui.use('form', function () {
         var form = layui.form;
+        form.render();
         var  missionStatus = $.getUrlParam('missionStatus');
         if (missionStatus==="1") {
             $("select[name=orderStatus]").val("1");
@@ -77,12 +79,16 @@ $(window).ready(function() {
             return false;
         });
 
+        form.on('select(selectOil)', function(data){
+
+            return false;
+        });
+
         form.on('submit(formDemo)', function(data){
             var datas = data.field;
             datas.oil = $("#selectOil option:selected").text();
             datas.vehicle = $("#selectVehicle option:selected").text();
             datas.status = $("#addStatusSelect option:selected").val();
-            alert(datas.status);
             $.ajax({
                 url: "/Admin/Order/makeOrder",
                 type: 'post',
@@ -112,12 +118,13 @@ $(window).ready(function() {
             ,url: '/Admin/Order/searchOrder' //数据接口
             ,page: true //开启分页
             ,cols: [[ //表头
-                {field: 'number', title: '单号', width:190, sort: true, fixed: 'left'}
-                ,{field: 'driver_number', title: '司机编号', width:190, sort: true, fixed: 'left'}
-                ,{field: 'order_status', title: '状态', width: 160, sort: true, edit: "text"}
+                {field: 'stop', title: '排队状态', width:120, sort: true}
+                ,{field: 'number', title: '单号', width:190, sort: true}
+                ,{field: 'driver_number', title: '司机编号', width:190, sort: true}
+                ,{field: 'order_status', title: '状态', width: 160, sort: true}
                 ,{field: 'rank', title: '排队名次', width:160, sort: true,edit: "text"}
-                ,{field: 'oil_name', title: '油名', width:160, edit: "text"}
-                ,{field: 'create_time', title: '开始时间', width:160, edit: "text"}
+                ,{field: 'oil_name', title: '油名', width:160}
+                ,{field: 'create_time', title: '开始时间', width:160}
                 ,{fixed: 'right', width:150, align:'center', toolbar: '#barDemo'}
             ]]
         });
@@ -152,25 +159,29 @@ $(window).ready(function() {
                 //do something
                 if(editData != ""){
                     if(editData.data.id === data.id) {
-                        alert(editData.data.number);
+                        if(editData.data.order_status == "厂外待装") {
+                            $.ajax({
+                                url: "/Admin/Order/editOrder",
+                                type: 'post',
+                                dataType: 'json',
+                                data: {
+                                    "field" : editData.field,
+                                    "value" : editData.value,
+                                    "id"    : editData.data.id
+                                },
+                                success: function (data, status) {
+                                    alert("修改成功");
+                                    console.log(data);
+                                },
+                                fail: function (err, status) {
+                                    console.log(err)
+                                }
+                            });
+                        } else {
+                            alert("不允许非厂外待装排队名次进行修改");
+                            location.reload();
+                        }
 
-                        $.ajax({
-                            url: "/Admin/Order/editOrder",
-                            type: 'post',
-                            dataType: 'json',
-                            data: {
-                                "field" : editData.field,
-                                "value" : editData.value,
-                                "id"    : editData.data.id
-                            },
-                            success: function (data, status) {
-                                alert("修改成功");
-                                console.log(data);
-                            },
-                            fail: function (err, status) {
-                                console.log(err)
-                            }
-                        });
                     }
                 }
 
@@ -190,5 +201,34 @@ $(window).ready(function() {
         var endTime = $("input[name='endTime']").val();
 
         window.location = "/Admin/Order/expUser?missionStatus=" + selectDatas.missionStatus +"&orderNumber=" + selectDatas.number +"&startTime=" + startTime + "&endTime=" + endTime;
+    });
+
+    $("#stopRank").click(function () {
+        $.ajax({
+            url: "/Admin/Order/stop",
+            type: 'post',
+            dataType: 'json',
+            success: function (data, status) {
+                alert("暂停排队成功");
+                console.log(data);
+            },
+            fail: function (err, status) {
+                console.log(err)
+            }
+        });
+    });
+    $("#startRank").click(function () {
+        $.ajax({
+            url: "/Admin/Order/start",
+            type: 'post',
+            dataType: 'json',
+            success: function (data, status) {
+                alert("开始排队成功");
+                console.log(data);
+            },
+            fail: function (err, status) {
+                console.log(err)
+            }
+        });
     });
 });

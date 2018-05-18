@@ -43,4 +43,11 @@ class OrderController extends BaseController {
         $rs = json2($rs);
         echo $rs;
     }
+
+    public function alertPersonalMessage() {
+        $m = D("Order");
+        $rs = $m->alertPersonalMessage();
+        $rs = json2($rs);
+        echo $rs;
+    }
 }

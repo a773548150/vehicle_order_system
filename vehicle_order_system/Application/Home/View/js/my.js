@@ -1,7 +1,8 @@
 var vm = new Vue({
     el: '#main',
     data: {
-        license_plate: '',
+        order_license_plate: '',
+        driver_license_plate: '',
         order_status: '',
         company: '',
         name: '',
@@ -18,7 +19,8 @@ var vm = new Vue({
             type: 'post',
             dataType: 'json',
             success: function (data, status) {
-                vthis.license_plate = data[0]["license_plate"];
+                vthis.order_license_plate = data[0]["order_license_plate"];
+                vthis.driver_license_plate = data[0]["driver_license_plate"];
                 if(data[0]["order_status"] == 0) {
                     vthis.order_status = "已装";
                 } else if(data[0]["order_status"] == 1) {

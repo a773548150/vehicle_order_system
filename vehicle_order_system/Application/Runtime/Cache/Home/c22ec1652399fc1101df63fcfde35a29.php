@@ -24,7 +24,7 @@
 		</div>
 		<div class="carInfo">
 			<span class="num" v-bind:class="{numIng: isIng, numCq: isCq }">1</span>
-				<span class="chepai">{{ license_plate }}</span>
+				<span class="chepai">{{ order_license_plate }}</span>
 			<span class="statu" v-bind:class="{ing: isIng, cq: isCq }">{{ order_status }}</span>
 		</div>
 
@@ -46,7 +46,7 @@
 			<div class="line">
 				<div class="line-left">
 					<span>车牌号</span>
-					<p>{{ license_plate }}</p>
+					<p>{{ driver_license_plate }}</p>
 				</div>
 				<div class="line-right">
 					<span>公司名称</span>

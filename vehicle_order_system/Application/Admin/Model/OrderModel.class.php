@@ -22,19 +22,41 @@ class OrderModel extends BaseModel {
         $O = M("oil");
         $L = A("Log");
 
+        $status = I("post.status");
+        $license_plate = I("post.vehicle");
         $nowTime = date("Ymdhis");
         $sixRand = rand('100000', '999999');
 
-        $data['driver_id'] = $D->where(array("license_plate" => I('post.vehicle')))->getField("id");
+        $data['driver_id'] = $D->where(array("license_plate" => $license_plate))->getField("id");
         $data['oil_id'] = $O->where(array("name" => I('post.oil')))->getField("id");
-        $data['rank'] = I('post.rank');
+        $data['license_plate'] = $license_plate;
+        if($status == 0) {
+            $data['rank'] = 0;
+        } else if($status == 1) {
+            $data['rank'] = 1;
+        } else if($status == 2) {
+            $data['rank'] = 2;
+        } else if($status == 3) {
+            $data['rank'] = I('post.rank') + 2;
+        }
+
+        $this->rank($data);
+
         $data['number'] = $nowTime.$sixRand;
         $data['order_status'] = I("post.status");
         $data['create_time'] = date("Y-m-d h:i:s");
         $result = $m->data($data)->add();
-
         $L->insert("添加预约车辆车牌为：".I('post.vehicle'));
         return $result;
+    }
+
+    public function rank($data) {
+        $m = M("order");
+        $result = $m->where(array("order_status" => 3, "oil_id" => $data["oil_id"]))->getField("rank", true);
+        $rankMax = count($result) + 2;
+        for ($i = $rankMax; $i >= $data['rank']; $i--) {
+            $m->where(array("oil_id" => $data["oil_id"], "order_status" => 3, "rank" => $i))->save(array("rank" => $i+1));
+        }
     }
 
     public function findForeign($result){
@@ -74,6 +96,21 @@ class OrderModel extends BaseModel {
             }
         }
 
+        foreach ($result as $key => $value) {
+            foreach ($value as $key2 => $value2){
+                if ($key2 == "stop" && $key2 != null) {
+                    if($result[$key]["stop"] == 0) {
+                        $result[$key]["stop"] = "排队进行中";
+                    } else if($result[$key]["stop"] == 1) {
+                        $result[$key]["stop"] = "暂停排队";
+                    }
+                }
+            }
+        }
+
+        foreach ($result as $key => $value) {
+            $result[$key]["rank"] = $result[$key]["rank"] - 2;
+        }
         return $result;
     }
 
@@ -91,16 +128,16 @@ class OrderModel extends BaseModel {
         $page = I('get.page');
         $limit = I('get.limit');
         if ($data['order_status'] === "0" || $data['order_status'] === "1" || $data['order_status'] === "2") {
-            $result = $m->where($data)->order('id desc')->page($page, $limit)->select();
+            $result = $m->where($data)->order('rank desc')->page($page, $limit)->select();
             $result = $this->findForeign($result);
             return $result;
         } else if($data['order_status'] === "3"){
             unset($data['order_status']);
-            $result = $m->where($data)->order('id desc')->page($page, $limit)->select();
+            $result = $m->where($data)->order('rank desc')->page($page, $limit)->select();
             $result = $this->findForeign($result);
             return $result;
         } else {
-            $result = $m->where(array("status"=>1))->order('id desc')->page($page, $limit)->select();
+            $result = $m->where(array("status"=>1))->order('rank desc')->page($page, $limit)->select();
             $result = $this->findForeign($result);
             return $result;
         }
@@ -126,6 +163,30 @@ class OrderModel extends BaseModel {
         return $result;
     }
 
+    public function stop() {
+        $m = M("order");
+        $L = A("Log");
+        $data["stop"] = 1;
+        $result1 = $m->getField("id", true);
+        foreach($result1 as $v){
+            $result = $m->where(array("id" => $v))->save($data);
+        }
+        $L->insert("暂停排队");
+        return $result;
+    }
+
+    public function start() {
+        $m = M("order");
+        $L = A("Log");
+        $data["stop"] = 0;
+        $result1 = $m->getField("id", true);
+        foreach($result1 as $v){
+            $result = $m->where(array("id" => $v))->save($data);
+        }
+        $L->insert("开始排队");
+        return $result;
+    }
+
     public function editOrder() {
         $m = M("order");
         $O = M("oil");
@@ -147,9 +208,9 @@ class OrderModel extends BaseModel {
 
     public function selectAllVehicle() {
         $D = M();
-        $sql = "SELECT * FROM t_driver d left JOIN t_order o ON d.id=o.driver_id  where order_status is null and  d.`status` = 1";
+        $sql = "SELECT d.license_plate FROM t_driver d left JOIN t_order o ON d.id=o.driver_id  where order_status is null and  d.`status` = 1";
         $result = $D->query($sql);
-//        var_dump($result);
+//        var_dump($result);die;
         return $result;
     }
 
