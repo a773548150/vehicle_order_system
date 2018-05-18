@@ -15,7 +15,7 @@ $(window).ready(function() {
         //监听提交
         form.on('submit(formSearch)', function (data) {
             var datas = data.field;
-            var url = "/Admin/Oil/searchOil?number=" + datas.number;
+            var url = "../Oil/searchOil?number=" + datas.number;
             layui.use('table', function() {
                 var table = layui.table;
                 table.reload('order', {
@@ -29,13 +29,13 @@ $(window).ready(function() {
             var datas = data.field;
             datas.oilType = $("#addRoleNameSelect option:selected").text();
             $.ajax({
-                url: "/Admin/Oil/addOil",
+                url: "../Oil/addOil",
                 type: 'post',
                 dataType: 'json',
                 data: datas,
                 success: function (data, status) {
                     alert("添加成功");
-                    window.location = "/Admin/Index/toOilManage";
+                    window.location = "../Index/toOilManage";
                 },
                 fail: function (err, status) {
                     console.log(err)
@@ -54,7 +54,7 @@ $(window).ready(function() {
             ,width: 745
             ,height: 354
             ,limit: 8
-            ,url: '/Admin/Oil/searchOil' //数据接口
+            ,url: '../Oil/searchOil' //数据接口
             ,page: true //开启分页
             ,cols: [[ //表头
                 {field: 'number', title: '油编号', width:205, sort: true, fixed: 'left'}
@@ -76,7 +76,7 @@ $(window).ready(function() {
                     layer.close(index);
                     //向服务端发送删除指令
                     $.ajax({
-                        url: "/Admin/Oil/deleteOil",
+                        url: "../Oil/deleteOil",
                         type: 'post',
                         dataType: 'json',
                         data: data,

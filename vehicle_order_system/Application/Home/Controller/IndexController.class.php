@@ -2,10 +2,8 @@
 namespace Home\Controller;
 class IndexController extends BaseController {
     public function index() {
-//        $wechat = C('WECHAT_SDK');
-//        $redirect_uri = urlencode('http://yijiangbangtest.wsandos.com/linxiaocong/home/index/getUserInfo');
-//        $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid={$wechat['appid']}&redirect_uri=$redirect_uri&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
-//        header("Location:".$url);
+        $wechat = C('WECHAT_SDK');
+
 
         $nonce = $_GET['nonce'];
         $token = "linxiaocong";
@@ -23,8 +21,9 @@ class IndexController extends BaseController {
 //            $this->responseMsg();
 //        }
 
-        $this->display("/index");
-
+        $redirect_uri = urlencode('http://yijiangbangtest.wsandos.com/linxiaocong/home/index/getUserInfo');
+        $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid={$wechat['appid']}&redirect_uri=$redirect_uri&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
+        header("Location:".$url);
     }
     //跳转到登录页面
     public function toLogin() {
@@ -54,21 +53,20 @@ class IndexController extends BaseController {
         $userinfo = $this->getJson($get_user_info_url);
 
 //打印用户信息
-        echo "<pre>";
-        print_r($userinfo);
-        echo "</pre>";
 
-        $m = M("user");
+        $m = M("wechat");
         $select = $m->where(array("openid"=>$userinfo["openid"]))->getField("id");
 //        var_dump($select);die;
         if($select) {
-            echo "已存在";
+            $m->where(array("openid" => $userinfo["openid"]))->save($userinfo);
+//            echo "更新数据成功";
         } else {
             $result = $m->data($userinfo)->add();
-            if($result){
-                echo "插入数据成功";
-            }
+//            if($result){
+//                echo "插入数据成功";
+//            }
         }
+        $this->display("/index");
     }
 
     public function getJson($url) {
@@ -136,6 +134,15 @@ class IndexController extends BaseController {
             }
         }
     }
+//    public function isStop() {
+//        $m = M("order");
+//        $result = $m->getField("stop");
+//        if($result == 1){
+//            return false;
+//        } else {
+//            return true;
+//        }
+//    }
 
     public function toAbout() {
         $this->display("/about");

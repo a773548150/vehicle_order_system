@@ -9,13 +9,15 @@ var vm = new Vue({
         mobile_number: '',
         headimgurl: '',
         nickname: '',
+        rank: '',
+        isStop: false,
         isIng: false,
         isCq: false
     },
     created: function () {
         var vthis = this;
         $.ajax({
-            url: "/Home/Order/searchPersonalMessage",
+            url: "../Order/searchPersonalMessage",
             type: 'post',
             dataType: 'json',
             success: function (data, status) {
@@ -41,6 +43,10 @@ var vm = new Vue({
                 vthis.mobile_number = data[0]["mobile_number"];
                 vthis.headimgurl = data[0]["headimgurl"];
                 vthis.nickname = data[0]["nickname"];
+                vthis.rank = data[0]["rank"];
+                if(data[0]["stop"] == 1) {
+                    vthis.isStop = true;
+                }
             },
             fail: function (err, status) {
                 console.log(err)

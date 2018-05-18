@@ -14,13 +14,13 @@ $(window).ready(function(){
         form.on('submit(formDemo)', function(data){
             var datas = data.field;
             $.ajax({
-                url: "/Admin/Order/makeOrder",
+                url: "../Order/makeOrder",
                 type: 'post',
                 dataType: 'json',
                 data: datas,
                 success: function (data, status) {
                     alert("添加成功");
-                    window.location = "/Admin/Index/toOrder";
+                    window.location = "../Index/toOrder";
                 },
                 fail: function (err, status) {
                     console.log(err)

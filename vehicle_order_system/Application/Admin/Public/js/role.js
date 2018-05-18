@@ -17,13 +17,13 @@ $(window).ready(function() {
         form.on('submit(formDemo)', function(data){
             var datas = data.field;
             $.ajax({
-                url: "/Admin/Role/addRole",
+                url: "../Role/addRole",
                 type: 'post',
                 dataType: 'json',
                 data: datas,
                 success: function (data, status) {
                     alert("添加成功");
-                    window.location = "/Admin/Index/toRole";
+                    window.location = "../Index/toRole";
                 },
                 fail: function (err, status) {
                     console.log(err)
@@ -42,7 +42,7 @@ $(window).ready(function() {
             ,width: 1348
             ,height: 354
             ,limit: 8
-            ,url: '/Admin/Role/searchRole' //数据接口
+            ,url: '../Role/searchRole' //数据接口
             ,page: true //开启分页
             ,cols: [[ //表头
                 {field: 'name', title: '角色名', width:190, sort: true, fixed: 'left'}
@@ -68,13 +68,13 @@ $(window).ready(function() {
                     layer.close(index);
                     //向服务端发送删除指令
                     $.ajax({
-                        url: "/Admin/Role/deleteRole",
+                        url: "../Role/deleteRole",
                         type: 'post',
                         dataType: 'json',
                         data: data,
                         success: function (data, status) {
                             alert("删除成功");
-                            window.location = "/Admin/Index/toRole";
+                            window.location = "../Index/toRole";
                             console.log(data);
                         },
                         fail: function (err, status) {
@@ -87,7 +87,7 @@ $(window).ready(function() {
                 if(editData1 != ""){
                     if(editData1.data.id === data.id) {
                         $.ajax({
-                            url: "/Admin/Role/editRole",
+                            url: "../Role/editRole",
                             type: 'post',
                             dataType: 'json',
                             data: {

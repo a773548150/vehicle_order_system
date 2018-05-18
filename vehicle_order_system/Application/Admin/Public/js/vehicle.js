@@ -1,6 +1,6 @@
 $(window).ready(function() {
     //全局变量
-    var url = "/Admin/Vehicle/searchVehicle";
+    var url = "../Vehicle/searchVehicle";
     var editData = "";
 
     layui.use('element', function () {
@@ -17,13 +17,13 @@ $(window).ready(function() {
         form.on('submit(formDemo)', function(data){
             var datas = data.field;
             $.ajax({
-                url: "/Admin/Vehicle/addVehicle",
+                url: "../Vehicle/addVehicle",
                 type: 'post',
                 dataType: 'json',
                 data: datas,
                 success: function (data, status) {
                     alert("添加成功");
-                    window.location = "/Admin/Index/toVehicle";
+                    window.location = "../Index/toVehicle";
                 },
                 fail: function (err, status) {
                     console.log(err)
@@ -53,7 +53,7 @@ $(window).ready(function() {
             ,width: 545
             ,height: 515
             ,limit: 11
-            ,url: '/Admin/Vehicle/searchVehicle' //数据接口
+            ,url: '../Vehicle/searchVehicle' //数据接口
             ,page: true //开启分页
             ,cols: [[ //表头
                 {field: 'license_plate', title: '车牌号', width:190, sort: true, fixed: 'left', edit: "text"}
@@ -74,7 +74,7 @@ $(window).ready(function() {
                     layer.close(index);
                     //向服务端发送删除指令
                     $.ajax({
-                        url: "/Admin/Vehicle/deleteVehicle",
+                        url: "../Vehicle/deleteVehicle",
                         type: 'post',
                         dataType: 'json',
                         data: data,
@@ -93,7 +93,7 @@ $(window).ready(function() {
                     if(editData.data.id === data.id) {
 
                         $.ajax({
-                            url: "/Admin/Vehicle/editVehicle",
+                            url: "../Vehicle/editVehicle",
                             type: 'post',
                             dataType: 'json',
                             data: {

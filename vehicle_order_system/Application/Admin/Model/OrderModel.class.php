@@ -37,7 +37,7 @@ class OrderModel extends BaseModel {
         } else if($status == 2) {
             $data['rank'] = 2;
         } else if($status == 3) {
-            $data['rank'] = I('post.rank') + 2;
+            $data['rank'] = I('post.rank');
         }
 
         $this->rank($data);
@@ -52,10 +52,10 @@ class OrderModel extends BaseModel {
 
     public function rank($data) {
         $m = M("order");
-        $result = $m->where(array("order_status" => 3, "oil_id" => $data["oil_id"]))->getField("rank", true);
+        $result = $m->where(array("order_status" => 3))->getField("rank", true);
         $rankMax = count($result) + 2;
         for ($i = $rankMax; $i >= $data['rank']; $i--) {
-            $m->where(array("oil_id" => $data["oil_id"], "order_status" => 3, "rank" => $i))->save(array("rank" => $i+1));
+            $m->where(array("order_status" => 3, "rank" => $i))->save(array("rank" => $i+1));
         }
     }
 
@@ -108,9 +108,9 @@ class OrderModel extends BaseModel {
             }
         }
 
-        foreach ($result as $key => $value) {
-            $result[$key]["rank"] = $result[$key]["rank"] - 2;
-        }
+//        foreach ($result as $key => $value) {
+//            $result[$key]["rank"] = $result[$key]["rank"] - 2;
+//        }
         return $result;
     }
 
@@ -144,23 +144,34 @@ class OrderModel extends BaseModel {
     }
 
     public function searchVehicle() {
-    $m = M("order");
-    $data['license_plate'] = array('LIKE', "%".I('get.license_plate')."%");
-    $data['status'] = 1;
-    $page = I('get.page');
-    $limit = I('get.limit');
-    $result = $m->where(array("status"=>1))->order('id desc')->page($page, $limit)->select();
-    $result = $this->findForeign($result);
-    return $result;
-}
+        $m = M("order");
+        $data['license_plate'] = array('LIKE', "%".I('get.license_plate')."%");
+        $data['status'] = 1;
+        $page = I('get.page');
+        $limit = I('get.limit');
+        $result = $m->where(array("status"=>1))->order('id desc')->page($page, $limit)->select();
+        $result = $this->findForeign($result);
+        return $result;
+    }
 
     public function deleteOrder() {
         $m = M("order");
         $L = A("Log");
         $data["id"] = I("post.id");
-        $result = $m->delete($data["id"]);
-        $L->insert("删除了单号为：".I("post.number")."  的订单");
-        return $result;
+        $rank = I("post.rank");
+
+        $result = $m->where(array("order_status" => 3))->getField("rank", true);
+        $rankMax = count($result) + 2;
+        if($rank+3 > $rankMax || $rank-3 < 0){
+            return "0";
+        } else {
+            $m->where(array("rank" => $rank+1))->save(array("rank" => $rank));
+            $m->where(array("rank" => $rank+2))->save(array("rank" => $rank+1));
+            $m->where(array("rank" => $rank+3))->save(array("rank" => $rank+2));
+            $m->where(array("id" => $data["id"]))->save(array("rank" => $rank+3));
+            $L->insert("删除了单号为：".I("post.number")."  的订单");
+            return "1";
+        }
     }
 
     public function stop() {
@@ -187,6 +198,23 @@ class OrderModel extends BaseModel {
         return $result;
     }
 
+    public function forword() {
+        $m = M("order");
+        $L = A("Log");
+
+        $result = $m->where(array("order_status" => 3))->getField("rank", true);
+        $rankMax = count($result) + 2;
+        for ($i = 1; $i <= $rankMax; $i++) {
+            $m->where(array("rank" => $i))->save(array("rank" => $i-1));
+        }
+
+        $m->where(array("rank" => 1))->save(array("order_status" => 1));
+        $m->where(array("rank" => 2))->save(array("order_status" => 2));
+        $m->where(array("rank" => 0))->save(array("order_status" => 0));
+
+        $L->insert("排队前进");
+        return "1";
+    }
     public function editOrder() {
         $m = M("order");
         $O = M("oil");

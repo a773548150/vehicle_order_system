@@ -56,7 +56,7 @@ $(window).ready(function() {
         //监听提交
         form.on('submit(formSearch)', function (data) {
             var datas = data.field;
-            var url = "/Admin/Order/searchOrder?missionStatus=3&orderNumber=" + datas.number;
+            var url = "../Order/searchOrder?missionStatus=3&orderNumber=" + datas.number;
             layui.use('table', function() {
                 var table = layui.table;
                 table.reload('order', {
@@ -69,7 +69,7 @@ $(window).ready(function() {
         form.on('select(selectStatus)', function(data){
             selectDatas.missionStatus = data.value;
 
-            var url = "/Admin/Order/searchOrder?missionStatus=" + selectDatas.missionStatus;
+            var url = "../Order/searchOrder?missionStatus=" + selectDatas.missionStatus;
             layui.use('table', function() {
                 var table = layui.table;
                 table.reload('order', {
@@ -90,13 +90,13 @@ $(window).ready(function() {
             datas.vehicle = $("#selectVehicle option:selected").text();
             datas.status = $("#addStatusSelect option:selected").val();
             $.ajax({
-                url: "/Admin/Order/makeOrder",
+                url: "../Order/makeOrder",
                 type: 'post',
                 dataType: 'json',
                 data: datas,
                 success: function (data, status) {
                     alert("添加成功");
-                    window.location = "/Admin/Index/toOrderManage";
+                    window.location = "../Index/toOrderManage";
                 },
                 fail: function (err, status) {
                     console.log(err)
@@ -115,14 +115,14 @@ $(window).ready(function() {
             ,height: 515
             ,width: 1400
             ,limit: 11
-            ,url: '/Admin/Order/searchOrder' //数据接口
+            ,url: '../Order/searchOrder' //数据接口
             ,page: true //开启分页
             ,cols: [[ //表头
                 {field: 'stop', title: '排队状态', width:120, sort: true}
                 ,{field: 'number', title: '单号', width:190, sort: true}
                 ,{field: 'driver_number', title: '司机编号', width:190, sort: true}
                 ,{field: 'order_status', title: '状态', width: 160, sort: true}
-                ,{field: 'rank', title: '排队名次', width:160, sort: true,edit: "text"}
+                ,{field: 'rank', title: '排队名次', width:160, sort: true}
                 ,{field: 'oil_name', title: '油名', width:160}
                 ,{field: 'create_time', title: '开始时间', width:160}
                 ,{fixed: 'right', width:150, align:'center', toolbar: '#barDemo'}
@@ -142,13 +142,18 @@ $(window).ready(function() {
                     layer.close(index);
                     //向服务端发送删除指令
                     $.ajax({
-                        url: "/Admin/Order/deleteOrder",
+                        url: "../Order/deleteOrder",
                         type: 'post',
                         dataType: 'json',
                         data: data,
-                        success: function (data, status) {
-                            alert("删除成功");
-                            console.log(data);
+                        success: function (datas, status) {
+                            if(datas == "0"){
+                                alert("不允许删除后三位和非厂外待装");
+                                location.reload();
+                            } else {
+                                alert("删除成功");
+                                location.reload();
+                            }
                         },
                         fail: function (err, status) {
                             console.log(err)
@@ -161,7 +166,7 @@ $(window).ready(function() {
                     if(editData.data.id === data.id) {
                         if(editData.data.order_status == "厂外待装") {
                             $.ajax({
-                                url: "/Admin/Order/editOrder",
+                                url: "../Order/editOrder",
                                 type: 'post',
                                 dataType: 'json',
                                 data: {
@@ -200,12 +205,12 @@ $(window).ready(function() {
         var startTime = $("input[name='startTime']").val();
         var endTime = $("input[name='endTime']").val();
 
-        window.location = "/Admin/Order/expUser?missionStatus=" + selectDatas.missionStatus +"&orderNumber=" + selectDatas.number +"&startTime=" + startTime + "&endTime=" + endTime;
+        window.location = "../Order/expUser?missionStatus=" + selectDatas.missionStatus +"&orderNumber=" + selectDatas.number +"&startTime=" + startTime + "&endTime=" + endTime;
     });
 
     $("#stopRank").click(function () {
         $.ajax({
-            url: "/Admin/Order/stop",
+            url: "../Order/stop",
             type: 'post',
             dataType: 'json',
             success: function (data, status) {
@@ -219,12 +224,27 @@ $(window).ready(function() {
     });
     $("#startRank").click(function () {
         $.ajax({
-            url: "/Admin/Order/start",
+            url: "../Order/start",
             type: 'post',
             dataType: 'json',
             success: function (data, status) {
                 alert("开始排队成功");
                 console.log(data);
+            },
+            fail: function (err, status) {
+                console.log(err)
+            }
+        });
+    });
+
+    $("#forword").click(function () {
+        $.ajax({
+            url: "../Order/forword",
+            type: 'post',
+            dataType: 'json',
+            success: function (data, status) {
+                alert("排队前进一位");
+                location.reload();
             },
             fail: function (err, status) {
                 console.log(err)

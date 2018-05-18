@@ -44,7 +44,7 @@ class OrderModel extends BaseModel {
 
         $openid = "oyur_1GhybMGLZZ5xc1-LxSO39T8";
         $default = M();
-        $sql = "select o.license_plate, d.company from t_order o LEFT JOIN t_driver d on o.driver_id = d.id LEFT JOIN t_wechat w on d.wechat_id = w.id where o.`status`=1 and d.`status`=1 and w.openid = \"{$openid}\" order by o.create_time DESC LIMIT 0, 1";
+        $sql = "select o.license_plate, o.stop, d.company from t_order o LEFT JOIN t_driver d on o.driver_id = d.id LEFT JOIN t_wechat w on d.wechat_id = w.id where o.`status`=1 and d.`status`=1 and w.openid = \"{$openid}\" order by o.create_time DESC LIMIT 0, 1";
         $result = $default->query($sql);
         return $result;
 
@@ -58,15 +58,19 @@ class OrderModel extends BaseModel {
     public function searchLicense() {
         $oilName = I("post.oilName");
         $M = M();
-        $sql = "select t_order.license_plate, t_order.order_status, t_order.rank, t_order.`stop`, t_order.oil_id, t_oil.`name`, company from t_order LEFT JOIN t_oil on t_order.oil_id = t_oil.id LEFT JOIN t_driver on t_driver.id = t_order.driver_id where t_oil.name = \"{$oilName}\" order by rank asc";
-        $result = $M->query($sql);
+        if($oilName == "0"){
+            $sql = "select t_order.license_plate, t_order.order_status, t_order.rank, t_order.`stop`, t_order.oil_id, t_oil.`name`, company from t_order LEFT JOIN t_oil on t_order.oil_id = t_oil.id LEFT JOIN t_driver on t_driver.id = t_order.driver_id where t_oil.name = 0 order by rank asc";
+        } else {
+            $sql = "select t_order.license_plate, t_order.order_status, t_order.rank, t_order.`stop`, t_order.oil_id, t_oil.`name`, company from t_order LEFT JOIN t_oil on t_order.oil_id = t_oil.id LEFT JOIN t_driver on t_driver.id = t_order.driver_id where t_oil.name = \"{$oilName}\" order by rank asc";
+        }
+         $result = $M->query($sql);
         return $result;
     }
 
     public function searchData() {
         $searchData = I("post.searchData");
         $M = M();
-        $sql = "select license_plate, order_status, rank from t_order where license_plate = \"{$searchData}\"";
+        $sql = "select license_plate, order_status, rank from t_order where license_plate like \"%{$searchData}%\"";
         $result = $M->query($sql);
         if ($result) {
             return $result;
@@ -78,7 +82,7 @@ class OrderModel extends BaseModel {
     public function searchPersonalMessage() {
         $M = M();
         $openid = "oyur_1GhybMGLZZ5xc1-LxSO39T8";
-        $sql = "select t_driver.license_plate driver_license_plate, t_order.license_plate order_license_plate, t_wechat.nickname, t_order.order_status, company, t_driver.`name`, t_driver.mobile_number, t_wechat.headimgurl from t_order LEFT JOIN t_driver on t_driver.id = t_order.driver_id LEFT JOIN t_wechat on t_wechat.id = t_driver.wechat_id where t_wechat.openid = \"{$openid}\"";
+        $sql = "select t_driver.license_plate driver_license_plate, t_order.stop, t_order.rank, t_order.license_plate order_license_plate, t_wechat.nickname, t_order.order_status, company, t_driver.`name`, t_driver.mobile_number, t_wechat.headimgurl from t_order LEFT JOIN t_driver on t_driver.id = t_order.driver_id LEFT JOIN t_wechat on t_wechat.id = t_driver.wechat_id where t_wechat.openid = \"{$openid}\"";
         $result = $M->query($sql);
         return $result;
     }

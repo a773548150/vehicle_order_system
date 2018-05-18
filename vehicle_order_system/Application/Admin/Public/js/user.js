@@ -1,6 +1,6 @@
 $(window).ready(function() {
     //全局变量
-    var url = "/Admin/Vehicle/searchVehicle";
+    var url = "../Vehicle/searchVehicle";
     var editData = "";
 
     layui.use('element', function () {
@@ -18,13 +18,13 @@ $(window).ready(function() {
             var datas = data.field;
             datas.roleName = $("#addRoleNameSelect option:selected").text();
             $.ajax({
-                url: "/Admin/Role/addUser",
+                url: "../Role/addUser",
                 type: 'post',
                 dataType: 'json',
                 data: datas,
                 success: function (data, status) {
                     alert("添加成功");
-                    window.location = "/Admin/Index/toUser";
+                    window.location = "../Index/toUser";
                 },
                 fail: function (err, status) {
                     console.log(err)
@@ -39,13 +39,13 @@ $(window).ready(function() {
             datas.username = $("#usernameSelect option:selected").text();
             datas.roleName = $("#roleNameSelect option:selected").text();
             $.ajax({
-                url: "/Admin/Role/addPermissions",
+                url: "../Role/addPermissions",
                 type: 'post',
                 dataType: 'json',
                 data: datas,
                 success: function (data, status) {
                     alert("修改成功");
-                    window.location = "/Admin/Index/toUser";
+                    window.location = "../Index/toUser";
                 },
                 fail: function (err, status) {
                     console.log(err)
@@ -63,7 +63,7 @@ $(window).ready(function() {
             ,width: 525
             ,height: 354
             ,limit: 8
-            ,url: '/Admin/Role/searchUser' //数据接口
+            ,url: '../Role/searchUser' //数据接口
             ,page: true //开启分页
             ,cols: [[ //表头
                 {field: 'username', title: '用户名', width:185, sort: true, fixed: 'left'}
@@ -84,7 +84,7 @@ $(window).ready(function() {
                     layer.close(index);
                     //向服务端发送删除指令
                     $.ajax({
-                        url: "/Admin/Role/deleteUser",
+                        url: "../Role/deleteUser",
                         type: 'post',
                         dataType: 'json',
                         data: data,

@@ -35,7 +35,6 @@
         <li class="layui-nav-item layui-nav-itemed" >
             <a href="javascript:;">车队列表管理</a>
             <dl class="layui-nav-child">
-                <dd><a href="/Admin/Index/toOrder">添加车辆</a></dd>
                 <dd><a href="/Admin/Index/toOrderManage" class="layui-this">排队管理</a></dd>
             </dl>
         </li>
@@ -123,7 +122,7 @@
         <div class="layui-form-item toInline rank">
             <label class="layui-form-label">排名</label>
             <div class="layui-input-block">
-                <input type="text" name="rank" value="1" id="inputRank" required lay-verify="required" autocomplete="off" class="layui-input" >
+                <input type="text" name="rank" value="3" id="inputRank" required lay-verify="required" autocomplete="off" class="layui-input" >
             </div>
         </div>
 
@@ -173,10 +172,10 @@
             </div>
         </div>
     </form>
-
+    <button class="layui-btn" id="forword">前进一位</button>
     <table id="order" lay-filter="test"></table>
     <script type="text/html" id="barDemo">
-        <a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>
+        <!--<a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>-->
         <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
     </script>
 </div>

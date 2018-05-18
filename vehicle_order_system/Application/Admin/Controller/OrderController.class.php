@@ -81,6 +81,12 @@ class OrderController extends BaseController {
         echo $res;
     }
 
+    public function forword() {
+        $m = D("Order");
+        $res = $m->forword();
+        echo $res;
+    }
+
     public function editOrder() {
         $m = D("Order");
         $res = $m->editOrder();

@@ -101,6 +101,10 @@ input{
 .carInfo .cq{
 	color: rgb(250,205,23);
 }
+
+.carInfo .stop{
+	color: red !important;
+}
 .carInfo .numIng{
 	background-color: rgb(91,196,6);
 	color: #fff;
@@ -112,6 +116,11 @@ input{
 	border:1px solid rgb(250,205,23);
 }
 
+.carInfo .numStop{
+	background-color:red !important;
+	color: #fff;
+	border:1px solid red !important;
+}
 
 .myIfo{
 	margin-top: .3rem;

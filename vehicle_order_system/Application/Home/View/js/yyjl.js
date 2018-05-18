@@ -16,7 +16,7 @@ var vm = new Vue({
     created: function () {
         var vthis = this;
         $.ajax({
-            url: "/Home/Order/searchPersonalOrder",
+            url: "../Order/searchPersonalOrder",
             type: 'post',
             dataType: 'json',
             success: function (data, status) {

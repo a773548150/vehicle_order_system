@@ -48,7 +48,7 @@ $(window).ready(function() {
             startTime = datas.startTime;
             endTime = datas.endTime;
             selectDatas.number = datas.number;
-            var url = "/Admin/Order/searchOrder?missionStatus=" + datas.orderStatus +"&orderNumber=" + datas.number +"&startTime=" + startTime + "&endTime=" + endTime;
+            var url = "../Order/searchOrder?missionStatus=" + datas.orderStatus +"&orderNumber=" + datas.number +"&startTime=" + startTime + "&endTime=" + endTime;
             layui.use('table', function() {
                 var table = layui.table;
                 table.reload('order', {
@@ -61,7 +61,7 @@ $(window).ready(function() {
         form.on('select(selectStatus)', function(data){
             selectDatas.missionStatus = data.value;
 
-            var url = "/Admin/Order/searchOrder?missionStatus=" + selectDatas.missionStatus;
+            var url = "../Order/searchOrder?missionStatus=" + selectDatas.missionStatus;
             layui.use('table', function() {
                 var table = layui.table;
                 table.reload('order', {
@@ -101,7 +101,7 @@ $(window).ready(function() {
             ,width: 1100
             ,height: 515
             ,limit: 11
-            ,url: '/Admin/Order/searchOrder' //数据接口
+            ,url: '../Order/searchOrder' //数据接口
             ,page: true //开启分页
             ,cols: [[ //表头
                 {field: 'number', title: '单号', width:190, sort: true, fixed: 'left'}
@@ -127,7 +127,7 @@ $(window).ready(function() {
                     layer.close(index);
                     //向服务端发送删除指令
                     $.ajax({
-                        url: "/Admin/Order/deleteOrder",
+                        url: "../Order/deleteOrder",
                         type: 'post',
                         dataType: 'json',
                         data: data,
@@ -145,7 +145,7 @@ $(window).ready(function() {
                 if(editData != ""){
                     if(editData.data.id === data.id) {
                         $.ajax({
-                            url: "/Admin/Order/editOrder",
+                            url: "../Order/editOrder",
                             type: 'post',
                             dataType: 'json',
                             data: {
@@ -179,6 +179,6 @@ $(window).ready(function() {
         var startTime = $("input[name='startTime']").val();
         var endTime = $("input[name='endTime']").val();
 
-        window.location = "/Admin/Order/expUser?missionStatus=" + selectDatas.missionStatus +"&orderNumber=" + selectDatas.number +"&startTime=" + startTime + "&endTime=" + endTime;
+        window.location = "../Order/expUser?missionStatus=" + selectDatas.missionStatus +"&orderNumber=" + selectDatas.number +"&startTime=" + startTime + "&endTime=" + endTime;
     });
 });

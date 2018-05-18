@@ -18,13 +18,13 @@ var vm = new Vue({
     created: function () {
         var vthis = this;
         $.ajax({
-            url: "/Home/Oil/searchOil",
+            url: "../Oil/searchOil",
             type: 'post',
             dataType: 'json',
             data: {"type" : this.selected},
             success: function (data, status) {
                 vthis.oilName = data;
-                vthis.selectOilNameData = data[0];
+                vthis.selectOilNameData = 0;
                 //console.log(vthis.selectOilNameData);
                 var ele = { target:{ value : vthis.selectOilNameData}};
                 vthis.selectOilName(ele);
@@ -45,13 +45,12 @@ var vm = new Vue({
             this.selected = ele.target.value;
             var vthis = this;
             $.ajax({
-                url: "/Home/Oil/searchOil",
+                url: "../Oil/searchOil",
                 type: 'post',
                 dataType: 'json',
                 data: {"type": this.selected},
                 success: function (data, status) {
                     vthis.oilName = data;
-                    vthis.selectOilNameData = data[0];
 
                     var ele = { target:{ value : vthis.selectOilNameData}};
                     vthis.selectOilName(ele);
@@ -66,7 +65,7 @@ var vm = new Vue({
             this.selectOilNameData = ele.target.value;
             var vthis = this;
             $.ajax({
-                url: "/Home/Order/searchLicense",
+                url: "../Order/searchLicense",
                 type: 'post',
                 dataType: 'json',
                 data: {"oilName": this.selectOilNameData},
@@ -107,7 +106,7 @@ var vm = new Vue({
                 alert("输入不能为空");
             } else {
                 $.ajax({
-                    url: "/Home/Order/searchData",
+                    url: "../Order/searchData",
                     type: 'post',
                     dataType: 'json',
                     data: {

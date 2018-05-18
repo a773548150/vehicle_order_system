@@ -82,7 +82,7 @@
 					<input type="text" class="weui-input" placeholder="请输入公司名称" v-model="company" maxlength="20" required>
 				</div>
 			</div>
-			<div class="subBtn" v-on:click="submit">提交预约</div>
+			<div class="subBtn" v-on:click="submit" v-if="isStop">提交预约</div>
 			<!-- <div class="boTxt" >
 				<div class="gou">
 					<span class="icon-ok"></span>

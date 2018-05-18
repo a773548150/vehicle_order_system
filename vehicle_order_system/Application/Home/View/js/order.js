@@ -12,13 +12,14 @@ var vm = new Vue({
         oilName: [],
         license_plate : '',
         company: '',
+        isStop: true,
         mobile_number : '',
         name: ''
     },
     created: function () {
         var vthis = this;
         $.ajax({
-            url: "/Home/Oil/searchOil",
+            url: "../Oil/searchOil",
             type: 'post',
             dataType: 'json',
             data: {"type" : this.selected},
@@ -33,12 +34,17 @@ var vm = new Vue({
         });
 
         $.ajax({
-            url: "/Home/Order/defaultInput",
+            url: "../Order/defaultInput",
             type: 'post',
             dataType: 'json',
             success: function (data, status) {
                 vthis.license_plate = data[0]["license_plate"].substring(2, data[0]["license_plate"].length);
                 vthis.company = data[0]["company"];
+                if(data[0]["stop"] == 1) {
+                    vthis.isStop = false;
+                } else {
+                    vthis.isStop = true;
+                }
                 console.log(vthis.license_plate);
             },
             fail: function (err, status) {
@@ -57,7 +63,7 @@ var vm = new Vue({
             this.selected = ele.target.value;
             var vthis = this;
             $.ajax({
-                url: "/Home/Oil/searchOil",
+                url: "../Oil/searchOil",
                 type: 'post',
                 dataType: 'json',
                 data: {"type": this.selected},
@@ -83,7 +89,7 @@ var vm = new Vue({
                 alert("车牌号必须要五位");
             } else {
                 $.ajax({
-                    url: "/Home/Order/makeOrder",
+                    url: "../Order/makeOrder",
                     type: 'post',
                     dataType: 'json',
                     data: {
@@ -98,7 +104,7 @@ var vm = new Vue({
                     }
                 });
                 $.ajax({
-                    url: "/Home/Driver/addDriver",
+                    url: "../Driver/addDriver",
                     type: 'post',
                     dataType: 'json',
                     data: {

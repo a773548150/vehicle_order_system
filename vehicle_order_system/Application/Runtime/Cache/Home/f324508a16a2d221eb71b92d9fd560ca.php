@@ -45,12 +45,13 @@
 				<div class="search" >
 					<div class="searchCon-right">
 						<select id="sel" @change="selectVal">
+							<option disabled="disabled" selected="selected">请选择类型</option>
 							<option v-for="item in selects">{{ item.value }}</option>
 						</select>
 					</div>
 					<div class="searchCon-right">
 						<select id="sel"  @change="selectOilName">
-							<option disabled="disabled">请选择类型</option>
+							<option disabled="disabled" selected="selected">请选择类型</option>
 							<option v-for="item in oilName">{{ item }}</option>
 						</select>
 					</div>

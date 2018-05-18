@@ -9,7 +9,7 @@ var vm = new Vue({
     created: function () {
         var vthis = this;
         $.ajax({
-            url: "/Home/Order/searchPersonalOrder",
+            url: "../Order/searchPersonalOrder",
             type: 'post',
             dataType: 'json',
             success: function (data, status) {
@@ -41,7 +41,7 @@ var vm = new Vue({
                 alert("输入不能为空");
             } else {
                 $.ajax({
-                    url: "/Home/Order/alertPersonalMessage",
+                    url: "../Order/alertPersonalMessage",
                     type: 'post',
                     dataType: 'json',
                     data: {

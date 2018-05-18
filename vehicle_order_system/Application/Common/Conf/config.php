@@ -24,7 +24,7 @@ return  array(
 //    'DB_PORT'               =>  '3306',        // 端口
 //    'DB_PREFIX'             =>  't_',    // 数据库表前缀
     'WECHAT_SDK' => array(
-        'appid' => 'wxddbec552bd3c87d4',
-        'secret' => 'a29f03616a31ebd7b23d28e8c9e056ed'
+        'appid' => 'wx876ac0d666758d1d',
+        'secret' => '12667985b36d32c6f093b232917cba2b'
     ),
 );

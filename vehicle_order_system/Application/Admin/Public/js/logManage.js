@@ -26,7 +26,7 @@ $(window).ready(function() {
             var datas = data.field;
             startTime = datas.startTime;
             endTime = datas.endTime;
-            var url = "/Admin/Log/searchLog?" + "startTime=" + startTime + "&endTime=" + endTime;
+            var url = "../Log/searchLog?" + "startTime=" + startTime + "&endTime=" + endTime;
             layui.use('table', function() {
                 var table = layui.table;
                 table.reload('log', {
@@ -64,7 +64,7 @@ $(window).ready(function() {
             elem: '#log'
             ,height: 510
             ,limit: 11
-            ,url: '/Admin/Log/searchLog' //数据接口
+            ,url: '../Log/searchLog' //数据接口
             ,page: true //开启分页
             ,cols: [[ //表头
                 {field: 'username', title: '操作者', width:190, sort: true, fixed: 'left'}
@@ -89,7 +89,7 @@ $(window).ready(function() {
                     layer.close(index);
                     //向服务端发送删除指令
                     $.ajax({
-                        url: "/Admin/Log/deleteLog",
+                        url: "../Log/deleteLog",
                         type: 'post',
                         dataType: 'json',
                         data: data,

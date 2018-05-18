@@ -37,7 +37,7 @@ $(window).ready(function() {
         //监听提交
         form.on('submit(formSearch)', function (data) {
             var datas = data.field;
-            var url = "/Admin/Driver/searchDriver?number=" + datas.number;
+            var url = "../Driver/searchDriver?number=" + datas.number;
             layui.use('table', function() {
                 var table = layui.table;
                 table.reload('order', {
@@ -50,7 +50,7 @@ $(window).ready(function() {
         form.on('select(selectStatus)', function(data){
             selectDatas.missionStatus = data.value;
 
-            var url = "/Admin/Order/searchOrder?missionStatus=" + selectDatas.missionStatus;
+            var url = "../Order/searchOrder?missionStatus=" + selectDatas.missionStatus;
             layui.use('table', function() {
                 var table = layui.table;
                 table.reload('order', {
@@ -70,7 +70,7 @@ $(window).ready(function() {
             ,height: 515
             ,width: 750
             ,limit: 11
-            ,url: '/Admin/driver/searchDriver' //数据接口
+            ,url: '../driver/searchDriver' //数据接口
             ,page: true //开启分页
             ,cols: [[ //表头
                 {field: 'headimgurl', title: '微信头像', width:100, sort: true, fixed: 'left'}
@@ -82,15 +82,17 @@ $(window).ready(function() {
             ,done: function(res, curr, count) {
                 console.log(res);
                 var a = [];
-                for(var x=0; x<$("tr[data-index]").length; x++) {
-                    a[x] = $("tr[data-index]")[x].getElementsByTagName('td')[0].innerText;
-                }
+                // for(var x=0; x<$("tr[data-index]").length; x++) {
+                //     a[x] = $("tr[data-index]")[x].getElementsByTagName('td')[0].innerText;
+                // }
+                //
+                // $("td[data-field='headimgurl']").html("<img src=''/>");
+                // console.log($("tr[data-index]"));
+                // for(var x=0; x<$("tr[data-index]").length; x++) {
+                //     $("td[data-field='headimgurl'] img")[x].setAttribute("src", a[x]);
+                // }
 
-                 $("td[data-field='headimgurl']").html("<img src=''/>");
-                console.log($("tr[data-index]"));
-                 for(var x=0; x<$("tr[data-index]").length; x++) {
-                     $("td[data-field='headimgurl'] img")[x].setAttribute("src", a[x]);
-                 }
+
                 //$("td[data-field='headimgurl'] img").attr("src", $("td[data-field='headimgurl']").text());
             }
         });
@@ -107,7 +109,7 @@ $(window).ready(function() {
                     layer.close(index);
                     //向服务端发送删除指令
                     $.ajax({
-                        url: "/Admin/Driver/deleteDriver",
+                        url: "../Driver/deleteDriver",
                         type: 'post',
                         dataType: 'json',
                         data: data,
@@ -127,7 +129,7 @@ $(window).ready(function() {
                         alert(editData.data.number);
 
                         $.ajax({
-                            url: "/Admin/Driver/editDriver",
+                            url: "../Driver/editDriver",
                             type: 'post',
                             dataType: 'json',
                             data: {
@@ -159,6 +161,6 @@ $(window).ready(function() {
         var startTime = $("input[name='startTime']").val();
         var endTime = $("input[name='endTime']").val();
 
-        window.location = "/Admin/Order/expUser?missionStatus=" + selectDatas.missionStatus +"&orderNumber=" + selectDatas.number +"&startTime=" + startTime + "&endTime=" + endTime;
+        window.location = "../Order/expUser?missionStatus=" + selectDatas.missionStatus +"&orderNumber=" + selectDatas.number +"&startTime=" + startTime + "&endTime=" + endTime;
     });
 });

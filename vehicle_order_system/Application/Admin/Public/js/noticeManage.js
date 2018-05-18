@@ -15,7 +15,7 @@ $(window).ready(function() {
         //监听提交
         form.on('submit(formSearch)', function (data) {
             var datas = data.field;
-            var url = "/Admin/Notice/searchNotice?title=" + datas.title;
+            var url = "../Notice/searchNotice?title=" + datas.title;
             layui.use('table', function() {
                 var table = layui.table;
                 table.reload('order', {
@@ -28,13 +28,13 @@ $(window).ready(function() {
         form.on('submit(formDemo)', function(data){
             var datas = data.field;
             $.ajax({
-                url: "/Admin/Notice/addNotice",
+                url: "../Notice/addNotice",
                 type: 'post',
                 dataType: 'json',
                 data: datas,
                 success: function (data, status) {
                     alert("添加成功");
-                    window.location = "/Admin/Index/toNoticeManage";
+                    window.location = "../Index/toNoticeManage";
                 },
                 fail: function (err, status) {
                     console.log(err)
@@ -53,7 +53,7 @@ $(window).ready(function() {
             ,width: 745
             ,height: 354
             ,limit: 8
-            ,url: '/Admin/Notice/searchNotice' //数据接口
+            ,url: '../Notice/searchNotice' //数据接口
             ,page: true //开启分页
             ,cols: [[ //表头
                 {field: 'title', title: '标题', width:205, sort: true, fixed: 'left', edit: "text"}
@@ -74,7 +74,7 @@ $(window).ready(function() {
                     layer.close(index);
                     //向服务端发送删除指令
                     $.ajax({
-                        url: "/Admin/Notice/deleteNotice",
+                        url: "../Notice/deleteNotice",
                         type: 'post',
                         dataType: 'json',
                         data: data,
@@ -92,7 +92,7 @@ $(window).ready(function() {
                 if (editData != "") {
                     if (editData.data.id === data.id) {
                         $.ajax({
-                            url: "/Admin/Notice/editNotice",
+                            url: "../Notice/editNotice",
                             type: 'post',
                             dataType: 'json',
                             data: {

@@ -1,14 +1,14 @@
 $(window).ready(function() {
     $("#loginOff").click(function () {
         $.ajax({
-            url: "/Admin/Index/loginOff",
+            url: "../Index/loginOff",
             type: 'post',
             dataType: 'json',
             success: function (data, status) {
                 alert(data);
                 if (data == "成功退出") {
                     $.cookie("username", "");
-                    window.location = "/Admin/Index/toLogin";
+                    window.location = "../Index/toLogin";
                 }
             },
             fail: function (err, status) {

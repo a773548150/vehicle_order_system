@@ -12,19 +12,16 @@ class LogController extends BaseController {
     public function insert($insertData) {
         $m = D("Log");
         $rs = $m->insert($insertData);
-        echo $rs;
     }
 
     public function update($updateData) {
         $m = D("Log");
         $rs = $m->update($updateData);
-        echo $rs;
     }
 
     public function delete($deleteData) {
         $m = D("Log");
         $rs = $m->delete($deleteData);
-        echo $rs;
     }
 
     public function searchLog(){
@@ -37,7 +34,6 @@ class LogController extends BaseController {
     public function deleteLog() {
         $m = D("Log");
         $rs = $m->deleteLog();
-        echo $rs;
     }
 
 }
