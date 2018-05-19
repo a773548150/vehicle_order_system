@@ -2,9 +2,6 @@
 namespace Home\Controller;
 class IndexController extends BaseController {
     public function index() {
-        $wechat = C('WECHAT_SDK');
-
-
         $nonce = $_GET['nonce'];
         $token = "linxiaocong";
         $timestamp = $_GET['timestamp'];
@@ -16,14 +13,11 @@ class IndexController extends BaseController {
         if($str == $signature && $echostr){
             echo $echostr;
             exit;
-       }
-//       else {
-//            $this->responseMsg();
-//        }
+        }
+        else {
+            $this->responseMsg();
+        }
 
-        $redirect_uri = urlencode('http://yijiangbangtest.wsandos.com/linxiaocong/home/index/getUserInfo');
-        $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid={$wechat['appid']}&redirect_uri=$redirect_uri&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
-        header("Location:".$url);
     }
     //跳转到登录页面
     public function toLogin() {
@@ -82,6 +76,7 @@ class IndexController extends BaseController {
 
     public function responseMsg()
     {
+
         //get post data, May be due to the different environments
         $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
 
@@ -103,7 +98,7 @@ class IndexController extends BaseController {
             if(!empty( $keyword ))
             {
                 $msgType = "text";
-                $contentStr = "openid: ".$fromUsername;
+                $contentStr = "http://yijiangbangtest.wsandos.com/linxiaocong";
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 echo $resultStr;
             }else{
@@ -111,6 +106,10 @@ class IndexController extends BaseController {
             }
         }else {
             echo "";
+            $wechat = C('WECHAT_SDK');
+            $redirect_uri = urlencode('http://yijiangbangtest.wsandos.com/linxiaocong/home/index/getUserInfo');
+            $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid={$wechat['appid']}&redirect_uri=$redirect_uri&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
+            header("Location:".$url);
             exit;
         }
 

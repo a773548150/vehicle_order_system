@@ -51,7 +51,7 @@ var vm = new Vue({
                 data: {"type": this.selected},
                 success: function (data, status) {
                     vthis.oilName = data;
-
+                    vthis.selectOilNameData = data[0];
                     var ele = { target:{ value : vthis.selectOilNameData}};
                     vthis.selectOilName(ele);
                    // console.log(vthis.oilName);
