@@ -32,7 +32,8 @@ class DriverModel extends BaseModel {
     public function addDriver() {
         $m = M("driver");
         $W = M("wechat");
-        $openid = "oyur_1GhybMGLZZ5xc1-LxSO39T8";
+        session_start();
+        $openid = $_SESSION["openid"];
         $wechat_id = $W->where(array("openid" => $openid))->getField("id");
         $ifExist = $m->where(array("wechat_id" => $wechat_id))->select();
 

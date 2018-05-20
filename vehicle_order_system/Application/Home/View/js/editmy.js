@@ -9,7 +9,7 @@ var vm = new Vue({
     created: function () {
         var vthis = this;
         $.ajax({
-            url: "../Order/searchPersonalOrder",
+            url: "../Order/searchEditMy",
             type: 'post',
             dataType: 'json',
             success: function (data, status) {

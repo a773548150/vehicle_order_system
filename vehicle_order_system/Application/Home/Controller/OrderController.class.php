@@ -44,6 +44,13 @@ class OrderController extends BaseController {
         echo $rs;
     }
 
+    public function searchEditMy() {
+        $m = D("Order");
+        $rs = $m->searchEditMy();
+        $rs = json2($rs);
+        echo $rs;
+    }
+
     public function alertPersonalMessage() {
         $m = D("Order");
         $rs = $m->alertPersonalMessage();

@@ -24,56 +24,6 @@ class IndexController extends BaseController {
         $this->display("/login");
     }
 
-    public function getUserInfo() {
-        $wechat = C('WECHAT_SDK');
-        $code = $_GET["code"];
-//var_dump($code);die;
-
-//第一步:取全局access_token
-        $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={$wechat['appid']}&secret={$wechat['secret']}";
-//https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxddbec552bd3c87d4&secret=a29f03616a31ebd7b23d28e8c9e056ed
-        $token = $this->getJson($url);
-//var_dump($token);die;
-//第二步:取得openid
-        $oauth2Url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid={$wechat['appid']}&secret={$wechat['secret']}&code=$code&grant_type=authorization_code";
-        $oauth2 = $this->getJson($oauth2Url);
-
-
-
-//第三步:根据全局access_token和openid查询用户信息
-        $access_token = $token["access_token"];
-        $openid = $oauth2['openid'];
-        $get_user_info_url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=$access_token&openid=$openid&lang=zh_CN";
-        $userinfo = $this->getJson($get_user_info_url);
-
-//打印用户信息
-
-        $m = M("wechat");
-        $select = $m->where(array("openid"=>$userinfo["openid"]))->getField("id");
-//        var_dump($select);die;
-        if($select) {
-            $m->where(array("openid" => $userinfo["openid"]))->save($userinfo);
-//            echo "更新数据成功";
-        } else {
-            $result = $m->data($userinfo)->add();
-//            if($result){
-//                echo "插入数据成功";
-//            }
-        }
-        $this->display("/index");
-    }
-
-    public function getJson($url) {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $output = curl_exec($ch);
-        curl_close($ch);
-        return json_decode($output, true);
-    }
-
     public function responseMsg()
     {
 
@@ -108,9 +58,10 @@ class IndexController extends BaseController {
             echo "";
             $wechat = C('WECHAT_SDK');
             $redirect_uri = urlencode('http://yijiangbangtest.wsandos.com/linxiaocong/home/index/getUserInfo');
-            $url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid={$wechat['appid']}&redirect_uri=$redirect_uri&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
+            $url ="https://open.weixin.qq.com/connect/oauth2/authorize?appid={$wechat['appid']}&redirect_uri=$redirect_uri&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect";
+
             header("Location:".$url);
-            exit;
+            //exit;
         }
 
         if(strtolower($postObj->MsgType) == 'event') {
@@ -120,19 +71,88 @@ class IndexController extends BaseController {
                 $time = time();
                 $msgType = 'text';
                 $content = '欢迎关注我们的微信公众账号'.$postObj->FromUserName;
-                $template = "<xml>  
-                        <ToUserName><![CDATA[%s]]></ToUserName>  
-                        <FromUserName><![CDATA[%s]]></FromUserName>  
-                        <CreateTime>%s</CreateTime>  
-                        <MsgType><![CDATA[%s]]></MsgType>  
-                        <Content><![CDATA[%s]]></Content>  
-                        <FuncFlag>0</FuncFlag>  
+                $template = "<xml>
+                        <ToUserName><![CDATA[%s]]></ToUserName>
+                        <FromUserName><![CDATA[%s]]></FromUserName>
+                        <CreateTime>%s</CreateTime>
+                        <MsgType><![CDATA[%s]]></MsgType>
+                        <Content><![CDATA[%s]]></Content>
+                        <FuncFlag>0</FuncFlag>
                         </xml>";
                 $info = sprintf($template, $toUser, $fromUser, $time, $msgType, $content);
                 echo $info;
             }
         }
     }
+
+    public function getJson($url) {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $output = curl_exec($ch);
+        curl_close($ch);
+        return json_decode($output, true);
+    }
+
+    public function getUserInfo() {
+        $wechat = C('WECHAT_SDK');
+        $code = $_GET["code"];
+//var_dump($code);die;
+//
+//第一步:取全局access_token
+        $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={$wechat['appid']}&secret={$wechat['secret']}";
+//https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxddbec552bd3c87d4&secret=a29f03616a31ebd7b23d28e8c9e056ed
+        $token = $this->getJson($url);
+//var_dump($token);die;
+//第二步:取得openid
+        $oauth2Url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid={$wechat['appid']}&secret={$wechat['secret']}&code=$code&grant_type=authorization_code";
+        $oauth2 = $this->getJson($oauth2Url);
+
+
+
+//第三步:根据全局access_token和openid查询用户信息
+        $access_token = $token["access_token"];
+        $openid = $oauth2['openid'];
+        $get_user_info_url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=$access_token&openid=$openid&lang=zh_CN";
+        $userinfo = $this->getJson($get_user_info_url);
+// session 保存openid
+        session_start();
+        $_SESSION["openid"] = $openid;
+
+//打印用户信息
+        $m = M("wechat");
+        $D = M("driver");
+        $select = $m->where(array("openid"=>$userinfo["openid"]))->getField("id");
+
+        if($select) {
+            $userinfo["create_time"] = date("Y-m-d h:i:s");
+            $m->where(array("openid" => $userinfo["openid"]))->save($userinfo);
+//            echo "更新数据成功";
+            //exit;
+        } else {
+            $userinfo["update_time"] = date("Y-m-d h:i:s");
+            $result = $m->data($userinfo)->add();
+            if($result) {
+                $data["wechat_id"] = $result;
+                $nowTime = date("Ymdhis");
+                $sixRand = rand('100000', '999999');
+                $data["number"] = $nowTime.$sixRand;
+                $data["name"] = "请编辑您的真实姓名";
+                $data["mobile_number"] = "请编辑您的手机号";
+                $data["company"] = "请您所属公司";
+                $data['create_time'] = date("Y-m-d h:i:s");
+                $result1 = $D->data($data)->add();
+            }
+            //exit;
+        }
+        //$this->display("/index");
+        $this->redirect("toIndex");
+    }
+
+
+
 //    public function isStop() {
 //        $m = M("order");
 //        $result = $m->getField("stop");

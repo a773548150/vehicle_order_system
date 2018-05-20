@@ -19,8 +19,14 @@ class OrderModel extends BaseModel {
     public function makeOrder() {
         $m = M("order");
         $O = M("oil");
+        $D = M("driver");
+        $W = M("wechat");
        // $driver = openid;
-        $driver_id = 1;
+        session_start();
+        $openid = $_SESSION["openid"];
+        $wechat_id = $W->where(array("openid" => $openid))->getField("id");
+        $driver_id = $D->where(array("wechat_id" => $wechat_id))->getField("id");;
+
         $license_plate = strtoupper(trim(I("post.license_plate")));
         $oil_id = $O->where(array("name" => I("post.OilName")))->getField("id");
         $rank = $this->findRank($oil_id) + 3;
@@ -41,8 +47,8 @@ class OrderModel extends BaseModel {
 //        $m = M("order");
 //        $W = M("wechat");
 //        $D = M("driver");
-
-        $openid = "oyur_1GhybMGLZZ5xc1-LxSO39T8";
+        session_start();
+        $openid = $_SESSION["openid"];
         $default = M();
         $sql = "select o.license_plate, o.stop, d.company from t_order o LEFT JOIN t_driver d on o.driver_id = d.id LEFT JOIN t_wechat w on d.wechat_id = w.id where o.`status`=1 and d.`status`=1 and w.openid = \"{$openid}\" order by o.create_time DESC LIMIT 0, 1";
         $result = $default->query($sql);
@@ -80,22 +86,46 @@ class OrderModel extends BaseModel {
     }
 
     public function searchPersonalMessage() {
+        session_start();
         $M = M();
-        $openid = "oyur_1GhybMGLZZ5xc1-LxSO39T8";
+        $openid = $_SESSION["openid"];
         $sql = "select t_driver.license_plate driver_license_plate, t_order.stop, t_order.rank, t_order.license_plate order_license_plate, t_wechat.nickname, t_order.order_status, company, t_driver.`name`, t_driver.mobile_number, t_wechat.headimgurl from t_order LEFT JOIN t_driver on t_driver.id = t_order.driver_id LEFT JOIN t_wechat on t_wechat.id = t_driver.wechat_id where t_wechat.openid = \"{$openid}\"";
         $result = $M->query($sql);
-        return $result;
+        if($result) {
+            return $result;
+        } else {
+            $sql = "select t_driver.license_plate driver_license_plate, t_wechat.nickname, company, t_driver.`name`, t_driver.mobile_number, t_wechat.headimgurl from t_driver left join t_wechat on t_wechat.id = t_driver.wechat_id where t_wechat.openid = \"{$openid}\"";
+            $result1 = $M->query($sql);
+            $result1[0]["stop"] =1;
+            $result1[0]["rank"] =0;
+            $result1[0]["order_license_plate"] = "*****";
+            $result1[0]["order_status"] = 3;
+            return $result1;
+        }
+
     }
 
     public function searchPersonalOrder() {
+        session_start();
         $M = M();
-        $openid = "oyur_1GhybMGLZZ5xc1-LxSO39T8";
+        $openid = $_SESSION["openid"];
         $sql = "select t_driver.license_plate driver_license_plate, t_order.license_plate t_order_license_plate,t_order.create_time, t_oil.type, t_order.order_status, company, t_driver.`name`, t_driver.mobile_number from t_order LEFT JOIN t_driver on t_driver.id = t_order.driver_id LEFT JOIN t_wechat on t_wechat.id = t_driver.wechat_id LEFT JOIN t_oil on t_oil.id = t_order.oil_id where t_wechat.openid = \"{$openid}\"";
+        $result = $M->query($sql);
+
+        return $result;
+    }
+
+    public function searchEditMy() {
+        session_start();
+        $M = M();
+        $openid = $_SESSION["openid"];
+        $sql = "select t_driver.license_plate driver_license_plate, company, t_driver.`name`, t_driver.mobile_number from t_driver LEFT JOIN t_wechat on t_wechat.id = t_driver.wechat_id where t_wechat.openid = \"{$openid}\"";
         $result = $M->query($sql);
         return $result;
     }
 
     public function alertPersonalMessage() {
+        session_start();
         $W = M("wechat");
         $D = M("driver");
 
@@ -104,7 +134,7 @@ class OrderModel extends BaseModel {
         $license_plate = I("post.license_plate");
         $company = I("post.company");
 
-        $openid = "oyur_1GhybMGLZZ5xc1-LxSO39T8";
+        $openid = $_SESSION["openid"];
         $wechat_id = $W->where(array("openid" => $openid))->getField("id");
         $driver_id = $D->where(array("wechat_id" => $wechat_id))->getField("id");
         $result = $D->where(array("id" => $driver_id))->save(array("name" => $name, "mobile_number" => $mobile_number, "company" => $company, "license_plate" => $license_plate));
