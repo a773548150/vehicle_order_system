@@ -7,13 +7,13 @@ $(window).ready(function (){
             var datas = data.field;
             if (datas.newPassword == datas.newPassword2) {
                 $.ajax({
-                    url: "alertPassword",
+                    url: "../index/alertPassword",
                     type: 'post',
                     dataType: 'json',
                     data: datas,
                     success: function (data, status) {
                         if (data == 1) {
-                            $.cookie("username", "");
+                            //$.cookie("username", "");
                             alert("修改密码成功");
                             window.location = "../Index/toLogin";
                         } else if (data == 2) {

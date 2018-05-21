@@ -97,7 +97,7 @@ var vm = new Vue({
                         "license_plate": this.license_plate
                     },
                     success: function (data, status) {
-                        console.log("预约成功");
+                        alert("预约成功");
                     },
                     fail: function (err, status) {
                         console.log(err)

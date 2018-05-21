@@ -202,12 +202,15 @@ class OrderModel extends BaseModel {
         $m = M("order");
         $L = A("Log");
 
-        $result = $m->where(array("order_status" => 3))->getField("rank", true);
+        $result = $m->where(array("order_status" => 3))->getField("id, rank", true);
         $rankMax = count($result) + 2;
         for ($i = 1; $i <= $rankMax; $i++) {
             $m->where(array("rank" => $i))->save(array("rank" => $i-1));
-        }
 
+        }
+        foreach($result as $key => $value) {
+            $this->sendMessage($key);
+        }
         $m->where(array("rank" => 1))->save(array("order_status" => 1));
         $m->where(array("rank" => 2))->save(array("order_status" => 2));
         $m->where(array("rank" => 0))->save(array("order_status" => 0));
@@ -229,7 +232,7 @@ class OrderModel extends BaseModel {
         $data['update_time'] = date("Y-m-d h:i:s");
         $res = $m->where($lim)->save($data);
         $number = $m->where(array("id" => $lim["id"]))->getField("number");
-
+        $this->sendMessage($lim["id"]);
         $L->update("修改单号：“".$number."”的信息");
         return $res;
     }
@@ -247,5 +250,91 @@ class OrderModel extends BaseModel {
         $result = $O->where(array("status"=>"1"))->getField("name", true);
 //        var_dump($result);die;
         return $result;
+    }
+
+    public function sendMessage($id) {
+        $m = M();
+        $sql="select t_order.license_plate license_plate, t_order.update_time , t_oil.type oilType, t_oil.name oilName, t_driver.`name`, t_order.status, t_wechat.openid  from t_order LEFT JOIN t_driver on t_driver.id = t_order.driver_id LEFT JOIN t_wechat on t_wechat.id = t_driver.wechat_id LEFT JOIN t_oil on t_oil.id = t_order.oil_id where t_order.id = \"{$id}\"";
+        $result = $m->query($sql);
+        $this->send_template_msg(
+            $result[0]["openid"],//获取已保存的用户openid
+            U('home/index/toYyjl'),//订单详情页完整域名
+            "#FF0000",//特殊语句的自定义16进制颜色
+            "亲爱的".$result[0]["name"].",您的预约订单已经发生了变化",
+            $result[0]["license_plate"],
+            $result[0]["oiltype"],
+            $result[0]["oilname"],
+            $result[0]["status"],
+            $result[0]["update_time"],
+            ""
+        );
+    }
+
+    public function send_template_msg($openid,$url="",$color="#000000",$first,$license_plate,$oilType,$oilName,$status,$time,$remark){
+        $wechat = C('WECHAT_SDK');
+        $data  = $this->teml($openid,$url,$color,$first,$license_plate,$oilType,$oilName,$status,$time,$remark);
+        $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={$wechat['appid']}&secret={$wechat['secret']}";
+
+        $basetoken = getJson($url);
+        $urls = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".$basetoken;
+        $res = $this->http_request($urls,urldecode($data));
+        return json_decode($res,true);//array
+    }
+
+    public function teml($openid,$url="",$color="#000",$first,$license_plate,$oilType,$oilName,$status,$time,$remark="点击“查看详情“立即查阅您车辆的最新状态！"){
+        $template = array(
+            'touser' => $openid,
+            'template_id' => "CmKbA9gqt8coYTVw6ZBxpufPx5vn3VwEO6MA8WvfcIE",//模版id
+            'url'=>$url,
+            'topcolor'=>"#7B68EE",
+            'data'=>array(
+                'first' => array(
+                    'value' => urlencode($first),
+                    'color' => $color,
+                ),
+                'keyword1' => array(
+                    'value' => urlencode($license_plate),
+                    'color' => $color,
+                ),
+                'keyword2' => array(
+                    'value' => urlencode($oilType),
+                    'color' => $color,
+                ),
+                'keyword3' => array(
+                    'value' => urlencode($oilName),
+                    'color' => $color,
+                ),
+                'keyword4' => array(
+                    'value' => urlencode($status),
+                    'color' => $color,
+                ),
+                'keyword5' => array(
+                    'value' => urlencode($time),
+                    'color' => $color,
+                ),
+                'remark' => array(
+                    'value' => urlencode($remark),
+                    'color' => "#000000",
+                )
+            )
+
+        );
+
+        return json_encode($template);
+    }
+
+    public function http_request($url,$data=null){
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, FALSE);
+        if(!empty($data)){
+            curl_setopt($curl, CURLOPT_POST, 1);
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+        }
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $output = curl_exec($curl);
+        curl_close($curl);
+        return $output;
     }
 }

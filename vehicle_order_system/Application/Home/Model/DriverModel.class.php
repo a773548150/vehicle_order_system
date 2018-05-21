@@ -42,6 +42,7 @@ class DriverModel extends BaseModel {
         $data["number"] = $nowTime.$sixRand;
         $data["wechat_id"] = $wechat_id;
         $data["name"] = I("post.name");
+        $data["license_plate"] = I("post.license_plate");
         $data["mobile_number"] = I("post.mobile_number");
         $data["company"] = I("post.company");
 

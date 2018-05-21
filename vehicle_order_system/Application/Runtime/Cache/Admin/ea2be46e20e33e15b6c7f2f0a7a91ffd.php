@@ -10,19 +10,19 @@
 <body>
 <ul class="layui-nav layui-nav-tree layui-nav-side" lay-filter="test">
     <li class="layui-nav-item">
-        <a href="/Admin/Index/index">主页</a>
+        <a href="<?php echo U('index');?>">主页</a>
     </li>
     <?php if(in_array(($permissions[0][manage_driver]), explode(',',"1"))): ?><li class="layui-nav-item" >
             <a href="javascript:;">司机管理</a>
             <dl class="layui-nav-child">
-                <dd><a href="/Admin/Index/toDriverManage">司机信息管理</a></dd>
+                <dd><a href="<?php echo U('toDriverManage');?>">司机信息管理</a></dd>
             </dl>
         </li><?php endif; ?>
 
     <?php if(in_array(($permissions[0][manage_oil]), explode(',',"1"))): ?><li class="layui-nav-item" >
             <a href="javascript:;">油品管理</a>
             <dl class="layui-nav-child">
-                <dd><a href="/Admin/Index/toOilManage">油品类型管理</a></dd>
+                <dd><a href="<?php echo U('toOilManage');?>">油品类型管理</a></dd>
             </dl>
         </li><?php endif; ?>
 
@@ -30,7 +30,7 @@
     <?php if(in_array(($permissions[0][manage_order]), explode(',',"1"))): ?><li class="layui-nav-item layui-nav-itemed" >
             <a href="javascript:;">车队列表管理</a>
             <dl class="layui-nav-child">
-                <dd><a href="/Admin/Index/toOrderManage" class="layui-this">排队管理</a></dd>
+                <dd><a href="<?php echo U('toOrderManage');?>" class="layui-this">排队管理</a></dd>
             </dl>
         </li><?php endif; ?>
 
@@ -38,29 +38,29 @@
     <?php if(in_array(($permissions[0][manage_data]), explode(',',"1"))): ?><li class="layui-nav-item">
             <a href="javascript:;">数据信息</a>
             <dl class="layui-nav-child">
-                <dd><a href="/Admin/Index/toDataManage">数据管理</a></dd>
+                <dd><a href="<?php echo U('toDataManage');?>">数据管理</a></dd>
             </dl>
         </li><?php endif; ?>
 
     <?php if(in_array(($permissions[0][manage_notice]), explode(',',"1"))): ?><li class="layui-nav-item">
             <a href="javascript:;">公告内容信息</a>
             <dl class="layui-nav-child">
-                <dd><a href="/Admin/Index/toNoticeManage">公告内容管理</a></dd>
+                <dd><a href="<?php echo U('toNoticeManage');?>">公告内容管理</a></dd>
             </dl>
         </li><?php endif; ?>
 
     <?php if(in_array(($permissions[0][manage_role]), explode(',',"1"))): ?><li class="layui-nav-item">
             <a href="javascript:;">角色权限</a>
             <dl class="layui-nav-child">
-                <dd><a href="/Admin/Index/toRole">权限管理</a></dd>
-                <dd><a href="/Admin/Index/toUser">后台用户管理</a></dd>
+                <dd><a href="<?php echo U('toRole');?>">权限管理</a></dd>
+                <dd><a href="<?php echo U('toUser');?>">后台用户管理</a></dd>
             </dl>
         </li><?php endif; ?>
 
     <?php if(in_array(($permissions[0][manage_log]), explode(',',"1"))): ?><li class="layui-nav-item">
             <a href="javascript:;">操作日记</a>
             <dl class="layui-nav-child">
-                <dd><a href="/Admin/Index/toLogManage">日记管理</a></dd>
+                <dd><a href="<?php echo U('toLogManage');?>">日记管理</a></dd>
             </dl>
         </li><?php endif; ?>
 </ul>

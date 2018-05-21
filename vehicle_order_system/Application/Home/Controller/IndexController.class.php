@@ -85,16 +85,6 @@ class IndexController extends BaseController {
         }
     }
 
-    public function getJson($url) {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $output = curl_exec($ch);
-        curl_close($ch);
-        return json_decode($output, true);
-    }
 
     public function getUserInfo() {
         $wechat = C('WECHAT_SDK');
@@ -104,11 +94,11 @@ class IndexController extends BaseController {
 //第一步:取全局access_token
         $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={$wechat['appid']}&secret={$wechat['secret']}";
 //https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxddbec552bd3c87d4&secret=a29f03616a31ebd7b23d28e8c9e056ed
-        $token = $this->getJson($url);
+        $token = getJson($url);
 //var_dump($token);die;
 //第二步:取得openid
         $oauth2Url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid={$wechat['appid']}&secret={$wechat['secret']}&code=$code&grant_type=authorization_code";
-        $oauth2 = $this->getJson($oauth2Url);
+        $oauth2 = getJson($oauth2Url);
 
 
 
@@ -116,7 +106,7 @@ class IndexController extends BaseController {
         $access_token = $token["access_token"];
         $openid = $oauth2['openid'];
         $get_user_info_url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=$access_token&openid=$openid&lang=zh_CN";
-        $userinfo = $this->getJson($get_user_info_url);
+        $userinfo = getJson($get_user_info_url);
 // session 保存openid
         session_start();
         $_SESSION["openid"] = $openid;
