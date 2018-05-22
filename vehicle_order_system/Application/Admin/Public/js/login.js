@@ -7,14 +7,14 @@ $(window).ready(function(){
             var datas = data.field;
             var action = data.form.action;
             $.ajax({
-                url: "../Index/login",
+                url: "./admin/Index/login",
                 type: 'post',
                 dataType: 'json',
                 data: datas,
                 success: function (data, status) {
                     if (data == "登录成功") {
                         alert(data);
-                        window.location = "../Index/index";
+                        window.location = "./admin/Index/index";
                     } else if (data == "登录失败") {
                         alert("密码或账号错误");
                     }

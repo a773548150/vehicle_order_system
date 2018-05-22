@@ -56,7 +56,7 @@ $(window).ready(function() {
         //监听提交
         form.on('submit(formSearch)', function (data) {
             var datas = data.field;
-            var url = "../Order/searchOrder?missionStatus=3&orderNumber=" + datas.number;
+            var url = "../Order/searchOrder?missionStatus=3&number=" + datas.number;
             layui.use('table', function() {
                 var table = layui.table;
                 table.reload('order', {
@@ -120,7 +120,7 @@ $(window).ready(function() {
             ,cols: [[ //表头
                 {field: 'stop', title: '排队状态', width:120, sort: true}
                 ,{field: 'number', title: '单号', width:190, sort: true}
-                ,{field: 'driver_number', title: '司机编号', width:190, sort: true}
+                ,{field: 'driver_mobile_number', title: '司机手机号', width:190, sort: true}
                 ,{field: 'order_status', title: '状态', width: 160, sort: true}
                 ,{field: 'rank', title: '排队名次', width:160, sort: true}
                 ,{field: 'oil_name', title: '油名', width:160}

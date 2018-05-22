@@ -53,9 +53,10 @@ class OrderModel extends BaseModel {
     public function rank($data) {
         $m = M("order");
         $result = $m->where(array("order_status" => 3))->getField("rank", true);
+        $update_time = date("Y-m-d h:i:s");
         $rankMax = count($result) + 2;
         for ($i = $rankMax; $i >= $data['rank']; $i--) {
-            $m->where(array("order_status" => 3, "rank" => $i))->save(array("rank" => $i+1));
+            $m->where(array("order_status" => 3, "rank" => $i))->save(array("rank" => $i+1, "update_time" => $update_time));
         }
     }
 
@@ -67,7 +68,7 @@ class OrderModel extends BaseModel {
         foreach ($result as $key => $value) {
             foreach ($value as $key2 => $value2){
                 if ($key2 == "driver_id" && $key2 != null) {
-                    $result[$key]["driver_number"] = $D->where(array("id"=>$value2))->getField("number");
+                    $result[$key]["driver_mobile_number"] = $D->where(array("id"=>$value2))->getField("mobile_number");
                 }
             }
         }
@@ -123,7 +124,7 @@ class OrderModel extends BaseModel {
             $data["create_time"] = array(array('egt', $startTime), array('elt', $endTime));
         }
         $data['order_status'] = I('get.missionStatus');
-        $data['number'] = array('LIKE', "%".I('get.orderNumber')."%");
+        $data['number'] = array('LIKE', "%".I('get.number')."%");
         $data['status'] = 1;
         $page = I('get.page');
         $limit = I('get.limit');
@@ -135,6 +136,7 @@ class OrderModel extends BaseModel {
             unset($data['order_status']);
             $result = $m->where($data)->order('rank desc')->page($page, $limit)->select();
             $result = $this->findForeign($result);
+
             return $result;
         } else {
             $result = $m->where(array("status"=>1))->order('rank desc')->page($page, $limit)->select();
@@ -159,16 +161,16 @@ class OrderModel extends BaseModel {
         $L = A("Log");
         $data["id"] = I("post.id");
         $rank = I("post.rank");
-
+        $update_time = date("Y-m-d h:i:s");
         $result = $m->where(array("order_status" => 3))->getField("rank", true);
         $rankMax = count($result) + 2;
         if($rank+3 > $rankMax || $rank-3 < 0){
             return "0";
         } else {
-            $m->where(array("rank" => $rank+1))->save(array("rank" => $rank));
-            $m->where(array("rank" => $rank+2))->save(array("rank" => $rank+1));
-            $m->where(array("rank" => $rank+3))->save(array("rank" => $rank+2));
-            $m->where(array("id" => $data["id"]))->save(array("rank" => $rank+3));
+            $m->where(array("rank" => $rank+1))->save(array("rank" => $rank, "update_time" => $update_time));
+            $m->where(array("rank" => $rank+2))->save(array("rank" => $rank+1, "update_time" => $update_time));
+            $m->where(array("rank" => $rank+3))->save(array("rank" => $rank+2, "update_time" => $update_time));
+            $m->where(array("id" => $data["id"]))->save(array("rank" => $rank+3, "update_time" => $update_time));
             $L->insert("删除了单号为：".I("post.number")."  的订单");
             return "1";
         }
@@ -179,8 +181,10 @@ class OrderModel extends BaseModel {
         $L = A("Log");
         $data["stop"] = 1;
         $result1 = $m->getField("id", true);
+        $data["update_time"] = date("Y-m-d h:i:s");
         foreach($result1 as $v){
             $result = $m->where(array("id" => $v))->save($data);
+            $this->sendMessage($v,1);
         }
         $L->insert("暂停排队");
         return $result;
@@ -190,9 +194,11 @@ class OrderModel extends BaseModel {
         $m = M("order");
         $L = A("Log");
         $data["stop"] = 0;
+        $data["update_time"] = date("Y-m-d h:i:s");
         $result1 = $m->getField("id", true);
         foreach($result1 as $v){
             $result = $m->where(array("id" => $v))->save($data);
+            $this->sendMessage($v,0);
         }
         $L->insert("开始排队");
         return $result;
@@ -201,19 +207,19 @@ class OrderModel extends BaseModel {
     public function forword() {
         $m = M("order");
         $L = A("Log");
-
+        $update_time = date("Y-m-d h:i:s");
         $result = $m->where(array("order_status" => 3))->getField("id, rank", true);
         $rankMax = count($result) + 2;
         for ($i = 1; $i <= $rankMax; $i++) {
-            $m->where(array("rank" => $i))->save(array("rank" => $i-1));
+            $m->where(array("rank" => $i))->save(array("rank" => $i-1, "update_time" => $update_time));
 
         }
         foreach($result as $key => $value) {
-            $this->sendMessage($key);
+            $this->sendMessage($key, "");
         }
-        $m->where(array("rank" => 1))->save(array("order_status" => 1));
-        $m->where(array("rank" => 2))->save(array("order_status" => 2));
-        $m->where(array("rank" => 0))->save(array("order_status" => 0));
+        $m->where(array("rank" => 1))->save(array("order_status" => 1, "update_time" => $update_time));
+        $m->where(array("rank" => 2))->save(array("order_status" => 2, "update_time" => $update_time));
+        $m->where(array("rank" => 0))->save(array("order_status" => 0, "update_time" => $update_time));
 
         $L->insert("排队前进");
         return "1";
@@ -232,7 +238,7 @@ class OrderModel extends BaseModel {
         $data['update_time'] = date("Y-m-d h:i:s");
         $res = $m->where($lim)->save($data);
         $number = $m->where(array("id" => $lim["id"]))->getField("number");
-        $this->sendMessage($lim["id"]);
+        $this->sendMessage($lim["id"], "");
         $L->update("修改单号：“".$number."”的信息");
         return $res;
     }
@@ -252,15 +258,31 @@ class OrderModel extends BaseModel {
         return $result;
     }
 
-    public function sendMessage($id) {
+    public function sendMessage($id, $rankStatus) {
         $m = M();
         $sql="select t_order.license_plate license_plate, t_order.update_time , t_oil.type oilType, t_oil.name oilName, t_driver.`name`, t_order.status, t_wechat.openid  from t_order LEFT JOIN t_driver on t_driver.id = t_order.driver_id LEFT JOIN t_wechat on t_wechat.id = t_driver.wechat_id LEFT JOIN t_oil on t_oil.id = t_order.oil_id where t_order.id = \"{$id}\"";
         $result = $m->query($sql);
+//        var_dump($result);die;
+        if($result[0]["status"] == 0) {
+            $result[0]["status"] = "已装";
+        } else if($result[0]["status"] == 1) {
+            $result[0]["status"] = "装车中";
+        } else if($result[0]["status"] == 2) {
+            $result[0]["status"] = "厂区内待装";
+        } else if($result[0]["status"] == 3) {
+            $result[0]["status"] = "厂区外待装";
+        }
+        if($rankStatus == 1) {
+            $result[0]["status"] = "暂停";
+        } else if($rankStatus == 0) {
+            $result[0]["status"] = "重新开始";
+        }
+
         $this->send_template_msg(
             $result[0]["openid"],//获取已保存的用户openid
-            U('home/index/toYyjl'),//订单详情页完整域名
+            "http://yijiangbangtest.wsandos.com/linxiaocong/home/index/toYyjl",//订单详情页完整域名
             "#FF0000",//特殊语句的自定义16进制颜色
-            "亲爱的".$result[0]["name"].",您的预约订单已经发生了变化",
+            "你好，".$result[0]["name"].",您的预约订单已经发生了变化",
             $result[0]["license_plate"],
             $result[0]["oiltype"],
             $result[0]["oilname"],
@@ -273,9 +295,11 @@ class OrderModel extends BaseModel {
     public function send_template_msg($openid,$url="",$color="#000000",$first,$license_plate,$oilType,$oilName,$status,$time,$remark){
         $wechat = C('WECHAT_SDK');
         $data  = $this->teml($openid,$url,$color,$first,$license_plate,$oilType,$oilName,$status,$time,$remark);
-        $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={$wechat['appid']}&secret={$wechat['secret']}";
 
-        $basetoken = getJson($url);
+        $json_token=$this->http_request("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={$wechat['appid']}&secret={$wechat['secret']}");
+        $access_token=json_decode($json_token,true);
+        $basetoken=$access_token["access_token"];
+
         $urls = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".$basetoken;
         $res = $this->http_request($urls,urldecode($data));
         return json_decode($res,true);//array
@@ -283,9 +307,9 @@ class OrderModel extends BaseModel {
 
     public function teml($openid,$url="",$color="#000",$first,$license_plate,$oilType,$oilName,$status,$time,$remark="点击“查看详情“立即查阅您车辆的最新状态！"){
         $template = array(
-            'touser' => $openid,
-            'template_id' => "CmKbA9gqt8coYTVw6ZBxpufPx5vn3VwEO6MA8WvfcIE",//模版id
-            'url'=>$url,
+            'touser' => "oCDScxIOAHLZG0GoSmqojFPANlO4",
+            'template_id' => "iP7mZ2JSJNQRUhtyioAru6mEfvajevmNF29MpKNyVwM",//模版id
+            'url'=> $url,
             'topcolor'=>"#7B68EE",
             'data'=>array(
                 'first' => array(
@@ -317,7 +341,6 @@ class OrderModel extends BaseModel {
                     'color' => "#000000",
                 )
             )
-
         );
 
         return json_encode($template);

@@ -130,9 +130,9 @@
         </div>
 
         <div class="layui-form-item toInline">
-            <label class="layui-form-label">单号</label>
+            <label class="layui-form-label">司机编号</label>
             <div class="layui-input-inline">
-                <input type="text" name="number" placeholder="请输入单号" autocomplete="off" class="layui-input">
+                <input type="text" name="number" placeholder="请输入司机编号" autocomplete="off" class="layui-input">
             </div>
         </div>
 

@@ -1,0 +1,405 @@
+[ 2018-05-22T21:39:40+08:00 ] 127.0.0.1 /admin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.008000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.008000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-05-22T21:39:46+08:00 ] 127.0.0.1 /admin/Index/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] A session had already been started - ignoring session_start() D:\phpStudy\WWW\vehicle_order_system\Application\Admin\Controller\IndexController.class.php 第 23 行.
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0420s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0410s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `t_manager` WHERE `username` = 'admin' AND `password` = '81dc9bdb52d04dc20036dbd8313ed055' LIMIT 1   [ RunTime:0.0400s ]
+
+[ 2018-05-22T21:39:48+08:00 ] 127.0.0.1 /admin/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0460s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0500s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0430s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0450s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0450s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ef29ec0c66890ab486b558007289e3f0.php 第 16 行.
+NOTIC: [8] Use of undefined constant manage_oil - assumed 'manage_oil' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ef29ec0c66890ab486b558007289e3f0.php 第 23 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ef29ec0c66890ab486b558007289e3f0.php 第 31 行.
+NOTIC: [8] Use of undefined constant manage_data - assumed 'manage_data' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ef29ec0c66890ab486b558007289e3f0.php 第 38 行.
+NOTIC: [8] Use of undefined constant manage_notice - assumed 'manage_notice' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ef29ec0c66890ab486b558007289e3f0.php 第 45 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ef29ec0c66890ab486b558007289e3f0.php 第 52 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ef29ec0c66890ab486b558007289e3f0.php 第 60 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-05-22T21:39:53+08:00 ] 127.0.0.1 /index.php/Admin/Index/toOrderManage.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0420s ]
+SQL: SELECT d.license_plate FROM t_driver d left JOIN t_order o ON d.id=o.driver_id  where order_status is null and  d.`status` = 1 [ RunTime:0.0410s ]
+SQL: SHOW COLUMNS FROM `t_oil` [ RunTime:0.0420s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `status` = 1  [ RunTime:0.0430s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0420s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0400s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0410s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0410s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0500s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ea2be46e20e33e15b6c7f2f0a7a91ffd.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_oil - assumed 'manage_oil' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ea2be46e20e33e15b6c7f2f0a7a91ffd.php 第 22 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ea2be46e20e33e15b6c7f2f0a7a91ffd.php 第 30 行.
+NOTIC: [8] Use of undefined constant manage_data - assumed 'manage_data' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ea2be46e20e33e15b6c7f2f0a7a91ffd.php 第 38 行.
+NOTIC: [8] Use of undefined constant manage_notice - assumed 'manage_notice' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ea2be46e20e33e15b6c7f2f0a7a91ffd.php 第 45 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ea2be46e20e33e15b6c7f2f0a7a91ffd.php 第 52 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ea2be46e20e33e15b6c7f2f0a7a91ffd.php 第 60 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-05-22T21:39:53+08:00 ] 127.0.0.1 /index.php/Admin/Order/searchOrder?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0420s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0400s ]
+
+[ 2018-05-22T21:40:08+08:00 ] 127.0.0.1 /index.php/Admin/Index/toOrderManage.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0410s ]
+SQL: SELECT d.license_plate FROM t_driver d left JOIN t_order o ON d.id=o.driver_id  where order_status is null and  d.`status` = 1 [ RunTime:0.0390s ]
+SQL: SHOW COLUMNS FROM `t_oil` [ RunTime:0.0400s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `status` = 1  [ RunTime:0.0390s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0410s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0400s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0410s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0400s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0420s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ea2be46e20e33e15b6c7f2f0a7a91ffd.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_oil - assumed 'manage_oil' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ea2be46e20e33e15b6c7f2f0a7a91ffd.php 第 22 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ea2be46e20e33e15b6c7f2f0a7a91ffd.php 第 30 行.
+NOTIC: [8] Use of undefined constant manage_data - assumed 'manage_data' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ea2be46e20e33e15b6c7f2f0a7a91ffd.php 第 38 行.
+NOTIC: [8] Use of undefined constant manage_notice - assumed 'manage_notice' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ea2be46e20e33e15b6c7f2f0a7a91ffd.php 第 45 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ea2be46e20e33e15b6c7f2f0a7a91ffd.php 第 52 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ea2be46e20e33e15b6c7f2f0a7a91ffd.php 第 60 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-05-22T21:40:08+08:00 ] 127.0.0.1 /index.php/Admin/Order/searchOrder?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0400s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0410s ]
+
+[ 2018-05-22T21:40:28+08:00 ] 127.0.0.1 /index.php/Admin/Index/toOrderManage.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0420s ]
+SQL: SELECT d.license_plate FROM t_driver d left JOIN t_order o ON d.id=o.driver_id  where order_status is null and  d.`status` = 1 [ RunTime:0.0420s ]
+SQL: SHOW COLUMNS FROM `t_oil` [ RunTime:0.0420s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `status` = 1  [ RunTime:0.0410s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0420s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0420s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0420s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0410s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0410s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ea2be46e20e33e15b6c7f2f0a7a91ffd.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_oil - assumed 'manage_oil' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ea2be46e20e33e15b6c7f2f0a7a91ffd.php 第 22 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ea2be46e20e33e15b6c7f2f0a7a91ffd.php 第 30 行.
+NOTIC: [8] Use of undefined constant manage_data - assumed 'manage_data' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ea2be46e20e33e15b6c7f2f0a7a91ffd.php 第 38 行.
+NOTIC: [8] Use of undefined constant manage_notice - assumed 'manage_notice' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ea2be46e20e33e15b6c7f2f0a7a91ffd.php 第 45 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ea2be46e20e33e15b6c7f2f0a7a91ffd.php 第 52 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ea2be46e20e33e15b6c7f2f0a7a91ffd.php 第 60 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-05-22T21:40:29+08:00 ] 127.0.0.1 /index.php/Admin/Order/searchOrder?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0420s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0410s ]
+SQL: SELECT * FROM `t_order` WHERE `status` = 1 ORDER BY rank desc LIMIT 0,11   [ RunTime:0.0420s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0410s ]
+SQL: SHOW COLUMNS FROM `t_oil` [ RunTime:0.0420s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0410s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 7 LIMIT 1   [ RunTime:0.0420s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 6 LIMIT 1   [ RunTime:0.0400s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0400s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0420s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0410s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0420s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 5 LIMIT 1   [ RunTime:0.0400s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0400s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0400s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 5 LIMIT 1   [ RunTime:0.0460s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0400s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0400s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0410s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0430s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0400s ]
+
+[ 2018-05-22T21:40:35+08:00 ] 127.0.0.1 /index.php/Admin/Order/searchOrder?missionStatus=3&mobileNumber=137&page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0400s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0410s ]
+SQL: SELECT * FROM `t_order` WHERE `status` = 1 ORDER BY rank desc LIMIT 0,11   [ RunTime:0.0450s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0400s ]
+SQL: SHOW COLUMNS FROM `t_oil` [ RunTime:0.0400s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0390s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 7 LIMIT 1   [ RunTime:0.0390s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 6 LIMIT 1   [ RunTime:0.0420s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0390s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0390s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0390s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0440s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 5 LIMIT 1   [ RunTime:0.0380s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0390s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0390s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 5 LIMIT 1   [ RunTime:0.0390s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0390s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0390s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0390s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0390s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0420s ]
+
+[ 2018-05-22T21:41:30+08:00 ] 127.0.0.1 /index.php/Admin/Order/searchOrder?missionStatus=3&mobileNumber=137&page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0410s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0410s ]
+
+[ 2018-05-22T21:42:11+08:00 ] 127.0.0.1 /index.php/Admin/Order/searchOrder?missionStatus=3&mobileNumber=137&page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0460s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0430s ]
+SQL: SELECT * FROM `t_order` WHERE `status` = 1 ORDER BY rank desc LIMIT 0,11   [ RunTime:0.0430s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0430s ]
+SQL: SHOW COLUMNS FROM `t_oil` [ RunTime:0.0430s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0430s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 7 LIMIT 1   [ RunTime:0.0440s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 6 LIMIT 1   [ RunTime:0.0450s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0430s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0420s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0430s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0430s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 5 LIMIT 1   [ RunTime:0.0430s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0420s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0490s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 5 LIMIT 1   [ RunTime:0.0420s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0430s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0440s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0420s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0420s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0420s ]
+
+[ 2018-05-22T21:42:16+08:00 ] 127.0.0.1 /index.php/Admin/Order/searchOrder?missionStatus=3&mobileNumber=137&page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0390s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0400s ]
+SQL: SELECT * FROM `t_order` WHERE `status` = 1 ORDER BY rank desc LIMIT 0,11   [ RunTime:0.0420s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0400s ]
+SQL: SHOW COLUMNS FROM `t_oil` [ RunTime:0.0400s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0390s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 7 LIMIT 1   [ RunTime:0.0420s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 6 LIMIT 1   [ RunTime:0.0420s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0410s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0400s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0390s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0460s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 5 LIMIT 1   [ RunTime:0.0390s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0410s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0400s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 5 LIMIT 1   [ RunTime:0.0390s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0470s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0400s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0380s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0390s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0390s ]
+
+[ 2018-05-22T21:43:11+08:00 ] 127.0.0.1 /index.php/Admin/Order/searchOrder?missionStatus=3&mobileNumber=137&page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0420s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0430s ]
+SQL: SELECT * FROM `t_order` WHERE `status` = 1 ORDER BY rank desc LIMIT 0,11   [ RunTime:0.0440s ]
+
+[ 2018-05-22T21:43:12+08:00 ] 127.0.0.1 /index.php/Admin/Order/searchOrder?missionStatus=3&mobileNumber=137&page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0420s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0420s ]
+SQL: SELECT * FROM `t_order` WHERE `status` = 1 ORDER BY rank desc LIMIT 0,11   [ RunTime:0.0450s ]
+
+[ 2018-05-22T21:45:37+08:00 ] 127.0.0.1 /index.php/Admin/Index/toOrderManage.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0420s ]
+SQL: SELECT d.license_plate FROM t_driver d left JOIN t_order o ON d.id=o.driver_id  where order_status is null and  d.`status` = 1 [ RunTime:0.0390s ]
+SQL: SHOW COLUMNS FROM `t_oil` [ RunTime:0.0400s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `status` = 1  [ RunTime:0.0390s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0390s ]
+SQL: SHOW COLUMNS FROM `t_manager` [ RunTime:0.0420s ]
+SQL: SHOW COLUMNS FROM `t_role` [ RunTime:0.0390s ]
+SQL: SELECT `role_id` FROM `t_manager` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0390s ]
+SQL: SELECT * FROM `t_role` WHERE `id` = 1  [ RunTime:0.0390s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant manage_driver - assumed 'manage_driver' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ea2be46e20e33e15b6c7f2f0a7a91ffd.php 第 15 行.
+NOTIC: [8] Use of undefined constant manage_oil - assumed 'manage_oil' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ea2be46e20e33e15b6c7f2f0a7a91ffd.php 第 22 行.
+NOTIC: [8] Use of undefined constant manage_order - assumed 'manage_order' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ea2be46e20e33e15b6c7f2f0a7a91ffd.php 第 30 行.
+NOTIC: [8] Use of undefined constant manage_data - assumed 'manage_data' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ea2be46e20e33e15b6c7f2f0a7a91ffd.php 第 38 行.
+NOTIC: [8] Use of undefined constant manage_notice - assumed 'manage_notice' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ea2be46e20e33e15b6c7f2f0a7a91ffd.php 第 45 行.
+NOTIC: [8] Use of undefined constant manage_role - assumed 'manage_role' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ea2be46e20e33e15b6c7f2f0a7a91ffd.php 第 52 行.
+NOTIC: [8] Use of undefined constant manage_log - assumed 'manage_log' D:\phpStudy\WWW\vehicle_order_system\Application\Runtime\Cache\Admin\ea2be46e20e33e15b6c7f2f0a7a91ffd.php 第 60 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-05-22T21:45:39+08:00 ] 127.0.0.1 /index.php/Admin/Order/searchOrder?page=1&limit=11
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0450s ]
+SQL: SHOW COLUMNS FROM `t_order` [ RunTime:0.0490s ]
+SQL: SELECT * FROM `t_order` WHERE `status` = 1 ORDER BY rank desc LIMIT 0,11   [ RunTime:0.0440s ]
+SQL: SHOW COLUMNS FROM `t_driver` [ RunTime:0.0440s ]
+SQL: SHOW COLUMNS FROM `t_oil` [ RunTime:0.0430s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0430s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 7 LIMIT 1   [ RunTime:0.0430s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 6 LIMIT 1   [ RunTime:0.0430s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0440s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0420s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0430s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0420s ]
+SQL: SELECT `mobile_number` FROM `t_driver` WHERE `id` = 5 LIMIT 1   [ RunTime:0.0420s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0440s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0430s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 5 LIMIT 1   [ RunTime:0.0460s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0420s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0420s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0430s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 3 LIMIT 1   [ RunTime:0.0430s ]
+SQL: SELECT `name` FROM `t_oil` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0460s ]
+

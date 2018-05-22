@@ -38,7 +38,7 @@ var vm = new Vue({
             type: 'post',
             dataType: 'json',
             success: function (data, status) {
-                vthis.license_plate = data[0]["license_plate"].substring(2, data[0]["license_plate"].length);
+                vthis.license_plate = data[0]["license_plate"].substring(1, data[0]["license_plate"].length);
                 vthis.company = data[0]["company"];
                 if(data[0]["stop"] == 1) {
                     vthis.isStop = false;

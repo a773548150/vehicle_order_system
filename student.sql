@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50549
 File Encoding         : 65001
 
-Date: 2018-05-22 01:11:00
+Date: 2018-05-22 21:58:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -34,7 +34,7 @@ CREATE TABLE `t_driver` (
   PRIMARY KEY (`id`),
   KEY `W_U` (`wechat_id`),
   CONSTRAINT `W_U` FOREIGN KEY (`wechat_id`) REFERENCES `t_wechat` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_driver
@@ -45,7 +45,9 @@ INSERT INTO `t_driver` VALUES ('3', '3', '235656546', '小乔', '13794578393', '
 INSERT INTO `t_driver` VALUES ('4', '4', '235632596', '大乔', '13794578378', '粤A92LYT', '205', '2018-05-14 21:55:21', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
 INSERT INTO `t_driver` VALUES ('5', '5', '89662498', '周瑜', '13794578309', '粤VABGH9', '206', '2018-05-14 21:55:21', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
 INSERT INTO `t_driver` VALUES ('6', '6', '23124551235', '孙权', '13794578338', '粤G93756', '207', '2018-05-14 21:55:21', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
-INSERT INTO `t_driver` VALUES ('7', '37', '20180521111607982304', 'linxiaocong', '98123', '请编辑', '惠州学院', '2018-05-21 12:00:22', '2018-05-21 11:16:07', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_driver` VALUES ('7', '37', '20180521111607982304', 'linxiaocong', '98123', '粤G93756', '惠州学院', '2018-05-21 12:00:22', '2018-05-21 11:16:07', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_driver` VALUES ('9', '39', '20180522031129121133', '请编辑您的真实姓名', '请编辑您的手机号', '请编辑', '请您所属公司', '2018-05-22 03:11:29', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_driver` VALUES ('10', '40', '20180522093656760747', '请编辑您的真实姓名', '请编辑您的手机号', '请编辑', '请您所属公司', '2018-05-22 09:36:56', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1');
 
 -- ----------------------------
 -- Table structure for t_log
@@ -59,7 +61,7 @@ CREATE TABLE `t_log` (
   `delete_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `status` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=73 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_log
@@ -128,6 +130,13 @@ INSERT INTO `t_log` VALUES ('62', 'admin', '修改单号：“”的信息', '20
 INSERT INTO `t_log` VALUES ('63', 'admin', '修改单号：“”的信息', '2018-05-18 08:31:21', '2018-05-18 08:42:13', '0');
 INSERT INTO `t_log` VALUES ('64', 'admin', '排队前进', '2018-05-22 12:49:02', '0000-00-00 00:00:00', '1');
 INSERT INTO `t_log` VALUES ('65', 'admin', '排队前进', '2018-05-22 01:04:16', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_log` VALUES ('66', 'admin', '排队前进', '2018-05-22 07:34:24', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_log` VALUES ('67', 'admin', '排队前进', '2018-05-22 07:47:12', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_log` VALUES ('68', 'admin', '排队前进', '2018-05-22 07:48:26', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_log` VALUES ('69', 'admin', '排队前进', '2018-05-22 09:02:54', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_log` VALUES ('70', 'admin', '排队前进', '2018-05-22 09:06:21', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_log` VALUES ('71', 'admin', '暂停排队', '2018-05-22 09:19:55', '0000-00-00 00:00:00', '1');
+INSERT INTO `t_log` VALUES ('72', 'admin', '开始排队', '2018-05-22 09:20:15', '0000-00-00 00:00:00', '1');
 
 -- ----------------------------
 -- Table structure for t_manager
@@ -220,14 +229,14 @@ CREATE TABLE `t_order` (
 -- ----------------------------
 -- Records of t_order
 -- ----------------------------
-INSERT INTO `t_order` VALUES ('1', '42354235', '0', '1', '1', '粤B92842', '0', '2018-05-15 01:31:16', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0', '1');
-INSERT INTO `t_order` VALUES ('2', '87564523', '0', '2', '3', '粤A13759', '0', '2018-05-15 01:31:19', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0', '1');
-INSERT INTO `t_order` VALUES ('3', '20180516075536212747', '0', '5', '4', '粤B234DF', '0', '2018-05-16 07:55:36', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0', '1');
-INSERT INTO `t_order` VALUES ('4', '20180516094523564447', '0', '1', '1', '粤ADF782', '0', '2018-05-16 09:45:23', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0', '1');
-INSERT INTO `t_order` VALUES ('6', '20180517071937580596', '0', '4', '4', '粤AJAIH1', '0', '2018-05-17 07:19:37', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0', '1');
-INSERT INTO `t_order` VALUES ('7', '20180517072016483505', '0', '6', '5', '粤ADFDS2', '0', '2018-05-17 07:20:16', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0', '1');
-INSERT INTO `t_order` VALUES ('12', '20180518054611616522', '0', '3', '4', '粤CS1314', '0', '2018-05-18 05:46:11', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0', '1');
-INSERT INTO `t_order` VALUES ('13', '20180521111607345946', '2', '7', '3', '粤A98123', '2', '2018-05-21 11:16:07', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0', '1');
+INSERT INTO `t_order` VALUES ('1', '42354235', '0', '1', '1', '粤B92842', '0', '2018-05-15 01:31:16', '0000-00-00 00:00:00', '2018-05-22 09:20:12', '0', '1');
+INSERT INTO `t_order` VALUES ('2', '87564523', '0', '2', '3', '粤A13759', '0', '2018-05-15 01:31:19', '0000-00-00 00:00:00', '2018-05-22 09:20:12', '0', '1');
+INSERT INTO `t_order` VALUES ('3', '20180516075536212747', '0', '5', '4', '粤B234DF', '0', '2018-05-16 07:55:36', '0000-00-00 00:00:00', '2018-05-22 09:20:12', '0', '1');
+INSERT INTO `t_order` VALUES ('4', '20180516094523564447', '3', '1', '1', '粤ADF782', '5', '2018-05-16 09:45:23', '0000-00-00 00:00:00', '2018-05-22 09:20:12', '0', '1');
+INSERT INTO `t_order` VALUES ('6', '20180517071937580596', '2', '4', '4', '粤AJAIH1', '2', '2018-05-17 07:19:37', '0000-00-00 00:00:00', '2018-05-22 09:20:12', '0', '1');
+INSERT INTO `t_order` VALUES ('7', '20180517072016483505', '3', '6', '5', '粤ADFDS2', '3', '2018-05-17 07:20:16', '0000-00-00 00:00:00', '2018-05-22 09:20:12', '0', '1');
+INSERT INTO `t_order` VALUES ('12', '20180518054611616522', '1', '3', '4', '粤CS1314', '1', '2018-05-18 05:46:11', '0000-00-00 00:00:00', '2018-05-22 09:20:12', '0', '1');
+INSERT INTO `t_order` VALUES ('13', '20180521111607345946', '3', '7', '3', '粤A98123', '4', '2018-05-21 11:16:07', '0000-00-00 00:00:00', '2018-05-22 09:20:12', '0', '1');
 
 -- ----------------------------
 -- Table structure for t_role
@@ -314,7 +323,7 @@ CREATE TABLE `t_wechat` (
   `create_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `update_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_wechat
@@ -325,4 +334,6 @@ INSERT INTO `t_wechat` VALUES ('3', '1', 'oyur_1GhybMGLZZ5xc1-Lx6fgddfgd', 'GGG'
 INSERT INTO `t_wechat` VALUES ('4', '1', 'oyur_1GhybMGLZZ5xc1-Lx6fgddfRF', '林', '1', 'zh_CN', '广州', '广东', '中国', 'http://thirdwx.qlogo.cn/mmopen/6Zzu4IicyEE5xptsib9Kia11eibwQciblhnUEVlyhu4UNK5BMqs47kYbYYG4dlRa8NRhw3iciaybyO2vUGJnB8CYJM2ya2q1gjldx9ib/132', '1525483135', '0', '0', 'ADD_SCENE_QR_CODE', '0', '', '2018-05-14 13:23:58', '0000-00-00 00:00:00');
 INSERT INTO `t_wechat` VALUES ('5', '1', 'oyur_1GhybMGLZZ5xc1-Lx6fgddfPR', '不知道叫什么名字', '1', 'zh_CN', '株洲', '湖南', '中国', 'http://thirdwx.qlogo.cn/mmopen/6Zzu4IicyEE5xptsib9Kia11eibwQciblhnUEVlyhu4UNK5BMqs47kYbYYG4dlRa8NRhw3iciaybyO2vUGJnB8CYJM2ya2q1gjldx9ib/132', '1525483135', '0', '0', 'ADD_SCENE_QR_CODE', '0', '', '2018-05-14 13:23:58', '0000-00-00 00:00:00');
 INSERT INTO `t_wechat` VALUES ('6', '1', 'oyur_1GhybMGLZZ5xc1-Lx6fgddSEQ', '哈哈哈', '1', 'zh_CN', '北京', '北京', '中国', 'http://thirdwx.qlogo.cn/mmopen/6Zzu4IicyEE5xptsib9Kia11eibwQciblhnUEVlyhu4UNK5BMqs47kYbYYG4dlRa8NRhw3iciaybyO2vUGJnB8CYJM2ya2q1gjldx9ib/132', '1525483135', '0', '0', 'ADD_SCENE_QR_CODE', '0', '', '2018-05-14 13:23:58', '0000-00-00 00:00:00');
-INSERT INTO `t_wechat` VALUES ('37', '1', 'oCDScxIOAHLZG0GoSmqojFPANlO4', 'HiAoC', '1', 'zh_CN', '揭阳', '广东', '中国', 'http://thirdwx.qlogo.cn/mmopen/beWMacibhmNHib4HoEpo9Hj8l4zffYNLDhhvgxTTaeYLJ2sxTWEN2Y6UUWSgQic7o1iaK05Osp65icPp8fic8v6kZ7VicjvsAOdA2VM/132', '1488902520', '', '0', 'ADD_SCENE_OTHERS', '0', '', '2018-05-22 01:05:45', '2018-05-21 12:00:22');
+INSERT INTO `t_wechat` VALUES ('37', '1', 'oCDScxIOAHLZG0GoSmqojFPANlO4', 'HiAoC', '1', 'zh_CN', '揭阳', '广东', '中国', 'http://thirdwx.qlogo.cn/mmopen/beWMacibhmNHib4HoEpo9Hj8l4zffYNLDhhvgxTTaeYLJ2sxTWEN2Y6UUWSgQic7o1iaK05Osp65icPp8fic8v6kZ7VicjvsAOdA2VM/132', '1488902520', '', '0', 'ADD_SCENE_OTHERS', '0', '', '2018-05-22 09:24:42', '2018-05-21 12:00:22');
+INSERT INTO `t_wechat` VALUES ('39', '1', 'oCDScxGq9S9j_5_Yws4DZsh7ReG0', '', '1', 'zh_CN', '惠州', '广东', '中国', 'http://thirdwx.qlogo.cn/mmopen/beWMacibhmNEpWdia2QK6m3YnW20RFAvoyKVzA2ibhBeibiaXcg0CxiazoBFGlmgygGj7VujA8PI2x2fGWh3Y1olsDdSCNX96XvmFO/132', '1526650210', '', '0', 'ADD_SCENE_PROFILE_CA', '0', '', '2018-05-22 05:00:02', '2018-05-22 03:11:29');
+INSERT INTO `t_wechat` VALUES ('40', '0', '', '', '0', '', '', '', '', '', '', '', '0', '', '0', '', '0000-00-00 00:00:00', '2018-05-22 09:36:56');
