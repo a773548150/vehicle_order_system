@@ -3,15 +3,15 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta http-equiv="refresh" content="60">
+	<meta http-equiv="refresh" content="300">
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 	<title>车辆运货预约</title>
-	<script type="text/javascript" src="/Application/Home/View/js/flexible.js"></script>
-	<link rel="stylesheet" type="text/css" href="/Application/Home/View/css/index.css">
+	<script type="text/javascript" src="/linxiaocong/Application/Home/View/js/flexible.js"></script>
+	<link rel="stylesheet" type="text/css" href="/linxiaocong/Application/Home/View/css/index.css">
 
 
-	<link rel="stylesheet" type="text/css" href="/Application/Home/View/css/jquery-weui.min.css">
-    <link rel="stylesheet" type="text/css" href="/Application/Home/View/css/weui.min.css">
+	<link rel="stylesheet" type="text/css" href="/linxiaocong/Application/Home/View/css/jquery-weui.min.css">
+    <link rel="stylesheet" type="text/css" href="/linxiaocong/Application/Home/View/css/weui.min.css">
 
 </head>
 <!-- <style>
@@ -29,7 +29,7 @@
 			    </div>
 			</div>
 			<div id="top">
-				<img src="/Application/Home/View/images/banner.png" class="topImg">
+				<img src="/linxiaocong/Application/Home/View/images/banner.png" class="topImg">
 				<p style="text-align: center;color: #333;height: 0.7rem;line-height: 0.7rem;font-size: .4rem; background-color: #fff;width: 90%;margin: 0 auto;padding: .1rem .2rem;">二甲苯装车排队情况</p>
 				<div class="search">
 					<div class="searchCon">
@@ -82,29 +82,29 @@
 
 			<!-- <div class="list" v-else>
 					<div class="nothing">
-						<img src="/Public/Home/icon/nothing.png" alt="" />
+						<img src="/linxiaocong/Public/Home/icon/nothing.png" alt="" />
 						<p>暂无更多数据</p>
 					</div>
 			</div> -->
 			<div id="footer">
 				<a href="<?php echo U('toIndex');?>" class="on">
-					<img src="/Application/Home/View/images/paiduichaxun2.png" alt="">
+					<img src="/linxiaocong/Application/Home/View/images/paiduichaxun2.png" alt="">
 					<p>排队查询</p>
 				</a>
 				<a href="<?php echo U('toOrder');?>">
-					<img src="/Application/Home/View/images/yuyue.png" alt="">
+					<img src="/linxiaocong/Application/Home/View/images/yuyue.png" alt="">
 					<p>预约装车</p>
 				</a>
 				<a href="<?php echo U('toMy');?>">
-					<img src="/Application/Home/View/images/gerenzhongxin.png" alt="">
+					<img src="/linxiaocong/Application/Home/View/images/gerenzhongxin.png" alt="">
 					<p>个人中心</p>
 				</a>
 			</div>
 	</div>
 </body>
-	<script type="text/javascript" src="/Application/Home/View/js/vue.js"></script>
-	<script src="/Application/Home/View/js/jquery.min weui.js"></script>
-    <script src="/Application/Home/View/js/jquery-weui.min.js"></script>
-    <script src="/Application/Home/View/js/index.js"></script>
+	<script type="text/javascript" src="/linxiaocong/Application/Home/View/js/vue.js"></script>
+	<script src="/linxiaocong/Application/Home/View/js/jquery.min weui.js"></script>
+    <script src="/linxiaocong/Application/Home/View/js/jquery-weui.min.js"></script>
+    <script src="/linxiaocong/Application/Home/View/js/index.js"></script>
 
 </html>

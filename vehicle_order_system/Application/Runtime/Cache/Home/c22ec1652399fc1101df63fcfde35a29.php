@@ -5,12 +5,12 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 	<title>个人中心</title>
-	<script type="text/javascript" src="/Application/Home/View/js/flexible.js"></script>
-	<link rel="stylesheet" type="text/css" href="/Application/Home/View/css/myCenter.css">
+	<script type="text/javascript" src="/linxiaocong/Application/Home/View/js/flexible.js"></script>
+	<link rel="stylesheet" type="text/css" href="/linxiaocong/Application/Home/View/css/myCenter.css">
 
 
-	<link rel="stylesheet" type="text/css" href="/Application/Home/View/css/jquery-weui.min.css">
-    <link rel="stylesheet" type="text/css" href="/Application/Home/View/css/weui.min.css">
+	<link rel="stylesheet" type="text/css" href="/linxiaocong/Application/Home/View/css/jquery-weui.min.css">
+    <link rel="stylesheet" type="text/css" href="/linxiaocong/Application/Home/View/css/weui.min.css">
 
 </head>
 <body>
@@ -64,23 +64,23 @@
 
 		<div id="footer">
 				<a href="<?php echo U('toIndex');?>">
-					<img src="/Application/Home/View/images/paiduichaxun.png" alt="">
+					<img src="/linxiaocong/Application/Home/View/images/paiduichaxun.png" alt="">
 					<p>排队查询</p>
 				</a>
 				<a href="<?php echo U('toOrder');?>">
-					<img src="/Application/Home/View/images/yuyue.png" alt="">
+					<img src="/linxiaocong/Application/Home/View/images/yuyue.png" alt="">
 					<p>预约装车</p>
 				</a>
 				<a href="<?php echo U('toMy');?>" class="on">
-					<img src="/Application/Home/View/images/gerenzhongxin2.png" alt="">
+					<img src="/linxiaocong/Application/Home/View/images/gerenzhongxin2.png" alt="">
 					<p>个人中心</p>
 				</a>
 			</div>
 
 	</div>
 </body>
-	<script type="text/javascript" src="/Application/Home/View/js/vue.js"></script>
-	<script src="/Application/Home/View/js/jquery.min weui.js"></script>
-    <script src="/Application/Home/View/js/jquery-weui.min.js"></script>
-    <script src="/Application/Home/View/js/my.js"></script>
+	<script type="text/javascript" src="/linxiaocong/Application/Home/View/js/vue.js"></script>
+	<script src="/linxiaocong/Application/Home/View/js/jquery.min weui.js"></script>
+    <script src="/linxiaocong/Application/Home/View/js/jquery-weui.min.js"></script>
+    <script src="/linxiaocong/Application/Home/View/js/my.js"></script>
 </html>

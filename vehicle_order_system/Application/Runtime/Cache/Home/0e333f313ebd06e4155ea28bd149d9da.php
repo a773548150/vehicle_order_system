@@ -5,12 +5,12 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 	<title>预约装车</title>
-	<script type="text/javascript" src="/Application/Home/View/js/flexible.js"></script>
-	<link rel="stylesheet" type="text/css" href="/Application/Home/View/css/yuyuezhuangche.css">
+	<script type="text/javascript" src="/linxiaocong/Application/Home/View/js/flexible.js"></script>
+	<link rel="stylesheet" type="text/css" href="/linxiaocong/Application/Home/View/css/yuyuezhuangche.css">
 
 
-	<link rel="stylesheet" type="text/css" href="/Application/Home/View/css/jquery-weui.min.css">
-    <link rel="stylesheet" type="text/css" href="/Application/Home/View/css/weui.min.css">
+	<link rel="stylesheet" type="text/css" href="/linxiaocong/Application/Home/View/css/jquery-weui.min.css">
+    <link rel="stylesheet" type="text/css" href="/linxiaocong/Application/Home/View/css/weui.min.css">
 
 </head>
 <style>
@@ -69,10 +69,10 @@
 						<div v-if="chepai == ''">
 							<span class="pz" >粤</span>
 						</div>
-						<div >
-							<span class="pz" >A</span>
-						</div>
-							<input type="text" class="weui-input" placeholder="请输入车牌号" v-model="license_plate" maxlength="5" required>
+						<!--<div >-->
+							<!--<span class="pz" >A</span>-->
+						<!--</div>-->
+							<input type="text" class="weui-input" placeholder="请输入车牌号" v-model="license_plate" maxlength="6" required>
 					</div>
 				</div>
 				<div class="line">
@@ -92,15 +92,15 @@
 			</div> -->
 				<div id="footer">
 				<a href="<?php echo U('toIndex');?>" >
-					<img src="/Application/Home/View/images/paiduichaxun.png" alt="">
+					<img src="/linxiaocong/Application/Home/View/images/paiduichaxun.png" alt="">
 					<p>排队查询</p>
 				</a>
 				<a href="<?php echo U('toOrder');?>" class="on">
-					<img src="/Application/Home/View/images/yuyue2.png" alt="">
+					<img src="/linxiaocong/Application/Home/View/images/yuyue2.png" alt="">
 					<p>预约装车</p>
 				</a>
 				<a href="<?php echo U('toMy');?>">
-					<img src="/Application/Home/View/images/gerenzhongxin.png" alt="">
+					<img src="/linxiaocong/Application/Home/View/images/gerenzhongxin.png" alt="">
 					<p>个人中心</p>
 				</a>
 			</div>
@@ -116,8 +116,8 @@
 
 		</div>
 </body>
-	<script type="text/javascript" src="/Application/Home/View/js/vue.js"></script>
-	<script src="/Application/Home/View/js/jquery.min weui.js"></script>
-    <script src="/Application/Home/View/js/jquery-weui.min.js"></script>
-    <script src="/Application/Home/View/js/order.js"></script>
+	<script type="text/javascript" src="/linxiaocong/Application/Home/View/js/vue.js"></script>
+	<script src="/linxiaocong/Application/Home/View/js/jquery.min weui.js"></script>
+    <script src="/linxiaocong/Application/Home/View/js/jquery-weui.min.js"></script>
+    <script src="/linxiaocong/Application/Home/View/js/order.js"></script>
 </html>

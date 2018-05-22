@@ -9,7 +9,7 @@
 <body>
     <div class="allContent">
         <h2 class="loginTitle">登录</h2>
-        <form class="layui-form" action="../Index/login" method="post">
+        <form class="layui-form" action="login" method="post">
             <div class="layui-form-item">
                 <label class="layui-form-label">用户名</label>
                 <div class="layui-input-inline">

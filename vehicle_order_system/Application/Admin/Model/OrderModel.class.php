@@ -215,7 +215,7 @@ class OrderModel extends BaseModel {
 
         }
         foreach($result as $key => $value) {
-            $this->sendMessage($key, "");
+            $this->sendMessage($key);
         }
         $m->where(array("rank" => 1))->save(array("order_status" => 1, "update_time" => $update_time));
         $m->where(array("rank" => 2))->save(array("order_status" => 2, "update_time" => $update_time));
@@ -229,18 +229,76 @@ class OrderModel extends BaseModel {
         $O = M("oil");
         $D = M("driver");
         $L = A("Log");
+
+        $result = "0";
+
         $lim["id"] = I('post.id');
-        $oil_id = $O->where(array("name" => I("post.oil_name")))->getField("id");
-        $driver_id = $D->where(array("number" => I("post.driver_number")))->getField("id");
-        $data = I('post.value');
-        $data["oil_id"] = $oil_id;
-        $data["driver_id"] = $driver_id;
-        $data['update_time'] = date("Y-m-d h:i:s");
-        $res = $m->where($lim)->save($data);
-        $number = $m->where(array("id" => $lim["id"]))->getField("number");
-        $this->sendMessage($lim["id"], "");
-        $L->update("修改单号：“".$number."”的信息");
-        return $res;
+
+        $rank = $m->where(array("id" => $lim["id"]))->getField("rank");
+        $newRank = I("post.value");
+        //var_dump($newRank["rank"]);
+        $result1 = $m->where(array("order_status" => 3))->getField("rank", true);
+        $update_time = date("Y-m-d h:i:s");
+        $rankMax = count($result1) + 2;
+        //var_dump("rank: ".$rank."  newRank; ".$newRank["rank"]."  rankMax: ".$rankMax);die;
+
+        if($newRank["rank"] < 0){
+            $result = "0";
+        } else {
+            if($rank < 3){
+                if($newRank["rank"] > 3 && $newRank["rank"] <= $rankMax+1){
+                    $m->where(array("id" => $lim["id"]))->save(array("rank" => $newRank["rank"], "order_status" => 3, "update_time" => $update_time));
+                    $this->sendMessage($lim["id"]);
+                } else if($newRank["rank"] < 3 && $newRank["rank"] <= $rankMax+1){
+                    $m->where(array("id" => $lim["id"]))->save(array("rank" => $newRank["rank"], "order_status" => $newRank["rank"], "update_time" => $update_time));
+                    $this->sendMessage($lim["id"]);
+                } else if($newRank["rank"] == 3 && $newRank["rank"] <= $rankMax+1){
+                    for($i = $rankMax; $i >= 3; $i--) {
+                        $m->where(array("rank" => $i))->save(array("rank" => $i+1, "update_time" => $update_time));
+                    }
+                    $m->where(array("id" => $lim["id"]))->save(array("rank" => $newRank["rank"], "update_time" => $update_time));
+                }
+                $result = 3;
+            } else {
+                if($newRank["rank"] > $rankMax){
+                    $result =  "1";
+                }else{
+                    if($newRank["rank"] < 3 && $newRank["rank"] >=0){
+                        for($i = $rank + 1; $i <= $rankMax; $i++) {
+                            $m->where(array("rank" => $i))->save(array("rank" => $i-1, "update_time" => $update_time));
+                        }
+                        $m->where(array("id" => $lim["id"]))->save(array("rank" => $newRank["rank"], "order_status" => $newRank["rank"], "update_time" => $update_time));
+                        $this->sendMessage($lim["id"]);
+                        $result = "3";
+                    } else if($newRank["rank"] >= 3){
+                        if($rank < $newRank["rank"]) {
+                            for($i = $rank + 1; $i <= $rankMax; $i++) {
+                                $m->where(array("rank" => $i))->save(array("rank" => $i-1, "update_time" => $update_time));
+                            }
+                            $m->where(array("id" => $lim["id"]))->save(array("rank" => $newRank["rank"], "update_time" => $update_time));
+                            $result = "3";
+                        } else if($rank > $newRank["rank"]) {
+                            for($i = $rank - 1; $i >= $newRank["rank"]; $i--) {
+                                $m->where(array("rank" => $i))->save(array("rank" => $i+1, "update_time" => $update_time));
+                            }
+                            $m->where(array("id" => $lim["id"]))->save(array("rank" => $newRank["rank"], "update_time" => $update_time));
+                            $result = "3";
+                        } else if($rank == $newRank["rank"]){
+                            $result = "2";
+                        }
+                    }
+                }
+            }
+        }
+
+
+        if($result > 2) {
+            $data['update_time'] = date("Y-m-d h:i:s");
+            $res = $m->where($lim)->save($data);
+            $number = $m->where(array("id" => $lim["id"]))->getField("number");
+            $L->update("修改单号：“".$number."”的信息");
+        }
+        return $result;
     }
 
     public function selectAllVehicle() {
@@ -258,7 +316,7 @@ class OrderModel extends BaseModel {
         return $result;
     }
 
-    public function sendMessage($id, $rankStatus) {
+    public function sendMessage($id, $rankStatus="") {
         $m = M();
         $sql="select t_order.license_plate license_plate, t_order.update_time , t_oil.type oilType, t_oil.name oilName, t_driver.`name`, t_order.status, t_wechat.openid  from t_order LEFT JOIN t_driver on t_driver.id = t_order.driver_id LEFT JOIN t_wechat on t_wechat.id = t_driver.wechat_id LEFT JOIN t_oil on t_oil.id = t_order.oil_id where t_order.id = \"{$id}\"";
         $result = $m->query($sql);

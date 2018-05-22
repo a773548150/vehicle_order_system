@@ -122,7 +122,7 @@ $(window).ready(function() {
                 ,{field: 'number', title: '单号', width:190, sort: true}
                 ,{field: 'driver_mobile_number', title: '司机手机号', width:190, sort: true}
                 ,{field: 'order_status', title: '状态', width: 160, sort: true}
-                ,{field: 'rank', title: '排队名次', width:160, sort: true}
+                ,{field: 'rank', title: '排队名次', width:160, sort: true, edit: "text"}
                 ,{field: 'oil_name', title: '油名', width:160}
                 ,{field: 'create_time', title: '开始时间', width:160}
                 ,{fixed: 'right', width:150, align:'center', toolbar: '#barDemo'}
@@ -164,28 +164,32 @@ $(window).ready(function() {
                 //do something
                 if(editData != ""){
                     if(editData.data.id === data.id) {
-                        if(editData.data.order_status == "厂外待装") {
+
                             $.ajax({
                                 url: "../Order/editOrder",
                                 type: 'post',
                                 dataType: 'json',
                                 data: {
                                     "field" : editData.field,
-                                    "value" : editData.value,
+                                    "value" : editData.data,
                                     "id"    : editData.data.id
                                 },
                                 success: function (data, status) {
-                                    alert("修改成功");
-                                    console.log(data);
+                                    if(data == 0) {
+                                        alert("不能输入负数");
+                                    } else if(data == 1){
+                                        alert("名次不能超过最大的");
+                                    } else if(data == 2) {
+                                        alert("没有可修改数据");
+                                    } else if(data == 3) {
+                                        alert("修改成功");
+                                    }
+                                    location.reload();
                                 },
                                 fail: function (err, status) {
                                     console.log(err)
                                 }
                             });
-                        } else {
-                            alert("不允许非厂外待装排队名次进行修改");
-                            location.reload();
-                        }
 
                     }
                 }

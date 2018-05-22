@@ -5,12 +5,12 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 	<title>预约记录</title>
-	<script type="text/javascript" src="/Application/Home/View/js/flexible.js"></script>
-	<link rel="stylesheet" type="text/css" href="/Application/Home/View/css/yuyuejilu.css">
+	<script type="text/javascript" src="/linxiaocong/Application/Home/View/js/flexible.js"></script>
+	<link rel="stylesheet" type="text/css" href="/linxiaocong/Application/Home/View/css/yuyuejilu.css">
 
 
-	<link rel="stylesheet" type="text/css" href="/Application/Home/View/css/jquery-weui.min.css">
-    <link rel="stylesheet" type="text/css" href="/Application/Home/View/css/weui.min.css">
+	<link rel="stylesheet" type="text/css" href="/linxiaocong/Application/Home/View/css/jquery-weui.min.css">
+    <link rel="stylesheet" type="text/css" href="/linxiaocong/Application/Home/View/css/weui.min.css">
 
 </head>
 <body>
@@ -46,9 +46,9 @@
 		</div>
 	</div>
 </body>
-<script type="text/javascript" src="/Application/Home/View/js/vue.min.js"></script>
-<script src="/Application/Home/View/js/jquery.min weui.js"></script>
-<script src="/Application/Home/View/js/jquery-weui.min.js"></script>
-<script type="text/javascript" src="/Application/Home/View/js/yyjl.js"></script>
+<script type="text/javascript" src="/linxiaocong/Application/Home/View/js/vue.min.js"></script>
+<script src="/linxiaocong/Application/Home/View/js/jquery.min weui.js"></script>
+<script src="/linxiaocong/Application/Home/View/js/jquery-weui.min.js"></script>
+<script type="text/javascript" src="/linxiaocong/Application/Home/View/js/yyjl.js"></script>
 
 </html>
