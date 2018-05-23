@@ -5,7 +5,41 @@
  * Date: 2018/4/18
  * Time: 22:09
  */
+//获取微信accesstoken
+function getAccessToken() {
+    $wechat = C('WECHAT_SDK');
 
+    $lifeTime = 2 * 3600;
+    session_set_cookie_params($lifeTime);
+    session_start();
+    if(isset($_SESSION['access_token']) && $_SESSION['access_token']) {
+        return 0;
+    }else {
+        //取全局access_token
+        $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={$wechat['appid']}&secret={$wechat['secret']}";
+//https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxddbec552bd3c87d4&secret=a29f03616a31ebd7b23d28e8c9e056ed
+        $token = getJson($url);
+        $_SESSION['access_token'] = $token["access_token"];
+        return 1;
+    }
+}
+
+function getOpenid() {
+    $wechat = C('WECHAT_SDK');
+
+    $lifeTime = 24 * 3600;
+    session_set_cookie_params($lifeTime);
+    session_start();
+    if(isset($_SESSION['openid']) && $_SESSION['openid']) {
+        return 0;
+    }else {
+        //第二步:取得openid
+        $oauth2Url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid={$wechat['appid']}&secret={$wechat['secret']}&code=$code&grant_type=authorization_code";
+        $oauth2 = getJson($oauth2Url);
+        $_SESSION['openid'] = $oauth2['openid'];
+        return 1;
+    }
+}
 //创建json格式
 function json($code,$msg="",$count,$data=array()){
     $result=array(

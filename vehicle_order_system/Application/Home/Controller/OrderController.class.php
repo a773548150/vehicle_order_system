@@ -39,6 +39,7 @@ class OrderController extends BaseController {
 
     public function searchPersonalOrder() {
         $m = D("Order");
+        getOpenid();
         $rs = $m->searchPersonalOrder();
         $rs = json2($rs);
         echo $rs;

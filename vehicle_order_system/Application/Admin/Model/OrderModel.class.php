@@ -69,6 +69,7 @@ class OrderModel extends BaseModel {
             foreach ($value as $key2 => $value2){
                 if ($key2 == "driver_id" && $key2 != null) {
                     $result[$key]["driver_mobile_number"] = $D->where(array("id"=>$value2))->getField("mobile_number");
+                    $result[$key]["driver_number"] = $D->where(array("id"=>$value2))->getField("number");
                 }
             }
         }
@@ -226,8 +227,7 @@ class OrderModel extends BaseModel {
     }
     public function editOrder() {
         $m = M("order");
-        $O = M("oil");
-        $D = M("driver");
+
         $L = A("Log");
 
         $result = "0";
@@ -351,13 +351,10 @@ class OrderModel extends BaseModel {
     }
 
     public function send_template_msg($openid,$url="",$color="#000000",$first,$license_plate,$oilType,$oilName,$status,$time,$remark){
-        $wechat = C('WECHAT_SDK');
+        getAccessToken();
         $data  = $this->teml($openid,$url,$color,$first,$license_plate,$oilType,$oilName,$status,$time,$remark);
 
-        $json_token=$this->http_request("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={$wechat['appid']}&secret={$wechat['secret']}");
-        $access_token=json_decode($json_token,true);
-        $basetoken=$access_token["access_token"];
-
+        $basetoken=$_SESSION['access_token'];
         $urls = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".$basetoken;
         $res = $this->http_request($urls,urldecode($data));
         return json_decode($res,true);//array
