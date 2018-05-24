@@ -62,7 +62,6 @@ var vm = new Vue({
                 console.log(err)
             }
         });
-
     },
     methods: {
         refresh: function () {

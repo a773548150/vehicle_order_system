@@ -31,6 +31,25 @@ class IndexController extends BaseController {
         $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
 
         $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
+        if(strtolower($postObj->MsgType) == 'event') {
+            if(strtolower($postObj->Event == 'subscribe')) {
+                $toUser = $postObj->FromUserName;
+                $fromUser = $postObj->ToUserName;
+                $time = time();
+                $msgType = 'text';
+                $content = '欢迎关注我们的微信公众账号'.$postObj->FromUserName;
+                $template = "<xml>
+                        <ToUserName><![CDATA[%s]]></ToUserName>
+                        <FromUserName><![CDATA[%s]]></FromUserName>
+                        <CreateTime>%s</CreateTime>
+                        <MsgType><![CDATA[%s]]></MsgType>
+                        <Content><![CDATA[%s]]></Content>
+                        <FuncFlag>0</FuncFlag>
+                        </xml>";
+                $info = sprintf($template, $toUser, $fromUser, $time, $msgType, $content);
+                echo $info;
+            }
+        }
         //extract post data
         if (!empty($postStr)){
             $fromUsername = $postObj->FromUserName;
@@ -59,26 +78,6 @@ class IndexController extends BaseController {
             AccessToPermissions("toIndex");
             //exit;
         }
-
-        if(strtolower($postObj->MsgType) == 'event') {
-            if(strtolower($postObj->Event == 'subscribe')) {
-                $toUser = $postObj->FromUserName;
-                $fromUser = $postObj->ToUserName;
-                $time = time();
-                $msgType = 'text';
-                $content = '欢迎关注我们的微信公众账号'.$postObj->FromUserName;
-                $template = "<xml>
-                        <ToUserName><![CDATA[%s]]></ToUserName>
-                        <FromUserName><![CDATA[%s]]></FromUserName>
-                        <CreateTime>%s</CreateTime>
-                        <MsgType><![CDATA[%s]]></MsgType>
-                        <Content><![CDATA[%s]]></Content>
-                        <FuncFlag>0</FuncFlag>
-                        </xml>";
-                $info = sprintf($template, $toUser, $fromUser, $time, $msgType, $content);
-                echo $info;
-            }
-        }
     }
 
     public function getUserInfo() {
@@ -96,29 +95,32 @@ class IndexController extends BaseController {
 //打印用户信息
         $m = M("wechat");
         $D = M("driver");
-        $select = $m->where(array("openid"=>$userinfo["openid"]))->getField("id");
 
-        if($select && $select != null ) {
-            $userinfo["create_time"] = date("Y-m-d h:i:s");
-            $m->where(array("openid" => $userinfo["openid"]))->save($userinfo);
+        $select = $m->where(array("openid"=>$userinfo["openid"]))->getField("id");
+        if($userinfo["openid"]){
+            if($select && $select != null ) {
+                $userinfo["create_time"] = date("Y-m-d h:i:s");
+                $m->where(array("openid" => $userinfo["openid"]))->save($userinfo);
 //            echo "更新数据成功";
-            //exit;
-        } else {
-            $userinfo["update_time"] = date("Y-m-d h:i:s");
-            $result = $m->data($userinfo)->add();
-            if($result) {
-                $data["wechat_id"] = $result;
-                $nowTime = date("Ymdhis");
-                $sixRand = rand('100000', '999999');
-                $data["number"] = $nowTime.$sixRand;
-                $data["name"] = "请编辑您的真实姓名";
-                $data["mobile_number"] = "请编辑您的手机号";
-                $data["company"] = "请您所属公司";
-                $data['create_time'] = date("Y-m-d h:i:s");
-                $result1 = $D->data($data)->add();
+                //exit;
+            } else {
+                $userinfo["update_time"] = date("Y-m-d h:i:s");
+                $result = $m->data($userinfo)->add();
+                if($result) {
+                    $data["wechat_id"] = $result;
+                    $nowTime = date("Ymdhis");
+                    $sixRand = rand('100000', '999999');
+                    $data["number"] = $nowTime.$sixRand;
+                    $data["name"] = "请编辑您的真实姓名";
+                    $data["mobile_number"] = "请编辑您的手机号";
+                    $data["company"] = "请您所属公司";
+                    $data['create_time'] = date("Y-m-d h:i:s");
+                    $result1 = $D->data($data)->add();
+                }
+                //exit;
             }
-            //exit;
         }
+
         //$this->display("/index");
 
         $this->redirect("$toUrl");

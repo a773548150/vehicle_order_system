@@ -106,7 +106,6 @@ class OrderModel extends BaseModel {
     }
 
     public function searchPersonalOrder() {
-        getOpenid();
         session_start();
         $M = M();
         $openid = $_SESSION["openid"];
