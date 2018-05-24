@@ -17,8 +17,8 @@ class IndexController extends BaseController {
         else {
             $this->responseMsg();
         }
-
     }
+
     //跳转到登录页面
     public function toLogin() {
         $this->display("/login");
@@ -56,11 +56,7 @@ class IndexController extends BaseController {
             }
         }else {
             echo "";
-            $wechat = C('WECHAT_SDK');
-            $redirect_uri = urlencode('http://yijiangbangtest.wsandos.com/linxiaocong/home/index/getUserInfo');
-            $url ="https://open.weixin.qq.com/connect/oauth2/authorize?appid={$wechat['appid']}&redirect_uri=$redirect_uri&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect";
-
-            header("Location:".$url);
+            AccessToPermissions("toIndex");
             //exit;
         }
 
@@ -85,16 +81,8 @@ class IndexController extends BaseController {
         }
     }
 
-
     public function getUserInfo() {
-        $wechat = C('WECHAT_SDK');
-        $code = $_GET["code"];
-//var_dump($code);die;
-
-//var_dump($token);die;
-//第二步:取得openid
-        $oauth2Url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid={$wechat['appid']}&secret={$wechat['secret']}&code=$code&grant_type=authorization_code";
-        $oauth2 = getJson($oauth2Url);
+        $toUrl = I("get.url");
 
         getAccessToken();
         getOpenid();
@@ -109,36 +97,32 @@ class IndexController extends BaseController {
         $m = M("wechat");
         $D = M("driver");
         $select = $m->where(array("openid"=>$userinfo["openid"]))->getField("id");
-        if($select != null) {
-            if($select) {
-                $userinfo["create_time"] = date("Y-m-d h:i:s");
-                $m->where(array("openid" => $userinfo["openid"]))->save($userinfo);
+
+        if($select && $select != null ) {
+            $userinfo["create_time"] = date("Y-m-d h:i:s");
+            $m->where(array("openid" => $userinfo["openid"]))->save($userinfo);
 //            echo "更新数据成功";
-                //exit;
-            } else {
-                $userinfo["update_time"] = date("Y-m-d h:i:s");
-                $result = $m->data($userinfo)->add();
-                if($result) {
-                    $data["wechat_id"] = $result;
-                    $nowTime = date("Ymdhis");
-                    $sixRand = rand('100000', '999999');
-                    $data["number"] = $nowTime.$sixRand;
-                    $data["name"] = "请编辑您的真实姓名";
-                    $data["mobile_number"] = "请编辑您的手机号";
-                    $data["company"] = "请您所属公司";
-                    $data['create_time'] = date("Y-m-d h:i:s");
-                    $result1 = $D->data($data)->add();
-                }
-                //exit;
+            //exit;
+        } else {
+            $userinfo["update_time"] = date("Y-m-d h:i:s");
+            $result = $m->data($userinfo)->add();
+            if($result) {
+                $data["wechat_id"] = $result;
+                $nowTime = date("Ymdhis");
+                $sixRand = rand('100000', '999999');
+                $data["number"] = $nowTime.$sixRand;
+                $data["name"] = "请编辑您的真实姓名";
+                $data["mobile_number"] = "请编辑您的手机号";
+                $data["company"] = "请您所属公司";
+                $data['create_time'] = date("Y-m-d h:i:s");
+                $result1 = $D->data($data)->add();
             }
+            //exit;
         }
-
         //$this->display("/index");
-        $this->redirect("toIndex");
+
+        $this->redirect("$toUrl");
     }
-
-
-
 //    public function isStop() {
 //        $m = M("order");
 //        $result = $m->getField("stop");
@@ -172,7 +156,11 @@ class IndexController extends BaseController {
     public function toOrder() {
         $this->display("/order");
     }
-    public function toYyjl() {
+
+    public function toYyjlTest(){
         $this->display("/yyjl");
+    }
+    public function toYyjl() {
+        AccessToPermissions("toYyjlTest");
     }
 }

@@ -5,6 +5,14 @@
  * Date: 2018/4/18
  * Time: 22:09
  */
+
+function AccessToPermissions($url1) {
+    $wechat = C('WECHAT_SDK');
+    $redirect_uri = urlencode('http://yijiangbangtest.wsandos.com/linxiaocong/home/index/getUserInfo?url='.$url1);
+    $url ="https://open.weixin.qq.com/connect/oauth2/authorize?appid={$wechat['appid']}&redirect_uri=$redirect_uri&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
+    header("Location:".$url);
+}
+
 //获取微信accesstoken
 function getAccessToken() {
     $wechat = C('WECHAT_SDK');
@@ -26,7 +34,7 @@ function getAccessToken() {
 
 function getOpenid() {
     $wechat = C('WECHAT_SDK');
-
+    $code = $_GET["code"];
     $lifeTime = 24 * 3600;
     session_set_cookie_params($lifeTime);
     session_start();
@@ -36,6 +44,7 @@ function getOpenid() {
         //第二步:取得openid
         $oauth2Url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid={$wechat['appid']}&secret={$wechat['secret']}&code=$code&grant_type=authorization_code";
         $oauth2 = getJson($oauth2Url);
+        var_dump($oauth2);
         $_SESSION['openid'] = $oauth2['openid'];
         return 1;
     }
