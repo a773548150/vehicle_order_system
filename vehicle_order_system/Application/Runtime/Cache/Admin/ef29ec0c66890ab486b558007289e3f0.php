@@ -53,7 +53,7 @@
                 <a href="javascript:;">角色权限</a>
                 <dl class="layui-nav-child">
                     <dd><a href="<?php echo U('toRole');?>">权限管理</a></dd>
-                    <dd><a href=<?php echo U('toUser');?>"">后台用户管理</a></dd>
+                    <dd><a href="<?php echo U('toUser');?>">后台用户管理</a></dd>
                 </dl>
             </li><?php endif; ?>
 

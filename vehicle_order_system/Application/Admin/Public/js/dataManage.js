@@ -98,7 +98,7 @@ $(window).ready(function() {
         //第一个实例
         table.render({
             elem: '#order'
-            ,width: 1100
+            ,width: 1058
             ,height: 515
             ,limit: 11
             ,url: '../Order/searchOrder' //数据接口

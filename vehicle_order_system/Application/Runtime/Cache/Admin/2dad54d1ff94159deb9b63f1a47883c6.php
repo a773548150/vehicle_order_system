@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/linxiaocong/Public/layui/css/layui.css">
-    <link rel="stylesheet" type="text/css" href="/linxiaocong/Application/Admin/Common/css/index.css">
-    <link rel="stylesheet" type="text/css" href="/linxiaocong/Application/Admin/Public/css/user.css">
+    <link rel="stylesheet" type="text/css" href="/Public/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="/Application/Admin/Common/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/Application/Admin/Public/css/user.css">
     <title>权限管理页面</title>
 </head>
 <body>
@@ -119,8 +119,8 @@
     </script>
 </div>
 
-<script src="/linxiaocong/Public/layui/layui.js"></script>
-<script src="/linxiaocong/Public/jquery-3.3.1.min.js"></script>
-<script src="/linxiaocong/Application/Admin/Public/js/oilManage.js"></script>
+<script src="/Public/layui/layui.js"></script>
+<script src="/Public/jquery-3.3.1.min.js"></script>
+<script src="/Application/Admin/Public/js/oilManage.js"></script>
 </body>
 </html>

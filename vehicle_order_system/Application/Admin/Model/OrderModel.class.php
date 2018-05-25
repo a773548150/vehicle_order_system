@@ -209,7 +209,8 @@ class OrderModel extends BaseModel {
         $m = M("order");
         $L = A("Log");
         $update_time = date("Y-m-d h:i:s");
-        $result = $m->where(array("order_status" => 3))->getField("id, rank", true);
+        $data1["order_status"] = array('neq', 0);
+        $result = $m->where($data1)->getField("id, rank", true);
         $rankMax = count($result) + 2;
         for ($i = 1; $i <= $rankMax; $i++) {
             $m->where(array("rank" => $i))->save(array("rank" => $i-1, "update_time" => $update_time));

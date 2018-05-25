@@ -68,16 +68,16 @@ $(window).ready(function() {
         table.render({
             elem: '#order'
             ,height: 515
-            ,width: 750
+            ,width: 726
             ,limit: 11
             ,url: '../driver/searchDriver' //数据接口
             ,page: true //开启分页
             ,cols: [[ //表头
-                {field: 'headimgurl', title: '微信头像', width:100, sort: true, fixed: 'left'}
-                ,{field: 'nickname', title: '微信昵称', width:190, sort: true, fixed: 'left'}
-                ,{field: 'name', title: '真实姓名', width:160, edit: "text"}
-                ,{field: 'mobile_number', title: '手机号码', width:120, sort: true, edit: "text"}
-                ,{field: 'company', title: '隶属公司名', width: 150, sort: true, edit: "text"}
+                {field: 'headimgurl', title: '微信头像', width:100, sort: true}
+                ,{field: 'nickname', title: '微信昵称', width:190, sort: true}
+                ,{field: 'name', title: '真实姓名', width:160}
+                ,{field: 'mobile_number', title: '手机号码', width:120, sort: true}
+                ,{field: 'company', title: '隶属公司名', width: 150, sort: true}
             ]]
             ,done: function(res, curr, count) {
                 console.log(res);

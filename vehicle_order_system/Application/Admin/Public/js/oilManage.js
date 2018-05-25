@@ -51,7 +51,7 @@ $(window).ready(function() {
         //第一个实例
         table.render({
             elem: '#order'
-            ,width: 745
+            ,width: 730
             ,height: 354
             ,limit: 8
             ,url: '../Oil/searchOil' //数据接口

@@ -113,7 +113,7 @@ $(window).ready(function() {
         table.render({
             elem: '#order'
             ,height: 515
-            ,width: 1400
+            ,width: 1300
             ,limit: 11
             ,url: '../Order/searchOrder' //数据接口
             ,page: true //开启分页

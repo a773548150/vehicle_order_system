@@ -14,7 +14,7 @@ class IndexController extends BaseController {
         if($this->isLogin()){
             $permissions = A("Role");
             $permissions->findPermissions();
-            $this->display("/index");
+            $this->redirect("toIndex");
         }
     }
 
@@ -55,6 +55,9 @@ class IndexController extends BaseController {
         $this->display("/login");
     }
 
+    public function toIndex() {
+        $this->display("/index");
+    }
     //跳转到修改密码页面
     public function toAlertPassword() {
         if($this->isLogin()) {
