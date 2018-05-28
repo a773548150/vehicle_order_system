@@ -10,11 +10,15 @@ var vm = new Vue({
         ],
         chepai: '',
         oilName: [],
-        license_plate : '',
+        license_plate: '',
         company: '',
         isStop: true,
-        mobile_number : '',
-        name: ''
+        mobile_number: '',
+        name: '',
+        citys: ['京', '津', '冀', '晋', '蒙', '辽', '吉', '黑', '沪', '苏', '浙', '皖', '闽', '赣', '鲁', '豫', '鄂', '湘', '粤', '桂', '琼', '渝', '川', '黔', '滇', '藏', '陕', '甘', '青', '宁', '新', '台', '港', '澳'],
+        cityWords: ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','X','T','U','V','W','X','Y','Z'],
+        nowCity: '',
+        nowCityWords: ''
     },
     created: function () {
         var vthis = this;
@@ -38,10 +42,19 @@ var vm = new Vue({
             type: 'post',
             dataType: 'json',
             success: function (data, status) {
-                vthis.license_plate = data[0]["license_plate"].substring(1, data[0]["license_plate"].length);
+                vthis.license_plate = data[0]["license_plate"].substring(2, data[0]["license_plate"].length);
+                vthis.nowCity = data[0]["license_plate"].substring(0, 1);
+                vthis.nowCityWords = data[0]["license_plate"].substring(1, 2);
+                console.log("nowCity:"+ vthis.nowCity + "nowCityWords:" + vthis.nowCityWords);
                 vthis.company = data[0]["company"];
-                if(data[0]["stop"] == 1) {
+                vthis.name = data[0]["name"];
+                vthis.mobile_number = data[0]["mobile_number"];
+                if(data[0]["stop"] == 1 ) {
                     vthis.isStop = false;
+                    alert("目前暂停中");
+                } else if(data[0]["order_status"] == 3){
+                    vthis.isStop = false;
+                    alert("预约进行中");
                 } else {
                     vthis.isStop = true;
                 }
@@ -83,7 +96,7 @@ var vm = new Vue({
         },
         submit: function () {
             var vthis = this;
-            if (this.license_plate == "" || this.company == "") {
+            if (this.mobile_number == "" || this.name == "" || this.license_plate == "" || this.company == "") {
                 alert("输入不能为空");
             } else if (this.license_plate.length != 5) {
                 alert("车牌号必须要五位");
@@ -94,10 +107,17 @@ var vm = new Vue({
                     dataType: 'json',
                     data: {
                         "OilName": this.selectOilNameData,
-                        "license_plate": this.license_plate
+                        "license_plate": this.nowCity + this.nowCityWords + this.license_plate,
+                        "company": this.company
                     },
                     success: function (data, status) {
-                        alert("预约成功");
+                        if(data == "0"){
+                            alert("目前暂停中");
+                            location.reload();
+                        }else{
+                            alert("预约成功");
+                            location.reload();
+                        }
                     },
                     fail: function (err, status) {
                         console.log(err)
@@ -109,7 +129,8 @@ var vm = new Vue({
                     dataType: 'json',
                     data: {
                         "name": this.name,
-                        "mobile_number": this.license_plate,
+                        "mobile_number": this.mobile_number,
+                        "license_plate": this.nowCity + this.nowCityWords + this.license_plate,
                         "company": this.company
                     },
                     success: function (data, status) {

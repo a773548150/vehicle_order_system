@@ -66,13 +66,16 @@
 					</div>
 					<span class="Txt">车牌号</span>
 					<div class="lineC-left">
-						<div v-if="chepai == ''">
-							<span class="pz" >粤</span>
-						</div>
+						<select  class="weui-select weui-cell__bd citys" v-model="nowCity">
+							<option v-for="item in citys" v-bind:value="item">{{ item }}</option>
+						</select>
+						<select  class="weui-select weui-cell__bd cityWords" v-model="nowCityWords">
+							<option v-for="item in cityWords" v-bind:value="item">{{ item }}</option>
+						</select>
 						<!--<div >-->
 							<!--<span class="pz" >A</span>-->
 						<!--</div>-->
-							<input type="text" class="weui-input" placeholder="请输入车牌号" v-model="license_plate" maxlength="6" required>
+							<input type="text" class="weui-input" placeholder="请输入车牌号" v-model="license_plate" maxlength="5" required>
 					</div>
 				</div>
 				<div class="line">

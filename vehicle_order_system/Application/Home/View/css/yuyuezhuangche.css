@@ -81,8 +81,15 @@ input{
 .line .lineC-left{
 	overflow: hidden;
 }
+
 .lineC-left input{
 	width: 3rem;
+}
+.citys {
+	width: 1.2rem !important;
+}
+.cityWords {
+	width: 1.2rem !important;
 }
 .line select{
 	float:left;

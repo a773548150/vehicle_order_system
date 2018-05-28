@@ -37,6 +37,13 @@ class OrderController extends BaseController {
         echo $rs;
     }
 
+    public function isStop() {
+        $m = D("Order");
+        $rs = $m->isStop();
+        $rs = json2($rs);
+        echo $rs;
+    }
+
     public function searchPersonalOrder() {
         $m = D("Order");
         $rs = $m->searchPersonalOrder();

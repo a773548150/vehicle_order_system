@@ -33,13 +33,18 @@ class OrderModel extends BaseModel {
         $data["driver_id"] = $driver_id;
         $data["oil_id"] = $oil_id;
         $data["rank"] = $rank;
-        $data["license_plate"] = "粤A".$license_plate;
+        $data["license_plate"] = $license_plate;
+        $data["company"] = I("post.company");
         $nowTime = date("Ymdhis");
         $sixRand = rand('100000', '999999');
         $data["number"] = $nowTime.$sixRand;
         $data["order_status"] = 3;
         $data['create_time'] = date("Y-m-d h:i:s");
-        $result = $m->data($data)->add();
+        if(!$this->isStop()){
+            $result = $m->data($data)->add();
+        } else {
+            $result = "0";
+        }
         return $result;
     }
 
@@ -50,7 +55,7 @@ class OrderModel extends BaseModel {
         session_start();
         $openid = $_SESSION["openid"];
         $default = M();
-        $sql = "select o.license_plate, o.stop, d.company from t_order o LEFT JOIN t_driver d on o.driver_id = d.id LEFT JOIN t_wechat w on d.wechat_id = w.id where o.`status`=1 and d.`status`=1 and w.openid = \"{$openid}\" order by o.create_time DESC LIMIT 0, 1";
+        $sql = "select o.license_plate, o.stop, d.company, d.name, d.mobile_number, o.order_status from t_order o LEFT JOIN t_driver d on o.driver_id = d.id LEFT JOIN t_wechat w on d.wechat_id = w.id where o.`status`=1 and d.`status`=1 and w.openid = \"{$openid}\" order by o.create_time DESC LIMIT 0, 1";
         $result = $default->query($sql);
         return $result;
 
@@ -65,9 +70,9 @@ class OrderModel extends BaseModel {
         $oilName = I("post.oilName");
         $M = M();
         if($oilName == "0"){
-            $sql = "select t_order.license_plate, t_order.order_status, t_order.rank, t_order.`stop`, t_order.oil_id, t_oil.`name`, company from t_order LEFT JOIN t_oil on t_order.oil_id = t_oil.id LEFT JOIN t_driver on t_driver.id = t_order.driver_id where t_oil.name = 0 order by rank asc";
+            $sql = "select t_order.license_plate, t_order.order_status, t_order.rank, t_order.`stop`, t_order.oil_id, t_oil.`name`, t_order.company from t_order LEFT JOIN t_oil on t_order.oil_id = t_oil.id LEFT JOIN t_driver on t_driver.id = t_order.driver_id where t_oil.name = 0 and t_oil.`status`=1 order by rank asc";
         } else {
-            $sql = "select t_order.license_plate, t_order.order_status, t_order.rank, t_order.`stop`, t_order.oil_id, t_oil.`name`, company from t_order LEFT JOIN t_oil on t_order.oil_id = t_oil.id LEFT JOIN t_driver on t_driver.id = t_order.driver_id where t_oil.name = \"{$oilName}\" order by rank asc";
+            $sql = "select t_order.license_plate, t_order.order_status, t_order.rank, t_order.`stop`, t_order.oil_id, t_oil.`name`, t_order.company from t_order LEFT JOIN t_oil on t_order.oil_id = t_oil.id LEFT JOIN t_driver on t_driver.id = t_order.driver_id where t_oil.name = \"{$oilName}\" and t_oil.`status`=1 order by rank asc";
         }
          $result = $M->query($sql);
         return $result;
@@ -76,7 +81,7 @@ class OrderModel extends BaseModel {
     public function searchData() {
         $searchData = I("post.searchData");
         $M = M();
-        $sql = "select license_plate, order_status, rank from t_order where license_plate like \"%{$searchData}%\"";
+        $sql = "select license_plate, order_status, rank from t_order where license_plate and t_order.`status`=1 like \"%{$searchData}%\"";
         $result = $M->query($sql);
         if ($result) {
             return $result;
@@ -89,12 +94,12 @@ class OrderModel extends BaseModel {
         session_start();
         $M = M();
         $openid = $_SESSION["openid"];
-        $sql = "select t_driver.license_plate driver_license_plate, t_order.stop, t_order.rank, t_order.license_plate order_license_plate, t_wechat.nickname, t_order.order_status, company, t_driver.`name`, t_driver.mobile_number, t_wechat.headimgurl from t_order LEFT JOIN t_driver on t_driver.id = t_order.driver_id LEFT JOIN t_wechat on t_wechat.id = t_driver.wechat_id where t_wechat.openid = \"{$openid}\"";
+        $sql = "select t_driver.license_plate driver_license_plate, t_order.stop, t_order.rank, t_order.license_plate order_license_plate, t_wechat.nickname, t_order.order_status, t_order.company, t_driver.`name`, t_driver.mobile_number, t_wechat.headimgurl from t_order LEFT JOIN t_driver on t_driver.id = t_order.driver_id LEFT JOIN t_wechat on t_wechat.id = t_driver.wechat_id where t_wechat.openid = \"{$openid}\"";
         $result = $M->query($sql);
         if($result) {
             return $result;
         } else {
-            $sql = "select t_driver.license_plate driver_license_plate, t_wechat.nickname, company, t_driver.`name`, t_driver.mobile_number, t_wechat.headimgurl from t_driver left join t_wechat on t_wechat.id = t_driver.wechat_id where t_wechat.openid = \"{$openid}\"";
+            $sql = "select t_driver.license_plate driver_license_plate, t_wechat.nickname, t_driver.company, t_driver.`name`, t_driver.mobile_number, t_wechat.headimgurl from t_driver left join t_wechat on t_wechat.id = t_driver.wechat_id where t_wechat.openid = \"{$openid}\"";
             $result1 = $M->query($sql);
             $result1[0]["stop"] =1;
             $result1[0]["rank"] =0;
@@ -109,9 +114,16 @@ class OrderModel extends BaseModel {
         session_start();
         $M = M();
         $openid = $_SESSION["openid"];
-        $sql = "select t_driver.license_plate driver_license_plate, t_order.license_plate t_order_license_plate,t_order.create_time, t_oil.type, t_order.order_status, company, t_driver.`name`, t_driver.mobile_number from t_order LEFT JOIN t_driver on t_driver.id = t_order.driver_id LEFT JOIN t_wechat on t_wechat.id = t_driver.wechat_id LEFT JOIN t_oil on t_oil.id = t_order.oil_id where t_wechat.openid = \"{$openid}\"";
+        $sql = "select t_driver.license_plate driver_license_plate, t_order.license_plate t_order_license_plate,t_order.create_time, t_oil.type, t_order.order_status, t_order.company, t_driver.`name`, t_driver.mobile_number from t_order LEFT JOIN t_driver on t_driver.id = t_order.driver_id LEFT JOIN t_wechat on t_wechat.id = t_driver.wechat_id LEFT JOIN t_oil on t_oil.id = t_order.oil_id where t_wechat.openid = \"{$openid}\" and t_order.status=1 order by create_time desc";
         $result = $M->query($sql);
 
+        return $result;
+    }
+
+    public function isStop() {
+        session_start();
+        $M = M("Order");
+        $result = $M->getField("stop");
         return $result;
     }
 
@@ -119,7 +131,7 @@ class OrderModel extends BaseModel {
         session_start();
         $M = M();
         $openid = $_SESSION["openid"];
-        $sql = "select t_driver.license_plate driver_license_plate, company, t_driver.`name`, t_driver.mobile_number from t_driver LEFT JOIN t_wechat on t_wechat.id = t_driver.wechat_id where t_wechat.openid = \"{$openid}\"";
+        $sql = "select t_driver.license_plate driver_license_plate, t_driver.company, t_driver.`name`, t_driver.mobile_number from t_driver LEFT JOIN t_wechat on t_wechat.id = t_driver.wechat_id where t_wechat.openid = \"{$openid}\"";
         $result = $M->query($sql);
         return $result;
     }

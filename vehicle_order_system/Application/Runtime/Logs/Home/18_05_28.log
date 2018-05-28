@@ -1,0 +1,17 @@
+[ 2018-05-28T19:21:30+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] Undefined index: nonce C:\Users\Administrator\Downloads\vehicle_order_system-master\vehicle_order_system-master\vehicle_order_system\Application\Home\Controller\IndexController.class.php 第 5 行.
+NOTIC: [8] Undefined index: timestamp C:\Users\Administrator\Downloads\vehicle_order_system-master\vehicle_order_system-master\vehicle_order_system\Application\Home\Controller\IndexController.class.php 第 7 行.
+NOTIC: [8] Undefined index: echostr C:\Users\Administrator\Downloads\vehicle_order_system-master\vehicle_order_system-master\vehicle_order_system\Application\Home\Controller\IndexController.class.php 第 8 行.
+NOTIC: [8] Undefined index: signature C:\Users\Administrator\Downloads\vehicle_order_system-master\vehicle_order_system-master\vehicle_order_system\Application\Home\Controller\IndexController.class.php 第 9 行.
+NOTIC: [8] Undefined index: HTTP_RAW_POST_DATA C:\Users\Administrator\Downloads\vehicle_order_system-master\vehicle_order_system-master\vehicle_order_system\Application\Home\Controller\IndexController.class.php 第 31 行.
+NOTIC: [8] Trying to get property of non-object C:\Users\Administrator\Downloads\vehicle_order_system-master\vehicle_order_system-master\vehicle_order_system\Application\Home\Controller\IndexController.class.php 第 34 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
