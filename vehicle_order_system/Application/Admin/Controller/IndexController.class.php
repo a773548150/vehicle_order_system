@@ -14,7 +14,7 @@ class IndexController extends BaseController {
         if($this->isLogin()){
             $permissions = A("Role");
             $permissions->findPermissions();
-            $this->redirect("toIndex");
+            $this->display("/index");
         }
     }
 
