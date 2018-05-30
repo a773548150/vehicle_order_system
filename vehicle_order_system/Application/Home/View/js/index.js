@@ -13,7 +13,8 @@ var vm = new Vue({
         factoryArea: '',
         factoryOut: [],
         isStop: false,
-        searchData: ''
+        searchData: '',
+        selectFirst: ''
     },
     created: function () {
         var vthis = this;
@@ -44,6 +45,8 @@ var vm = new Vue({
         selectVal: function (ele) {
             this.selected = ele.target.value;
             var vthis = this;
+            //$(".oilName:first").attr("selected", "selected");
+            //this.selectFirst = 1;
             $.ajax({
                 url: "../Oil/searchOil",
                 type: 'post',

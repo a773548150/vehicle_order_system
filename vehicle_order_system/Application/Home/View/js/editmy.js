@@ -52,7 +52,7 @@ var vm = new Vue({
                     },
                     success: function (data, status) {
                         alert("修改成功");
-                        location.reload();
+                        location.href = "../Index/toMy";
                     },
                     fail: function (err, status) {
                         console.log(err)

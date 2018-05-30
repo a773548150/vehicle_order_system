@@ -50,9 +50,9 @@
 						</select>
 					</div>
 					<div class="searchCon-right">
-						<select id="sel"  @change="selectOilName">
+						<select id="sel"  @change="selectOilName" v-model="selectFirst">
 							<option disabled="disabled" selected="selected">请选择类型</option>
-							<option v-for="item in oilName">{{ item }}</option>
+							<option v-for="item in oilName" class="oilName">{{ item }}</option>
 						</select>
 					</div>
 				</div>
