@@ -94,7 +94,7 @@ class OrderModel extends BaseModel {
         session_start();
         $M = M();
         $openid = $_SESSION["openid"];
-        $sql = "select t_driver.license_plate driver_license_plate, t_order.stop, t_order.rank, t_order.license_plate order_license_plate, t_wechat.nickname, t_order.order_status, t_order.company, t_driver.`name`, t_driver.mobile_number, t_wechat.headimgurl from t_order LEFT JOIN t_driver on t_driver.id = t_order.driver_id LEFT JOIN t_wechat on t_wechat.id = t_driver.wechat_id where t_wechat.openid = \"{$openid}\"";
+        $sql = "select t_driver.license_plate driver_license_plate, t_order.stop, t_order.rank, t_order.license_plate order_license_plate, t_wechat.nickname, t_order.order_status, t_order.company, t_driver.`name`, t_driver.mobile_number, t_wechat.headimgurl from t_order LEFT JOIN t_driver on t_driver.id = t_order.driver_id LEFT JOIN t_wechat on t_wechat.id = t_driver.wechat_id where t_order.order_status <> 0 and t_wechat.openid = \"{$openid}\"";
         $result = $M->query($sql);
         if($result) {
             return $result;

@@ -14,7 +14,9 @@ var vm = new Vue({
         factoryOut: [],
         isStop: false,
         searchData: '',
-        selectFirst: ''
+        selectFirst: '',
+        noticeTitle: '',
+        noticeContent: ''
     },
     created: function () {
         var vthis = this;
@@ -34,7 +36,20 @@ var vm = new Vue({
                 console.log(err)
             }
         });
-
+        $.ajax({
+            url: "../Notice/selectNotice",
+            type: 'post',
+            dataType: 'json',
+            success: function (data, status) {
+                vthis.noticeTitle = data[0]["title"];
+                vthis.noticeContent = data[0]["content"];
+                console.log(data);
+                console.log(vthis.noticeTitle);
+            },
+            fail: function (err, status) {
+                console.log(err)
+            }
+        });
     },
     computed: {
         now: function () {

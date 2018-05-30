@@ -216,8 +216,11 @@ class OrderModel extends BaseModel {
             $m->where(array("rank" => $i))->save(array("rank" => $i-1, "update_time" => $update_time));
 
         }
+
         foreach($result as $key => $value) {
-            $this->sendMessage($key);
+            if($value <= 3){
+                $this->sendMessage($key);
+            }
         }
         $m->where(array("rank" => 1))->save(array("order_status" => 1, "update_time" => $update_time));
         $m->where(array("rank" => 2))->save(array("order_status" => 2, "update_time" => $update_time));
@@ -259,7 +262,7 @@ class OrderModel extends BaseModel {
                     }
                     $m->where(array("id" => $lim["id"]))->save(array("rank" => $newRank["rank"], "update_time" => $update_time));
                 }
-                $result = 3;
+                $result = "3";
             } else {
                 if($newRank["rank"] > $rankMax){
                     $result =  "1";
@@ -317,24 +320,23 @@ class OrderModel extends BaseModel {
         return $result;
     }
 
-    public function sendMessage($id, $rankStatus="") {
+    public function sendMessage($id, $rankStatus="2") {
         $m = M();
-        $sql="select t_order.license_plate license_plate, t_order.update_time , t_oil.type oilType, t_oil.name oilName, t_driver.`name`, t_order.status, t_wechat.openid  from t_order LEFT JOIN t_driver on t_driver.id = t_order.driver_id LEFT JOIN t_wechat on t_wechat.id = t_driver.wechat_id LEFT JOIN t_oil on t_oil.id = t_order.oil_id where t_order.id = \"{$id}\"";
+        $sql="select t_order.license_plate license_plate, t_order.update_time , t_oil.type oilType, t_oil.name oilName, t_driver.`name`, t_order.order_status, t_wechat.openid  from t_order LEFT JOIN t_driver on t_driver.id = t_order.driver_id LEFT JOIN t_wechat on t_wechat.id = t_driver.wechat_id LEFT JOIN t_oil on t_oil.id = t_order.oil_id where t_order.id = \"{$id}\"";
         $result = $m->query($sql);
-//        var_dump($result);die;
-        if($result[0]["status"] == 0) {
-            $result[0]["status"] = "已装";
-        } else if($result[0]["status"] == 1) {
-            $result[0]["status"] = "装车中";
-        } else if($result[0]["status"] == 2) {
-            $result[0]["status"] = "厂区内待装";
-        } else if($result[0]["status"] == 3) {
-            $result[0]["status"] = "厂区外待装";
+        if($result[0]["order_status"] == 0) {
+            $result[0]["order_status"] = "已装";
+        } else if($result[0]["order_status"] == 1) {
+            $result[0]["order_status"] = "装车中";
+        } else if($result[0]["order_status"] == 2) {
+            $result[0]["order_status"] = "厂区内待装";
+        } else if($result[0]["order_status"] == 3) {
+            $result[0]["order_status"] = "厂区外待装";
         }
         if($rankStatus == 1) {
-            $result[0]["status"] = "暂停";
+            $result[0]["order_status"] = "暂停";
         } else if($rankStatus == 0) {
-            $result[0]["status"] = "重新开始";
+            $result[0]["order_status"] = "重新开始";
         }
 
         $this->send_template_msg(
@@ -345,7 +347,7 @@ class OrderModel extends BaseModel {
             $result[0]["license_plate"],
             $result[0]["oiltype"],
             $result[0]["oilname"],
-            $result[0]["status"],
+            $result[0]["order_status"],
             $result[0]["update_time"],
             ""
         );

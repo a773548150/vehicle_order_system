@@ -113,7 +113,7 @@ $(window).ready(function() {
         table.render({
             elem: '#order'
             ,height: 515
-            ,width: 1300
+            ,width: 1500
             ,limit: 11
             ,url: '../Order/searchOrder' //数据接口
             ,page: true //开启分页
@@ -121,6 +121,7 @@ $(window).ready(function() {
                 {field: 'stop', title: '排队状态', width:120, sort: true}
                 ,{field: 'number', title: '单号', width:190, sort: true}
                 ,{field: 'driver_mobile_number', title: '司机手机号', width:190, sort: true}
+                ,{field: 'license_plate', title: '车牌号', width:190, sort: true}
                 ,{field: 'order_status', title: '状态', width: 160, sort: true}
                 ,{field: 'rank', title: '排队名次', width:160, sort: true, edit: "text"}
                 ,{field: 'oil_name', title: '油名', width:160}
@@ -164,33 +165,37 @@ $(window).ready(function() {
                 //do something
                 if(editData != ""){
                     if(editData.data.id === data.id) {
-
-                            $.ajax({
-                                url: "../Order/editOrder",
-                                type: 'post',
-                                dataType: 'json',
-                                data: {
-                                    "field" : editData.field,
-                                    "value" : editData.data,
-                                    "id"    : editData.data.id
-                                },
-                                success: function (data, status) {
-                                    if(data == 0) {
-                                        alert("不能输入负数");
-                                    } else if(data == 1){
-                                        alert("名次不能超过最大的");
-                                    } else if(data == 2) {
-                                        alert("没有可修改数据");
-                                    } else if(data == 3) {
-                                        alert("修改成功");
+                        console.log(editData.data.order_status);
+                            if(editData.data.order_status == "装车中" || editData.data.order_status == "厂区内待装" || editData.value == "1" || editData.value == "2") {
+                                alert("不能修改“装车中”和“厂区内待装”的排队名次");
+                                location.reload();
+                            } else {
+                                $.ajax({
+                                    url: "../Order/editOrder",
+                                    type: 'post',
+                                    dataType: 'json',
+                                    data: {
+                                        "field" : editData.field,
+                                        "value" : editData.data,
+                                        "id"    : editData.data.id
+                                    },
+                                    success: function (data, status) {
+                                        if(data == 0) {
+                                            alert("不能输入负数");
+                                        } else if(data == 1){
+                                            alert("名次不能超过最大的");
+                                        } else if(data == 2) {
+                                            alert("没有可修改数据");
+                                        } else if(data == 3) {
+                                            alert("修改成功");
+                                        }
+                                        location.reload();
+                                    },
+                                    fail: function (err, status) {
+                                        console.log(err)
                                     }
-                                    location.reload();
-                                },
-                                fail: function (err, status) {
-                                    console.log(err)
-                                }
-                            });
-
+                                });
+                            }
                     }
                 }
 
